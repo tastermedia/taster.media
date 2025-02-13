@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Video Embedding Logic
     const videos = [
         "https://www.youtube.com/embed/3N54tQj83zU",
         "https://www.youtube.com/embed/RaUkKfppTIs",
@@ -9,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://www.youtube.com/embed/-vJyLUWFBtM",
         "https://www.youtube.com/embed/MArDiSiZ20g",
         "https://www.youtube.com/embed/Cwi9jKTVhU8",
-        "https://www.youtube.com/embed/gcXg0gaUJCY"
+        "https://www.youtube.com/embed/gcXg0gaUJCY",
+        "https://www.youtube.com/embed/nFQafZQWYO8"
     ];
 
     function shuffleArray(array) {
@@ -29,5 +31,25 @@ document.addEventListener("DOMContentLoaded", function () {
             div.innerHTML = `<iframe src="${video}" frameborder="0" allowfullscreen></iframe>`;
             videoGrid.appendChild(div);
         });
+    }
+
+    // Typewriter Effect for Subtitle
+    const subtitleElement = document.getElementById("subtitle");
+    if (subtitleElement) {
+        const text = "Bought the ticket. Taking the ride.";
+        let index = 0;
+        let speed = 100; // Adjust typing speed in milliseconds
+
+        function typeWriter() {
+            if (index < text.length) {
+                subtitleElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        // Clear existing text and start typing effect
+        subtitleElement.innerHTML = "";
+        typeWriter();
     }
 });
