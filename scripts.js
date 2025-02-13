@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Video Embedding Logic
+    // 🎥 Video URLs
     const videos = [
         "https://www.youtube.com/embed/3N54tQj83zU",
         "https://www.youtube.com/embed/RaUkKfppTIs",
@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://www.youtube.com/embed/-vJyLUWFBtM",
         "https://www.youtube.com/embed/MArDiSiZ20g",
         "https://www.youtube.com/embed/Cwi9jKTVhU8",
-        "https://www.youtube.com/embed/gcXg0gaUJCY",
-        "https://www.youtube.com/embed/nFQafZQWYO8"
+        "https://www.youtube.com/embed/gcXg0gaUJCY"
     ];
 
+    // 🔀 Shuffle function (Fisher-Yates Algorithm)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -33,22 +33,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Typewriter Effect for Subtitle
-    const subtitleElement = document.getElementById("subtitle");
-    if (subtitleElement) {
-        const text = "Bought the ticket. Taking the ride.";
-        let index = 0;
-        let speed = 100; // Adjust typing speed in milliseconds
+    // 📝 Typewriter Effect for Subtitle
+    let text = "Bought the ticket. Taking the ride.";
+    let index = 0;
+    let speed = 100; // Typing speed in milliseconds
+    let subtitleElement = document.getElementById("subtitle");
 
-        function typeWriter() {
-            if (index < text.length) {
-                subtitleElement.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
-            }
+    function typeWriter() {
+        if (index < text.length) {
+            subtitleElement.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, speed);
         }
+    }
 
-        // Clear existing text and start typing effect
+    // Clear any existing text and start the effect
+    if (subtitleElement) {
         subtitleElement.innerHTML = "";
         typeWriter();
     }
