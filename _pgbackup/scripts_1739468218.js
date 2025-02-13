@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://www.youtube.com/embed/-vJyLUWFBtM",
         "https://www.youtube.com/embed/MArDiSiZ20g",
         "https://www.youtube.com/embed/Cwi9jKTVhU8",
-        "https://www.youtube.com/embed/nFQafZQWYO8?si=HfWJ9fWUVxZPli1C",
         "https://www.youtube.com/embed/gcXg0gaUJCY"
     ];
 
