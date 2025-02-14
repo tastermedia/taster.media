@@ -1,10 +1,14 @@
+/* General Styles */
 body {
     font-family: 'Raleway', sans-serif;
     background-color: black;
     color: white;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+/* Glowing Header Text */
 h1.glow-text {
     font-size: 2.5rem;
     color: #ffffff;
@@ -26,7 +30,7 @@ h1.glow-text {
     width: 150px;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 @keyframes pulse {
@@ -43,7 +47,7 @@ h1.glow-text {
 nav {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     margin: 20px 0;
 }
 
@@ -51,7 +55,7 @@ nav {
     color: #ffffff;
     text-decoration: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     background: linear-gradient(45deg, #8000ff, #ff00ff);
     box-shadow: 0 0 5px #8000ff, 0 0 10px #ff00ff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -60,6 +64,12 @@ nav {
 .nav-link:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
+}
+
+/* Active Page Highlight */
+.nav-link.active {
+    background: #9b00ff;
+    box-shadow: 0 0 15px #9b00ff;
 }
 
 /* Video Grid */
@@ -97,4 +107,62 @@ nav {
     color: white;
     text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
     margin-top: 50px;
+}
+
+/* Contact Page */
+.contact-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.contact-button {
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #8000ff, #ff00ff);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #8000ff;
+}
+
+.contact-button:hover {
+    background: #8b00ff;
+    box-shadow: 0 0 20px #8b00ff;
+}
+
+/* Contact Image */
+.contact-image {
+    display: block;
+    margin: 30px auto;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+}
+/* About Page */
+.about-container {
+    text-align: center;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.about-text {
+    font-size: 1.2em;
+    color: white;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff;
+    line-height: 1.6;
+}
+/* Photos Page */
+.photos-container {
+    text-align: center;
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.photos-text {
+    font-size: 1.2em;
+    color: white;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff;
+    line-height: 1.6;
 }
