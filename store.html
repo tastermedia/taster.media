@@ -8,39 +8,37 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-
-    <!-- 🚀 Load Header Dynamically -->
-    <div id="header-container"></div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("header.html")
-                .then(response => response.text())
-                .then(data => document.getElementById("header-container").innerHTML = data);
-        });
-    </script>
+    <header>
+        <div class="header-container">
+            <a href="index.html"><img src="images/logo.jpeg" alt="Taster Media Logo" class="logo"></a>
+            <h1>Essential Gear</h1>
+            <nav>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="photos.html" class="nav-link">Photos</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="store.html" class="essential-button">Essential Gear</a>
+            </nav>
+        </div>
+    </header>
 
     <main>
-        <h1>Essential Gear</h1>
-
-        <!-- 🎤 Audio Rig Section -->
         <section>
             <h2><a href="audio-rig.html" class="gear-link">Audio Rig</a></h2>
             <div class="gear-box">
                 <a href="audio-rig.html" class="gear-thumbnail-grid">
-                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/51C+Isimy0L._AC_SY300_SX300_.jpg" alt="Stereo Mic Set"></div>
-                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/51eMgPKmcGL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Stereo Mic Mounting Bracket"></div>
-                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/71+zLHxxOfL._SX522_.jpg" alt="XLR Cables, 2 Sets"></div>
-                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/61-4bzr0WoL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Zoom Audio Recorder"></div>
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/51C+Isimy0L._AC_SY300_SX300_.jpg" alt="Audio Rig Item 1"></div>
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/51eMgPKmcGL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Audio Rig Item 2"></div>
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/71+zLHxxOfL._SX522_.jpg" alt="Audio Rig Item 3"></div>
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/61-4bzr0WoL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Audio Rig Item 4"></div>
                 </a>
             </div>
         </section>
     </main>
 
-    <!-- 🔻 Footer -->
     <footer>
         <p>&copy; 2025 Taster Media</p>
         <p><small>As an Amazon Associate, I earn from qualifying purchases.</small></p>
     </footer>
-
 </body>
 </html>
