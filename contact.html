@@ -3,31 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Taster Media</title> 
+    <title>Contact - Taster Media</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-    <header>
-        <div id="header-container"></div>
-        <script>
+
+    <!-- 🚀 Load Header Dynamically -->
+    <div id="header-container"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
             fetch("header.html")
                 .then(response => response.text())
                 .then(data => document.getElementById("header-container").innerHTML = data);
-        </script>
+        });
+    </script>
+
+    <main>
+        <h1>Contact Us</h1>
+        <p>Get in touch with Taster Media.</p>
+
+        <div class="contact-container">
+            <a href="mailto:taster@taster.media" class="contact-button">📩 Email!</a>
         </div>
-    </header>
 
-    <main class="contact-container">
-        <h2 class="glow-text">📧 Get in Touch</h2>
-        <p>We'd love to hear from you! Click below to reach out:</p>
-        
-        <a href="mailto:taster@taster.media" class="contact-button">📩 Email Us</a>
-
-        <img src="images/contact-photo.jpg" alt="Contact Image" class="contact-image">
+        <div class="contact-info">
+        </div>
     </main>
 
+    <!-- 🔻 Footer -->
     <footer>
         <p>&copy; 2025 Taster Media</p>
     </footer>
+
 </body>
 </html>
