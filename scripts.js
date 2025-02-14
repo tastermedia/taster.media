@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://www.youtube.com/embed/ObOaxdn7E8U",
         "https://www.youtube.com/embed/OtwA4PBUZ6Y",
         "https://www.youtube.com/embed/WuUsgJqPnu4",
-        "https://www.youtube.com/embed/nFQafZQWYO8?si=HfWJ9fWUVxZPli1C",
-        
+        "https://www.youtube.com/embed/nFQafZQWYO8?si=HfWJ9fWUVxZPli1C"
     ];
 
     // 🔀 Shuffle function (Fisher-Yates Algorithm)
@@ -53,9 +52,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Clear any existing text and start the effect
     if (subtitleElement) {
         subtitleElement.innerHTML = "";
         typeWriter();
+    }
+
+    // 🔝 Scroll-to-Top Button Functionality
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    if (scrollTopBtn) {
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.opacity = "1";
+                scrollTopBtn.style.visibility = "visible";
+            } else {
+                scrollTopBtn.style.opacity = "0";
+                scrollTopBtn.style.visibility = "hidden";
+            }
+        });
+
+        scrollTopBtn.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+    }
+
+    // ✅ Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log("✅ Service Worker registered!", reg))
+            .catch(err => console.log("❌ Service Worker registration failed", err));
     }
 });
