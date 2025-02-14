@@ -10,8 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://www.youtube.com/embed/-vJyLUWFBtM",
         "https://www.youtube.com/embed/MArDiSiZ20g",
         "https://www.youtube.com/embed/Cwi9jKTVhU8",
+        "https://www.youtube.com/embed/gcXg0gaUJCY",
+        "https://www.youtube.com/embed/0kdjhSyPQ1k",
+        "https://www.youtube.com/embed/ObOaxdn7E8U",
+        "https://www.youtube.com/embed/OtwA4PBUZ6Y",
+        "https://www.youtube.com/embed/WuUsgJqPnu4",
         "https://www.youtube.com/embed/nFQafZQWYO8?si=HfWJ9fWUVxZPli1C",
-        "https://www.youtube.com/embed/gcXg0gaUJCY"
+        
     ];
 
     // 🔀 Shuffle function (Fisher-Yates Algorithm)
