@@ -11,19 +11,16 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="images/logo.jpeg" alt="Taster Media Logo" class="logo pulse">
-            <h1 class="glow-text">Taster Media</h1>
-            <p id="subtitle"></p>
-            <nav>
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="photos.html" class="nav-link">Photos</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </nav>
-        </div>
-    </header>
+
+    <!-- 🚀 Load Header Dynamically -->
+    <div id="header-container"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => document.getElementById("header-container").innerHTML = data);
+        });
+    </script>
 
     <main>
         <!-- 🎥 Video Section -->
@@ -32,18 +29,21 @@
         </section>
     </main>
 
+    <!-- 🔻 Footer -->
     <footer>
         <p>&copy; 2025 Taster Media</p>
     </footer>
 
-    <!-- Scroll-to-Top Button -->
+    <!-- 🔼 Scroll-to-Top Button -->
     <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
 
-    <!-- Load External JavaScript -->
+    <!-- 📜 Load External JavaScript -->
     <script src="scripts.js"></script>
+
+    <!-- 📩 Contact Button (Above Footer) -->
+    <div class="contact-container">
+        <a href="mailto:taster@taster.media" class="contact-button">Email Us</a>
+    </div>
+
 </body>
-<!-- Contact Button (Add Above Footer in All Pages) -->
-<div class="contact-container">
-    <a href="mailto:taster@taster.media" class="contact-button">📩 Email Us</a>
-</div>
 </html>

@@ -8,15 +8,12 @@
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <img src="images/logo.jpeg" alt="Taster Media Logo" class="logo pulse">
-            <h1 class="glow-text">Taster Media</h1>
-            <nav>
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="photos.html" class="nav-link">Photos</a>
-                <a href="contact.html" class="nav-link active">Contact</a>
-            </nav>
+        <div id="header-container"></div>
+        <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => document.getElementById("header-container").innerHTML = data);
+        </script>
         </div>
     </header>
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Rig - Taster Media</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <header>
+        <div id="header-container"></div>
+        <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => document.getElementById("header-container").innerHTML = data);
+        </script>
+        </div>
+    </header>
+
+    <main>
+        <section class="rig-container">
+            <div class="rig-item">
+                <img src="https://m.media-amazon.com/images/I/51C+Isimy0L._AC_SY300_SX300_.jpg" alt="Stereo Mic Set">
+                <div class="rig-details">
+                    <h2>Stereo Mic Set</h2>
+                    <p class="personal-account">Highly Recommended!</p>
+                    <a href="https://amzn.to/4hVNn4h" class="buy-button" target="_blank">Buy on Amazon</a>
+                </div>
+            </div>
+        
+            <div class="rig-item">
+                <img src="https://m.media-amazon.com/images/I/51eMgPKmcGL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Stereo Mic Mounting Bracket">
+                <div class="rig-details">
+                    <h2>Stereo Mic Mounting Bracket</h2>
+                    <p class="personal-account">Highly Recommended!</p>
+                    <a href="https://amzn.to/41g7ox1" class="buy-button" target="_blank">Buy on Amazon</a>
+                </div>
+            </div>
+        
+            <div class="rig-item">
+                <img src="https://m.media-amazon.com/images/I/71+zLHxxOfL._SX522_.jpg" alt="XLR Cables, 2 Sets (stereo mic and soundboard for mix)">
+                <div class="rig-details">
+                    <h2>XLR Cables, 2 Sets (stereo mic and soundboard for mix)</h2>
+                    <p class="personal-account">Highly Recommended!</p>
+                    <a href="https://amzn.to/411IMa8" class="buy-button" target="_blank">Buy on Amazon</a>
+                </div>
+            </div>
+        
+            <div class="rig-item">
+                <img src="https://m.media-amazon.com/images/I/61-4bzr0WoL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Zoom Audio Recorder for audio capture">
+                <div class="rig-details">
+                    <h2>Zoom Audio Recorder for audio capture</h2>
+                    <p class="personal-account">Highly Recommended!</p>
+                    <a href="https://amzn.to/4hIOMvt" class="buy-button" target="_blank">Buy on Amazon</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Taster Media</p>
+        <p><small>As an Amazon Associate, I earn from qualifying purchases.</small></p>
+    </footer>
+</body>
+</html>

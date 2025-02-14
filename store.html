@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Gear - Taster Media</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <div id="header-container"></div>
+<script>
+    fetch("header.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("header-container").innerHTML = data);
+</script>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2><a href="audio-rig.html" class="gear-link">Audio Rig</a></h2>
+            <div class="gear-box">
+                <a href="audio-rig.html" class="gear-thumbnail-grid">
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/51C+Isimy0L._AC_SY300_SX300_.jpg" alt="Audio Rig Item 1"></div>
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/51eMgPKmcGL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Audio Rig Item 2"></div>
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/71+zLHxxOfL._SX522_.jpg" alt="Audio Rig Item 3"></div>
+                    <div class="thumbnail"><img src="https://m.media-amazon.com/images/I/61-4bzr0WoL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Audio Rig Item 4"></div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Taster Media</p>
+        <p><small>As an Amazon Associate, I earn from qualifying purchases.</small></p>
+    </footer>
+</body>
+</html>
