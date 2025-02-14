@@ -166,3 +166,25 @@ nav {
     text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff;
     line-height: 1.6;
 }
+.contact-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.contact-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #8000ff, #ff00ff);
+    color: white;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #8000ff, 0 0 30px #ff00ff;
+}
