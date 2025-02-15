@@ -16,10 +16,6 @@ h1.glow-text {
     animation: glow 2s infinite alternate;
 }
 
-.glow-text {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 55px #ff00ff, 0 0 75px #ff00ff;
-}
-
 @keyframes glow {
     from {
         text-shadow: 0 0 5px #ffffff, 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 40px #8000ff;
