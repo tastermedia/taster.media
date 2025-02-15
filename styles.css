@@ -16,6 +16,10 @@ h1.glow-text {
     animation: glow 2s infinite alternate;
 }
 
+.glow-text {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 55px #ff00ff, 0 0 75px #ff00ff;
+}
+
 @keyframes glow {
     from {
         text-shadow: 0 0 5px #ffffff, 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 40px #8000ff;
@@ -432,42 +436,4 @@ nav {
 .buy-button:hover {
     transform: scale(1.1);
     box-shadow: 0 0 15px #8000ff, 0 0 30px #ff00ff;
-}
-/* 🌐 Responsive Navigation Bar */
-nav {
-    display: flex;
-    flex-wrap: wrap;  /* Allows buttons to stack if needed */
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-    padding: 10px;
-    max-width: 90vw; /* Keeps it within the screen */
-}
-
-/* 🔘 Ensure Buttons Stay Inside the Screen */
-.nav-link, .essential-button {
-    flex: 1;  /* Allows buttons to resize dynamically */
-    min-width: 120px; /* Prevents buttons from getting too small */
-    text-align: center;
-}
-
-/* 📱 Mobile: Stack the Navigation Bar */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column; /* Stacks buttons vertically */
-        align-items: center;
-    }
-
-    .nav-link, .essential-button {
-        width: 80%; /* Makes each button full width */
-    }
-}
-/* 📌 Header Styling - Responsive Fix */
-.header-container {
-    display: flex;
-    flex-direction: column; /* Ensures logo, title, and nav stack correctly */
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    padding: 10px;
 }

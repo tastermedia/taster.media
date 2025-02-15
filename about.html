@@ -3,49 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Taster Media</title> 
+    <title>About</title> 
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <img src="images/logo.jpeg" alt="Taster Media Logo" class="logo pulse">
-            <h1 class="glow-text">Taster Media</h1>
-            <nav>
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="photos.html" class="nav-link">Photos</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="store.html" class="essential-button">Essential Gear</a>
-            </nav>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>
 
-    <main class="about-container">
-        <h2 class="glow-text">🎶 Who We Are</h2>
-        <p class="about-text">
-            Welcome to <strong>Taster Media</strong>, where we capture and preserve **live music moments** that matter. 
-            Whether it's intimate acoustic sets or high-energy jam sessions, we bring the experience straight to you.
-        </p>
+<main class="about-container">
+    <h2 class="glow-text">🎶 Who We Are</h2>
+    <p class="about-text">
+        Welcome to <strong>Taster Media</strong>, where we capture and preserve **live music moments** that matter. 
+        Whether it's intimate acoustic sets or high-energy jam sessions, we bring the experience straight to you.
+    </p>
 
-        <p class="about-text">
-            🎤 **Our Mission:** Deliver high-quality **live concert recordings** through immersive video and audio production.  
-            🎬 **What We Do:** Multicam concert filming, high-fidelity audio recording, and post-production magic.  
-            🚀 **Why Us?** Because music deserves to be seen, heard, and remembered.
-        </p>
+    <p class="about-text">
+        🎤 **Our Mission:** Deliver high-quality **live concert recordings** through immersive video and audio production.  
+        🎬 **What We Do:** Multicam concert filming, high-fidelity audio recording, and post-production magic.  
+        🚀 **Why Us?** Because music deserves to be seen, heard, and remembered.
+    </p>
 
-        <p class="about-text">
-            Stay tuned for exciting projects and collaborations!
-        </p>
-    </main>
+    <p class="about-text">
+        Stay tuned for exciting projects and collaborations!
+    </p>
+</main>
 
-    <!-- Contact Button -->
-    <div class="contact-container">
-        <a href="mailto:your@email.com" class="contact-button">📩 Email Us</a>
-    </div>
+<!-- Contact Button -->
+<div class="contact-container">
+    <a href="mailto:your@email.com" class="contact-button">📩 Email Us</a>
+</div>
 
-    <footer>
-        <p>&copy; 2025 Taster Media</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Taster Media</p>
+</footer>
 </body>
 </html>
