@@ -15,7 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://www.youtube.com/embed/ObOaxdn7E8U",
         "https://www.youtube.com/embed/OtwA4PBUZ6Y",
         "https://www.youtube.com/embed/WuUsgJqPnu4",
-        "https://www.youtube.com/embed/nFQafZQWYO8?si=HfWJ9fWUVxZPli1C"
+        "https://www.youtube.com/embed/nFQafZQWYO8?si=HfWJ9fWUVxZPli1C",
+        "https://www.youtube.com/embed/18Gq18K467Q",
+        "https://www.youtube.com/embed/9fr4NV-E7-w",
+        "https://www.youtube.com/embed/bsQkyVYA8I8",
+        "https://www.youtube.com/embed/awePJCjoNes",
+        "https://www.youtube.com/embed/lUA7Fd4chF8",
+        "https://www.youtube.com/embed/EklPeX4QiMw",
+        "https://www.youtube.com/embed/5vmijBomkcw",
+        "https://www.youtube.com/embed/OSzfWL11E80",
+        "https://www.youtube.com/embed/WL7Xg8--k8U",
+        "https://www.youtube.com/embed/8YTzPisPEAM",
+        "https://www.youtube.com/embed/EbFw-EguGfU",
+        "https://www.youtube.com/embed/i3RUotVQyY0"
     ];
 
     // 🔀 Shuffle function (Fisher-Yates Algorithm)

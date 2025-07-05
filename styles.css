@@ -261,7 +261,7 @@ nav {
     background: linear-gradient(45deg, #8000ff, #ff00ff);
     box-shadow: 0 0 5px #8000ff, 0 0 10px #ff00ff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 /* 🎨 Hover Effect */
