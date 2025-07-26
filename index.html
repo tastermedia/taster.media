@@ -13,30 +13,38 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <img src="images/logo.png" alt="Taster Media Logo" class="logo" />
-      <h1 class="glow-text">Taster Media</h1>
-      <p class="subtitle">Don’t just hear it. Taste it.</p>
-      <nav>
-        <a href="index.html" class="nav-link">Home/Videos</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="photos.html" class="nav-link">Photos</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <!-- DYNAMIC HEADER -->
+  <div id="header-placeholder"></div>
+  <script>
+    fetch('header.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('header-placeholder').innerHTML = html;
+        // re-run the subtitle typewriter
+        const el = document.getElementById('subtitle');
+        if (!el) return;
+        const text = "Don’t just hear it. Taste it.";
+        let idx = 0;
+        (function type(){
+          if(idx < text.length) {
+            el.textContent += text[idx++];
+            setTimeout(type, 100);
+          }
+        })();
+      })
+      .catch(console.error);
+  </script>
 
   <main>
     <section class="playlist-section">
-      <h2>All Videos</h2>
+      <h2>Video Archive</h2>
       <div class="grid" id="allVideosGrid">
         <!-- populated by scripts.js -->
       </div>
     </section>
 
     <section class="playlist-section">
-      <h2>Front Porch</h2>
+      <h2>Front Porch Archive</h2>
       <div class="grid" id="frontPorchGrid">
         <!-- populated by scripts.js -->
       </div>

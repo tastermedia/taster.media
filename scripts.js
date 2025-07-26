@@ -1,79 +1,78 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // ─────────── Your two playlists (newest-first) ───────────
-  const allIds = [
-    "bDwJHLML1oQ",
-    "RBV2Rm7RuoY",
-    "zGZLec4CRfw",
-    "WL7Xg8--k8U",
-    "EklPeX4QiMw",
-    "lUA7Fd4chF8",
-    "awePJCjoNes",
-    "9fr4NV-E7-w",
-    "ZDEv_tcomcQ",
-    "nFQafZQWYO8",
-    "UExNYPOI0UU",
-    "gcXg0gaUJCY",
-    "cmRiw0ahuuc",
-    "-vJyLUWFBtM",
-    "MArDiSiZ20g",
-    "Cwi9jKTVhU8",
-    "OtwA4PBUZ6Y",
-    "ObOaxdn7E8U",
-    "WuUsgJqPnu4",
-    "asVojYYSmyA",
-    "RaUkKfppTIs"
+document.addEventListener("DOMContentLoaded", function () {
+  // 🎥 Video lists (newest → oldest)
+  const allVideos = [
+    "https://www.youtube.com/embed/bDwJHLML1oQ",
+    "https://www.youtube.com/embed/RBV2Rm7RuoY",
+    "https://www.youtube.com/embed/zGZLec4CRfw",
+    "https://www.youtube.com/embed/WL7Xg8--k8U",
+    "https://www.youtube.com/embed/EklPeX4QiMw",
+    "https://www.youtube.com/embed/lUA7Fd4chF8",
+    "https://www.youtube.com/embed/awePJCjoNes",
+    "https://www.youtube.com/embed/9fr4NV-E7-w",
+    "https://www.youtube.com/embed/ZDEv_tcomcQ",
+    "https://www.youtube.com/embed/nFQafZQWYO8",
+    "https://www.youtube.com/embed/UExNYPOI0UU",
+    "https://www.youtube.com/embed/gcXg0gaUJCY",
+    "https://www.youtube.com/embed/cmRiw0ahuuc",
+    "https://www.youtube.com/embed/-vJyLUWFBtM",
+    "https://www.youtube.com/embed/MArDiSiZ20g",
+    "https://www.youtube.com/embed/Cwi9jKTVhU8",
+    "https://www.youtube.com/embed/OtwA4PBUZ6Y",
+    "https://www.youtube.com/embed/ObOaxdn7E8U",
+    "https://www.youtube.com/embed/WuUsgJqPnu4",
+    "https://www.youtube.com/embed/asVojYYSmyA",
+    "https://www.youtube.com/embed/RaUkKfppTIs"
   ];
 
-  const frontPorchIds = [
-    "nioEXdSpqak",
-    "8YTzPisPEAM",
-    "oqt5Ytju8VM",
-    "swscjfyTW-E",
-    "EbFw-EguGfU",
-    "YIBWVaVe9Pg",
-    "5vmijBomkcw",
-    "OSzfWL11E80",
-    "bsQkyVYA8I8",
-    "18Gq18K467Q",
-    "0kdjhSyPQ1k",
-    "3N54tQj83zU",
-    "Z0xwpslgi60",
-    "Kki2nnAu8gg",
-    "rbW9xQ--Y6A",    // corrected ID
-    "r-VGJXAhe_8"
+  const frontPorchVideos = [
+    "https://www.youtube.com/embed/nioEXdSpqak",
+    "https://www.youtube.com/embed/8YTzPisPEAM",
+    "https://www.youtube.com/embed/oqt5Ytju8VM",
+    "https://www.youtube.com/embed/swscjfyTW-E",
+    "https://www.youtube.com/embed/EbFw-EguGfU",
+    "https://www.youtube.com/embed/YIBWVaVe9Pg",
+    "https://www.youtube.com/embed/5vmijBomkcw",
+    "https://www.youtube.com/embed/OSzfWL11E80",
+    "https://www.youtube.com/embed/bsQkyVYA8I8",
+    "https://www.youtube.com/embed/18Gq18K467Q",
+    "https://www.youtube.com/embed/0kdjhSyPQ1k",
+    "https://www.youtube.com/embed/3N54tQj83zU",
+    "https://www.youtube.com/embed/Z0xwpslgi60",
+    "https://www.youtube.com/embed/Kki2nnAu8gg",
+    "https://www.youtube.com/embed/rbW9xQ--Y6A",
+    "https://www.youtube.com/embed/r-VGJXAhe_8"
   ];
 
-  // ─────────── Build each grid ───────────
-  function populateGrid(ids, gridId) {
+  function populateGrid(gridId, list) {
     const grid = document.getElementById(gridId);
-    grid.innerHTML = ""; // clear
-
-    ids.forEach((vid) => {
-      const div = document.createElement("div");
-      div.className = "video";
-      div.innerHTML = `
-        <img class="thumb" src="https://img.youtube.com/vi/${vid}/hqdefault.jpg" alt="Video thumbnail" />
-        <iframe
-          class="player"
-          src="https://www.youtube.com/embed/${vid}?autoplay=1&mute=1"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+    list.forEach(src => {
+      const videoId = src.split('/').pop().split('?')[0];
+      const thumbUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      const wrapper = document.createElement("div");
+      wrapper.className = "video";
+      wrapper.innerHTML = `
+        <img class="thumb" src="${thumbUrl}" alt="Video ${videoId}" />
+        <iframe class="player" src="${src}?autoplay=1&mute=1" allowfullscreen></iframe>
       `;
-      grid.appendChild(div);
+      grid.appendChild(wrapper);
     });
   }
 
-  populateGrid(allIds, "allVideosGrid");
-  populateGrid(frontPorchIds, "frontPorchGrid");
+  populateGrid("allVideosGrid", allVideos);
+  populateGrid("frontPorchGrid", frontPorchVideos);
 
-  // ─────────── Scroll-to-Top Button ───────────
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
-  scrollTopBtn.style.opacity = 0;
-  window.addEventListener("scroll", () => {
-    scrollTopBtn.style.opacity = window.scrollY > 300 ? 1 : 0;
-  });
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  // 📝 Typewriter for subtitle
+  const subtitleEl = document.getElementById("subtitle");
+  const text = "Don’t just hear it. Taste it.";
+  let idx = 0;
+  function typeWriter() {
+    if (idx < text.length) {
+      subtitleEl.textContent += text[idx++];
+      setTimeout(typeWriter, 100);
+    }
+  }
+  if (subtitleEl) {
+    subtitleEl.textContent = "";
+    typeWriter();
+  }
 });

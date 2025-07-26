@@ -1,7 +1,9 @@
-/* General Page Styling */
+/* Pull in Josefin Sans from Google Fonts once */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
 body {
   margin: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   background: #000;
   color: #fff;
   text-align: center;
@@ -12,7 +14,7 @@ body {
   padding: 20px;
 }
 .logo {
-  width: 120px;
+  width: 150px;
   animation: pulse 2s infinite alternate;
 }
 @keyframes pulse {
@@ -40,14 +42,15 @@ nav {
   justify-content: center;
   gap: 15px;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 .nav-link {
   padding: 8px 16px;
   border-radius: 6px;
   background: #8000ff;
   color: #fff;
-  text-decoration: none;
   transition: transform 0.2s, background 0.2s;
+  text-decoration: none;
 }
 .nav-link:hover {
   transform: scale(1.1);
@@ -71,7 +74,7 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* VIDEO THUMBNAIL CONTAINER */
+/* VIDEO WRAPPER */
 .video {
   position: relative;
   overflow: hidden;
@@ -81,14 +84,14 @@ nav {
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* THUMBNAIL IMAGE */
+/* THUMBNAIL */
 .thumb {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* HIDDEN IFRAME PLAYER */
+/* HIDDEN PLAYER */
 .player {
   position: absolute;
   top: 0; left: 0;
@@ -98,31 +101,28 @@ nav {
   display: none;
 }
 
-/* ON HOVER: hide thumbnail, show player */
+/* ON HOVER: swap thumb ↔ player */
 .video:hover .thumb  { display: none; }
 .video:hover .player { display: block; }
 
-/* ENLARGE + GLOW ON HOVER */
+/* ENLARGE + GLOW ON HOVER (110%) */
 .video:hover {
-  transform: scale(1.5);
+  transform: scale(1.1);
   box-shadow:
     0 0 15px #8000ff,
-    0 0 30px #8000ff,
-    0 0 60px #ff00ff;
+    0 0 30px #8000ff;
   z-index: 10;
 }
 
 /* CONTACT BUTTON */
-.contact-container {
-  margin: 30px 0;
-}
 .contact-button {
   display: inline-block;
+  margin: 30px auto;
   padding: 10px 20px;
   background: #8000ff;
   color: #fff;
-  text-decoration: none;
   border-radius: 6px;
+  text-decoration: none;
   transition: transform 0.2s, background 0.2s;
 }
 .contact-button:hover {
@@ -135,28 +135,4 @@ footer {
   margin: 40px 0;
   font-size: 0.9rem;
   color: #888;
-}
-
-/* Scroll-to-Top Button */
-#scrollTopBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #8000ff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 1.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.2s;
-  opacity: 0;
-  visibility: hidden;
-}
-#scrollTopBtn.show {
-  opacity: 1;
-  visibility: visible;
-}
-#scrollTopBtn:hover {
-  transform: scale(1.2);
 }
