@@ -1,100 +1,68 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // 🎥 Video URLs
-    const videos = [
-        "https://www.youtube.com/embed/3N54tQj83zU",
-        "https://www.youtube.com/embed/RaUkKfppTIs",
-        "https://www.youtube.com/embed/asVojYYSmyA",
-        "https://www.youtube.com/embed/Kki2nnAu8gg",
-        "https://www.youtube.com/embed/rbW9xQ--Y6A",
-        "https://www.youtube.com/embed/r-VGJXAhe_8",
-        "https://www.youtube.com/embed/-vJyLUWFBtM",
-        "https://www.youtube.com/embed/MArDiSiZ20g",
-        "https://www.youtube.com/embed/Cwi9jKTVhU8",
-        "https://www.youtube.com/embed/gcXg0gaUJCY",
-        "https://www.youtube.com/embed/0kdjhSyPQ1k",
-        "https://www.youtube.com/embed/ObOaxdn7E8U",
-        "https://www.youtube.com/embed/OtwA4PBUZ6Y",
-        "https://www.youtube.com/embed/WuUsgJqPnu4",
-        "https://www.youtube.com/embed/nFQafZQWYO8?si=HfWJ9fWUVxZPli1C",
-        "https://www.youtube.com/embed/18Gq18K467Q",
-        "https://www.youtube.com/embed/9fr4NV-E7-w",
-        "https://www.youtube.com/embed/bsQkyVYA8I8",
-        "https://www.youtube.com/embed/awePJCjoNes",
-        "https://www.youtube.com/embed/lUA7Fd4chF8",
-        "https://www.youtube.com/embed/EklPeX4QiMw",
-        "https://www.youtube.com/embed/5vmijBomkcw",
-        "https://www.youtube.com/embed/OSzfWL11E80",
-        "https://www.youtube.com/embed/WL7Xg8--k8U",
-        "https://www.youtube.com/embed/8YTzPisPEAM",
-        "https://www.youtube.com/embed/EbFw-EguGfU",
-        "https://www.youtube.com/embed/i3RUotVQyY0"
-    ];
+document.addEventListener("DOMContentLoaded", function() {
+  // 🎥 All Videos (newest first)
+  const allVideos = [
+    'bDwJHLML1oQ','RBV2Rm7RuoY','zGZLec4CRfw','WL7Xg8--k8U','EklPeX4QiMw',
+    'lUA7Fd4chF8','awePJCjoNes','9fr4NV-E7-w','ZDEv_tcomcQ','nFQafZQWYO8',
+    'UExNYPOI0UU','gcXg0gaUJCY','cmRiw0ahuuc','-vJyLUWFBtM','MArDiSiZ20g',
+    'Cwi9jKTVhU8','OtwA4PBUZ6Y','ObOaxdn7E8U','WuUsgJqPnu4','asVojYYSmyA',
+    'RaUkKfppTIs'
+  ];
 
-    // 🔀 Shuffle function (Fisher-Yates Algorithm)
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
+  // 🎥 Front Porch Videos (newest first)
+  const frontPorchVideos = [
+    'nioEXdSpqak','8YTzPisPEAM','oqt5Ytju8VM','swscjfyTW-E','EbFw-EguGfU',
+    'YIBWVaVe9Pg','5vmijBomkcw','OSzfWL11E80','bsQkyVYA8I8','18Gq18K467Q',
+    '0kdjhSyPQ1k','3N54tQj83zU','Z0xwpslgi60','Kki2nnAu8gg','rbW9xQ--Y6A',
+    'r-VGJXAhe_8'
+  ];
+
+  function createVideoCard(id) {
+    const div = document.createElement('div');
+    div.className = 'video';
+    div.innerHTML = `
+      <img  class="thumb"  src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="Thumbnail">
+      <iframe class="player"
+              src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1"
+              frameborder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen>
+      </iframe>`;
+    return div;
+  }
+
+  // Populate All Videos
+  const allGrid   = document.getElementById('allVideosGrid');
+  allVideos.forEach(id => allGrid.appendChild(createVideoCard(id)));
+
+  // Populate Front Porch
+  const porchGrid = document.getElementById('frontPorchGrid');
+  frontPorchVideos.forEach(id => porchGrid.appendChild(createVideoCard(id)));
+
+  // 📝 Typewriter for subtitle
+  const subtitleEl = document.getElementById('subtitle');
+  const text       = "Don't just hear it. Taste it.";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      subtitleEl.textContent += text.charAt(i++);
+      setTimeout(typeWriter, 100);
     }
+  }
+  subtitleEl.textContent = '';
+  typeWriter();
 
-    shuffleArray(videos);
-    const videoGrid = document.getElementById("videoGrid");
-
-    if (videoGrid) {
-        videos.forEach(video => {
-            const div = document.createElement("div");
-            div.className = "video";
-            div.innerHTML = `<iframe src="${video}" frameborder="0" allowfullscreen></iframe>`;
-            videoGrid.appendChild(div);
-        });
+  // 🔝 Scroll-to-top
+  const btn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      btn.style.visibility = 'visible';
+      btn.style.opacity    = '1';
+    } else {
+      btn.style.visibility = 'hidden';
+      btn.style.opacity    = '0';
     }
-
-    // 📝 Typewriter Effect for Subtitle
-    let text = "Bought the ticket. Taking the ride.";
-    let index = 0;
-    let speed = 100; // Typing speed in milliseconds
-    let subtitleElement = document.getElementById("subtitle");
-
-    function typeWriter() {
-        if (index < text.length) {
-            subtitleElement.innerHTML += text.charAt(index);
-            index++;
-            setTimeout(typeWriter, speed);
-        }
-    }
-
-    if (subtitleElement) {
-        subtitleElement.innerHTML = "";
-        typeWriter();
-    }
-
-    // 🔝 Scroll-to-Top Button Functionality
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-    if (scrollTopBtn) {
-        window.addEventListener("scroll", function () {
-            if (window.scrollY > 300) {
-                scrollTopBtn.style.opacity = "1";
-                scrollTopBtn.style.visibility = "visible";
-            } else {
-                scrollTopBtn.style.opacity = "0";
-                scrollTopBtn.style.visibility = "hidden";
-            }
-        });
-
-        scrollTopBtn.addEventListener("click", function () {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        });
-    }
-
-    // ✅ Register Service Worker for PWA
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log("✅ Service Worker registered!", reg))
-            .catch(err => console.log("❌ Service Worker registration failed", err));
-    }
+  });
+  btn.addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  );
 });
