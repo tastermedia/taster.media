@@ -1,435 +1,162 @@
-/* General Styles */
+/* General Page Styling */
 body {
-    font-family: 'Raleway', sans-serif;
-    background-color: black;
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  background: #000;
+  color: #fff;
+  text-align: center;
 }
 
-/* Glowing Header Text */
-h1.glow-text {
-    font-size: 2.5rem;
-    color: #ffffff;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 40px #8000ff;
-    animation: glow 2s infinite alternate;
+/* HEADER & NAV */
+.header-container {
+  padding: 20px;
 }
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 40px #8000ff;
-    }
-    to {
-        text-shadow: 0 0 10px #ffffff, 0 0 15px #8000ff, 0 0 30px #8000ff, 0 0 50px #8000ff;
-    }
-}
-
-/* Pulsing Logo */
 .logo {
-    width: 150px;
-    height: auto;
-    display: block;
-    margin: 20px auto;
+  width: 120px;
+  animation: pulse 2s infinite alternate;
 }
-
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+  from { transform: scale(1); }
+  to   { transform: scale(1.1); }
 }
-
-.pulse {
-    animation: pulse 2s infinite;
+.glow-text {
+  font-size: 2.5rem;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #8000ff,
+    0 0 20px #8000ff;
+  animation: glow 2s infinite alternate;
 }
-
-/* Navigation Links */
+@keyframes glow {
+  from { text-shadow: 0 0 5px #fff, 0 0 10px #8000ff; }
+  to   { text-shadow: 0 0 10px #fff, 0 0 20px #8000ff, 0 0 30px #ff00ff; }
+}
+.subtitle {
+  margin: 0.5em 0 1em;
+  font-style: italic;
+}
 nav {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
-
 .nav-link {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #8000ff, #ff00ff);
-    box-shadow: 0 0 5px #8000ff, 0 0 10px #ff00ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #8000ff;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
 }
-
 .nav-link:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
+  transform: scale(1.1);
+  background: #ff00ff;
 }
 
-/* Active Page Highlight */
-.nav-link.active {
-    background: #9b00ff;
-    box-shadow: 0 0 15px #9b00ff;
+/* PLAYLIST SECTIONS */
+.playlist-section {
+  margin: 40px 0;
+}
+.playlist-section h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
 }
 
-/* Video Grid */
+/* GRID */
 .grid {
-    display: grid;
-    gap: 25px;
-    padding: 20px;
+  display: grid;
+  gap: 20px;
+  padding: 0 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Mobile: 1 Video per Row */
-.grid iframe {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9; /* Ensures full display */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* VIDEO THUMBNAIL CONTAINER */
+.video {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #111;
+  transform-origin: center center;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-/* Hover Effect: Purple Glow & Grow */
-.grid iframe:hover {
-    transform: scale(1.05);
-    border: 4px solid #8000ff;
-    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
+/* THUMBNAIL IMAGE */
+.thumb {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* Desktop: 3 Videos per Row */
-@media (min-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+/* HIDDEN IFRAME PLAYER */
+.player {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: none;
 }
 
-/* Under Construction Page */
-.under-construction {
-    font-size: 2rem;
-    color: white;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-    margin-top: 50px;
+/* ON HOVER: hide thumbnail, show player */
+.video:hover .thumb  { display: none; }
+.video:hover .player { display: block; }
+
+/* ENLARGE + GLOW ON HOVER */
+.video:hover {
+  transform: scale(1.5);
+  box-shadow:
+    0 0 15px #8000ff,
+    0 0 30px #8000ff,
+    0 0 60px #ff00ff;
+  z-index: 10;
 }
 
-/* Contact Page */
+/* CONTACT BUTTON */
 .contact-container {
-    text-align: center;
-    margin: 40px 0;
+  margin: 30px 0;
 }
-
 .contact-button {
-    display: inline-block;
-    font-size: 1.2em;
-    padding: 15px 25px;
-    background: linear-gradient(45deg, #8000ff, #ff00ff);
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: 0.3s;
-    box-shadow: 0 0 10px #8000ff;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #8000ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: transform 0.2s, background 0.2s;
 }
-
 .contact-button:hover {
-    background: #8b00ff;
-    box-shadow: 0 0 20px #8b00ff;
+  transform: scale(1.1);
+  background: #ff00ff;
 }
 
-/* Contact Image */
-.contact-image {
-    display: block;
-    margin: 30px auto;
-    width: 350px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
-}
-/* About Page */
-.about-container {
-    text-align: center;
-    margin: 40px auto;
-    max-width: 800px;
+/* FOOTER */
+footer {
+  margin: 40px 0;
+  font-size: 0.9rem;
+  color: #888;
 }
 
-.about-text {
-    font-size: 1.2em;
-    color: white;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff;
-    line-height: 1.6;
-}
-/* Photos Page */
-.photos-container {
-    text-align: center;
-    margin: 40px auto;
-    max-width: 800px;
-}
-
-.photos-text {
-    font-size: 1.2em;
-    color: white;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff;
-    line-height: 1.6;
-}
-.contact-container {
-    text-align: center;
-    margin: 30px 0;
-}
-
-.contact-button {
-    display: inline-block;
-    background: linear-gradient(45deg, #8000ff, #ff00ff);
-    color: white;
-    padding: 15px 25px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 8px;
-    text-decoration: none;
-    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px #8000ff, 0 0 30px #ff00ff;
-}
+/* Scroll-to-Top Button */
 #scrollTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #8000ff, #ff00ff);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #8000ff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+  opacity: 0;
+  visibility: hidden;
 }
-
+#scrollTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
 #scrollTopBtn:hover {
-    transform: scale(1.1);
-}
-/* 🎛️ Gear Grid Layout */
-/* 🎛️ Gear Grid - Ensures Proper Alignment */
-.gear-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-items: center;
-    align-items: start;
-    padding: 20px;
-}
-
-/* 🛍️ Individual Product Box */
-.product {
-    text-align: center;
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 8px;
-    transition: transform 0.2s;
-    max-width: 300px; /* Ensures uniform width */
-}
-
-/* 📷 Product Images - Adjusts Sizing */
-.product img {
-    width: 100%; /* Ensures full width */
-    height: auto;
-    max-height: 250px; /* Prevents excessive stretching */
-    object-fit: contain; /* Keeps aspect ratio */
-    border-radius: 5px;
-    background: #fff;
-    padding: 10px;
-}
-
-/* 🏷️ Product Titles */
-.product h3 {
-    margin-top: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-/* ✨ Hover Effect */
-.product:hover {
-    transform: scale(1.05);
-}
-/* 🔘 Essential Gear Button - Matches Navigation */
-.essential-button {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    background: linear-gradient(45deg, #8000ff, #ff00ff);
-    box-shadow: 0 0 5px #8000ff, 0 0 10px #ff00ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-weight: normal;
-}
-
-/* 🎨 Hover Effect */
-.essential-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
-}
-
-/* Active State (if needed) */
-.essential-button.active {
-    background: #9b00ff;
-    box-shadow: 0 0 15px #9b00ff;
-}
-/* 🎵 Audio Rig Link - Matches YouTube Hover Effect */
-.gear-link {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gear-link:hover {
-    color: #8000ff;
-    text-shadow: 0 0 5px #8000ff, 0 0 10px #ff00ff;
-    transform: scale(1.05);
-}
-
-/* 🎛️ Grid for Audio Rig - 4 Items Per Row */
-.gear-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    justify-items: center;
-    padding: 20px;
-}
-
-/* 📷 Audio Rig Thumbnails */
-.product img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: contain;
-    border-radius: 8px;
-    background: #ffffff;
-    padding: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 🖱️ Hover Effect - Floating */
-.product a:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
-}
-/* 🎵 Audio Rig Link - Matches YouTube Hover Effect */
-.gear-link {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: bold;
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-    display: inline-block;
-}
-
-.gear-link:hover {
-    color: #8000ff;
-    text-shadow: 0 0 5px #8000ff, 0 0 10px #ff00ff;
-    transform: scale(1.05);
-}
-
-/* 📦 Gear Box - Container for the Quadrant Layout */
-.gear-box {
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-}
-
-/* 🎛️ Grid for Tiled Thumbnails */
-.gear-thumbnail-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    width: 250px;
-    height: 250px;
-    gap: 5px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gear-thumbnail-grid:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #8000ff, 0 0 30px #ff00ff;
-}
-
-/* 🎨 Individual Thumbnails */
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-/* 🎵 Audio Rig Container */
-.rig-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-/* 🎛️ Uniform Size for Rig Items */
-.rig-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #111;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px #8000ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    min-height: 250px; /* Ensures uniform height */
-}
-
-/* 📷 Product Images - Adjusted for Consistency */
-.rig-item img {
-    width: 35%;
-    max-width: 250px;
-    height: 200px; /* Fixed height for uniformity */
-    object-fit: contain;
-    border-radius: 10px;
-    background: #ffffff;
-    padding: 10px;
-}
-
-/* 📄 Product Details (Right Side) */
-.rig-details {
-    flex: 1;
-    text-align: left;
-    padding-left: 20px;
-}
-
-/* ✍️ Personal Account Section */
-.personal-account {
-    font-size: 1.1rem;
-    color: white;
-    margin: 15px 0;
-    font-style: italic;
-}
-
-/* 🔘 Buy Button */
-.buy-button {
-    display: inline-block;
-    background: linear-gradient(45deg, #8000ff, #ff00ff);
-    color: white;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    text-decoration: none;
-    box-shadow: 0 0 10px #8000ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.buy-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px #8000ff, 0 0 30px #ff00ff;
+  transform: scale(1.2);
 }
