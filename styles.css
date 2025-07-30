@@ -1,26 +1,44 @@
-/* Apply Josefin Sans (via Google or self-hosted) */
+/* styles.css – Full Copy & Paste */
+
+/* 1. Import Josefin Sans from Google */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
 
-body {
+/* === GLOBAL RESET & BASE === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   font-family: 'Josefin Sans', sans-serif;
   background: #000;
   color: #fff;
   text-align: center;
+  line-height: 1.4;
 }
 
-/* HEADER */
+/* === HEADER === */
 .header-container {
   padding: 20px;
 }
+
 .logo {
   width: 150px;
   animation: pulse 2s infinite alternate;
 }
+
 @keyframes pulse {
   from { transform: scale(1); }
   to   { transform: scale(1.2); }
 }
+
 .glow-text {
   font-size: 2.5rem;
   text-shadow:
@@ -29,16 +47,18 @@ body {
     0 0 20px #8000ff;
   animation: glow 2s infinite alternate;
 }
+
 @keyframes glow {
   from { text-shadow: 0 0 5px #fff, 0 0 10px #8000ff; }
   to   { text-shadow: 0 0 10px #fff, 0 0 20px #8000ff; }
 }
+
 .subtitle {
   margin: 0.5em 0 1em;
   font-style: italic;
 }
 
-/* NAV */
+/* === NAVIGATION === */
 nav {
   display: flex;
   justify-content: center;
@@ -46,6 +66,7 @@ nav {
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
+
 .nav-link {
   padding: 8px 16px;
   border-radius: 6px;
@@ -54,21 +75,23 @@ nav {
   text-decoration: none;
   transition: transform 0.2s, background 0.2s;
 }
+
 .nav-link:hover {
   transform: scale(1.1);
   background: #ff00ff;
 }
 
-/* PLAYLIST SECTIONS */
+/* === PLAYLIST SECTIONS === */
 .playlist-section {
   margin: 40px 0;
 }
+
 .playlist-section h2 {
   font-size: 2rem;
   margin-bottom: 16px;
 }
 
-/* GRID */
+/* === GRID LAYOUT === */
 .grid {
   display: grid;
   gap: 20px;
@@ -76,29 +99,31 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* VIDEO CARD */
+/* === VIDEO CARD & THUMBNAIL === */
 .video {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 8px;      /* glow will hug this border */
   background: #111;
-  transform: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.video .thumb,
-.video .player {
-  display: block;
+
+.video img,
+.video iframe {
+  display: block;          /* remove inline-gap */
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;       /* fill container exactly */
+  border-radius: inherit;  /* match container corners */
 }
+
 .video .player {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   display: none;
 }
 
-/* HOVER EFFECT: only while hovering */
+/* Hover-to-play & glow on hover */
 .video:hover {
   transform: scale(1.05);
   box-shadow:
@@ -106,10 +131,11 @@ nav {
     0 0 20px #ff00ff;
   z-index: 1;
 }
-.video:hover .thumb   { display: none; }
-.video:hover .player  { display: block; }
 
-/* CONTACT BUTTON */
+.video:hover .thumb  { display: none; }
+.video:hover .player { display: block; }
+
+/* === CONTACT BUTTON === */
 .contact-button {
   display: inline-block;
   margin: 20px 0;
@@ -120,11 +146,12 @@ nav {
   text-decoration: none;
   transition: transform 0.2s;
 }
+
 .contact-button:hover {
   transform: scale(1.1);
 }
 
-/* SCROLL-TO-TOP */
+/* === SCROLL-TO-TOP BUTTON === */
 #scrollTopBtn {
   position: fixed;
   bottom: 20px;
@@ -141,27 +168,35 @@ nav {
   transition: opacity 0.3s;
 }
 
-/* add at the bottom of your styles.css */
-
-/* “mobile” breakpoint: adjust as you like */
+/* === MOBILE OPTIMIZATIONS === */
 @media (max-width: 600px) {
   .header-container {
-    position: relative;
-    z-index: 1000;              /* make sure it's above the page content */
     padding: 10px 20px;
+    position: relative;
+    z-index: 1000;
   }
 
   nav {
-    display: flex !important;
     flex-direction: column !important;
-    align-items: center;
     gap: 12px !important;
   }
 
   .nav-link {
-    width: 100%;                /* full width touch targets */
+    width: 100%;
     text-align: center;
     padding: 12px 0;
     font-size: 1.1rem;
+  }
+
+  .grid {
+    padding: 0 10px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+    /* background: rgba(255,0,255,0.1);  /* you can remove this visual aid */
   }
 }
