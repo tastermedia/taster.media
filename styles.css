@@ -140,3 +140,28 @@ nav {
   visibility: hidden;
   transition: opacity 0.3s;
 }
+
+/* add at the bottom of your styles.css */
+
+/* “mobile” breakpoint: adjust as you like */
+@media (max-width: 600px) {
+  .header-container {
+    position: relative;
+    z-index: 1000;              /* make sure it's above the page content */
+    padding: 10px 20px;
+  }
+
+  nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 12px !important;
+  }
+
+  .nav-link {
+    width: 100%;                /* full width touch targets */
+    text-align: center;
+    padding: 12px 0;
+    font-size: 1.1rem;
+  }
+}
