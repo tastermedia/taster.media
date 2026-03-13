@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Detect which page we're on - filter accordingly
+  const is360Page = window.location.pathname.includes('360');
+
   const overlay = document.createElement("div");
   overlay.id = "lightbox";
   overlay.innerHTML = `<div id="lightbox-inner"><button id="lightbox-close">\u2715</button><iframe id="lightbox-iframe" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;
   document.body.appendChild(overlay);
   const iframe = document.getElementById("lightbox-iframe");
+
   function openLightbox(videoId) {
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
     overlay.classList.add("active");
@@ -17,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+
   function buildGrid(containerId, videos) {
     const grid = document.getElementById(containerId);
     if (!grid) return;
@@ -50,16 +55,24 @@ document.addEventListener("DOMContentLoaded", function () {
       grid.appendChild(card);
     });
   }
+
   function formatViews(n) {
     n = parseInt(n, 10);
     if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
     if (n >= 1000) return (n / 1000).toFixed(1) + "K";
     return n.toString();
   }
+
   fetch("videos.json?t=" + Date.now())
     .then(r => r.json())
     .then(data => {
-      const videos = data.videos || [];
+      let videos = data.videos || [];
+      // Filter by type
+      if (is360Page) {
+        videos = videos.filter(v => v.type === '360');
+      } else {
+        videos = videos.filter(v => v.type === '4k' || !v.type);
+      }
       videos.sort((a, b) => (b.show_date || b.published) > (a.show_date || a.published) ? 1 : -1);
       buildGrid("allVideosGrid", videos);
     })
@@ -67,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const grid = document.getElementById("allVideosGrid");
       if (grid) grid.innerHTML = '<p style="color:#888;padding:40px">Video archive loading...</p>';
     });
+
   const scrollBtn = document.getElementById("scrollTopBtn");
   if (scrollBtn) {
     window.addEventListener("scroll", () => {

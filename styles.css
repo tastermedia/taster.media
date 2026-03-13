@@ -47,3 +47,8 @@ nav{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:12px 0 20
 @media(min-width:601px) and (max-width:900px){
   .grid{grid-template-columns:repeat(2,1fr);}
 }
+
+.nav-link.active {
+  background: #ff00ff;
+  box-shadow: 0 0 10px #ff00ff88;
+}

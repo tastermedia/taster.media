@@ -58,6 +58,28 @@ def apply_title_overrides(title):
             return date
     return None
 
+
+TITLE_DATE_OVERRIDES = [
+    # Winfield 2024 Fabulous 360 stages - show was Sept 19-21 2024
+    ('stage 2 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('stage 3 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('stage 5 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('stage 7 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('lit on the low road 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('stage 5 in fabulous 360', '2024-09-20T00:00:00+00:00'),
+]
+
+def apply_title_overrides(title):
+    t = title.lower()
+    for pattern, date in TITLE_DATE_OVERRIDES:
+        if pattern in t:
+            return date
+    return None
+
+def is_360(title):
+    t = title.lower()
+    return 'fabulous 360' in t or '360!' in t or '360 video' in t
+
 videos = []
 for i in range(0, len(video_ids), 50):
     batch = ",".join(video_ids[i:i+50])
@@ -71,7 +93,7 @@ for i in range(0, len(video_ids), 50):
         views = int(item["statistics"].get("viewCount",0))
         pub_dt = datetime.fromisoformat(published.replace("Z","+00:00"))
         show_date = apply_title_overrides(title) or parse_show_date(desc, pub_dt) or parse_show_date(title, pub_dt) or published
-        videos.append({"id":item["id"],"title":title,"views":views,"published":published,"show_date":show_date})
+        videos.append({"id":item["id"],"title":title,"views":views,"published":published,"show_date":show_date,"type":"360" if is_360(title) else "4k"})
 
 videos.sort(key=lambda v: v["show_date"], reverse=True)
 
