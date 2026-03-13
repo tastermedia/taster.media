@@ -1,26 +1,12 @@
 {
-  "updated": "2026-03-13T23:02:19.430357+00:00",
+  "updated": "2026-03-13T23:11:47.176775+00:00",
   "channel": "UC4jtpyiA5WIQsObGh5E2oCg",
   "total": 82,
   "videos": [
     {
-      "id": "VqFnBIL4tHw",
-      "title": "Whiskey Mash (live) from Hillberry 2025 - 4k - Single Cam",
-      "views": 45,
-      "published": "2026-02-11T03:51:17Z",
-      "show_date": "2026-10-10T00:00:00+00:00"
-    },
-    {
-      "id": "Pc_lSdrv3H0",
-      "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 453,
-      "published": "2026-02-10T20:45:38Z",
-      "show_date": "2026-10-10T00:00:00+00:00"
-    },
-    {
       "id": "rDEatJTL5WA",
       "title": "The Matchsellers & Friends (live) from Tall Trellis Brewing - Full Show - 4k Multi-cam - Soundboard",
-      "views": 139,
+      "views": 143,
       "published": "2026-03-10T15:14:34Z",
       "show_date": "2026-03-08T00:00:00+00:00"
     },
@@ -51,6 +37,20 @@
       "views": 10,
       "published": "2026-02-13T00:14:36Z",
       "show_date": "2026-02-13T00:14:36Z"
+    },
+    {
+      "id": "VqFnBIL4tHw",
+      "title": "Whiskey Mash (live) from Hillberry 2025 - 4k - Single Cam",
+      "views": 45,
+      "published": "2026-02-11T03:51:17Z",
+      "show_date": "2026-02-11T03:51:17Z"
+    },
+    {
+      "id": "Pc_lSdrv3H0",
+      "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
+      "views": 453,
+      "published": "2026-02-10T20:45:38Z",
+      "show_date": "2026-02-10T20:45:38Z"
     },
     {
       "id": "3BvZP4Znq94",
@@ -167,7 +167,7 @@
     {
       "id": "5Mj2WksIs-s",
       "title": "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam",
-      "views": 619,
+      "views": 620,
       "published": "2025-11-26T14:48:56Z",
       "show_date": "2025-11-19T00:00:00+00:00"
     },
