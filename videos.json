@@ -32,13 +32,6 @@
       "show_date": "2026-02-17T17:17:45Z"
     },
     {
-      "id": "1adUfWfF-hQ",
-      "title": "Bus Company (live) from Stage 5 2024 in Fabulous 360!",
-      "views": 10,
-      "published": "2026-02-13T00:14:36Z",
-      "show_date": "2026-02-13T00:14:36Z"
-    },
-    {
       "id": "VqFnBIL4tHw",
       "title": "Whiskey Mash (live) from Hillberry 2025 - 4k - Single Cam",
       "views": 45,
@@ -58,55 +51,6 @@
       "views": 112,
       "published": "2026-01-22T00:47:39Z",
       "show_date": "2026-01-18T00:00:00+00:00"
-    },
-    {
-      "id": "PmBUC2g18hw",
-      "title": "KC Bear Fighters (live) from Stage 7 2024 in Fabulous 360!",
-      "views": 31,
-      "published": "2026-01-16T15:47:21Z",
-      "show_date": "2026-01-16T15:47:21Z"
-    },
-    {
-      "id": "crdpHiTYcng",
-      "title": "Moonshroom (live) from Stage 5 2024 in Fabulous 360!",
-      "views": 24,
-      "published": "2026-01-15T17:33:29Z",
-      "show_date": "2026-01-15T17:33:29Z"
-    },
-    {
-      "id": "CPViC7zxsHE",
-      "title": "Front Porch (live) from Stage 3 2024 in Fabulous 360!",
-      "views": 43,
-      "published": "2026-01-14T16:43:00Z",
-      "show_date": "2026-01-14T16:43:00Z"
-    },
-    {
-      "id": "EP5nyFC0lPE",
-      "title": "Front Porch (live) from Stage 2 2024 in Fabulous 360!",
-      "views": 40,
-      "published": "2026-01-03T15:57:01Z",
-      "show_date": "2026-01-03T15:57:01Z"
-    },
-    {
-      "id": "1PQCOPrdm6w",
-      "title": "Crying Uncle Bluegrass Band (live) from Stage 3 2024 in Fabulous 360!",
-      "views": 83,
-      "published": "2026-01-02T18:27:04Z",
-      "show_date": "2026-01-02T18:27:04Z"
-    },
-    {
-      "id": "z-9z3kRrAso",
-      "title": "Front Porch (live) from Stage 5 2024 in Fabulous 360!",
-      "views": 7,
-      "published": "2025-12-29T15:26:45Z",
-      "show_date": "2025-12-29T15:26:45Z"
-    },
-    {
-      "id": "4byVljNVb0w",
-      "title": "My Grass Is Blue (live) from Lit On The Low Road 2024 in Fabulous 360!",
-      "views": 27,
-      "published": "2025-12-29T14:30:46Z",
-      "show_date": "2025-12-29T14:30:46Z"
     },
     {
       "id": "f0v07-WAHvU",
@@ -478,6 +422,62 @@
       "views": 290,
       "published": "2024-09-24T23:01:03Z",
       "show_date": "2024-09-21T00:00:00+00:00"
+    },
+    {
+      "id": "1adUfWfF-hQ",
+      "title": "Bus Company (live) from Stage 5 2024 in Fabulous 360!",
+      "views": 10,
+      "published": "2026-02-13T00:14:36Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "PmBUC2g18hw",
+      "title": "KC Bear Fighters (live) from Stage 7 2024 in Fabulous 360!",
+      "views": 31,
+      "published": "2026-01-16T15:47:21Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "crdpHiTYcng",
+      "title": "Moonshroom (live) from Stage 5 2024 in Fabulous 360!",
+      "views": 24,
+      "published": "2026-01-15T17:33:29Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "CPViC7zxsHE",
+      "title": "Front Porch (live) from Stage 3 2024 in Fabulous 360!",
+      "views": 43,
+      "published": "2026-01-14T16:43:00Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "EP5nyFC0lPE",
+      "title": "Front Porch (live) from Stage 2 2024 in Fabulous 360!",
+      "views": 40,
+      "published": "2026-01-03T15:57:01Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "1PQCOPrdm6w",
+      "title": "Crying Uncle Bluegrass Band (live) from Stage 3 2024 in Fabulous 360!",
+      "views": 83,
+      "published": "2026-01-02T18:27:04Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "z-9z3kRrAso",
+      "title": "Front Porch (live) from Stage 5 2024 in Fabulous 360!",
+      "views": 7,
+      "published": "2025-12-29T15:26:45Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
+    },
+    {
+      "id": "4byVljNVb0w",
+      "title": "My Grass Is Blue (live) from Lit On The Low Road 2024 in Fabulous 360!",
+      "views": 27,
+      "published": "2025-12-29T14:30:46Z",
+      "show_date": "2024-09-20T00:00:00+00:00"
     },
     {
       "id": "r-VGJXAhe_8",
