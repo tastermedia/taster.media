@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const iframe = document.getElementById("lightbox-iframe");
 
   function openLightbox(videoId) {
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=${isMobile ? 0 : 1}&mute=1`;
     overlay.classList.add("active");
     document.body.style.overflow = "hidden";
   }
@@ -45,12 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
       title.className = "video-title";
       title.textContent = video.title || "";
       info.appendChild(title);
-      if (video.views) {
-        const views = document.createElement("p");
-        views.className = "video-views";
-        views.textContent = formatViews(video.views) + " views";
-        info.appendChild(views);
-      }
       card.appendChild(info);
       grid.appendChild(card);
     });
