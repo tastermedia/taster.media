@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) closeLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
-
   function buildGrid(containerId, videos) {
     const grid = document.getElementById(containerId);
     if (!grid) return;
@@ -51,28 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
       grid.appendChild(card);
     });
   }
-
   function formatViews(n) {
     n = parseInt(n, 10);
     if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
     if (n >= 1000) return (n / 1000).toFixed(1) + "K";
     return n.toString();
   }
-
   fetch("videos.json?t=" + Date.now())
     .then(r => r.json())
     .then(data => {
       const videos = data.videos || [];
       videos.sort((a, b) => (b.show_date || b.published) > (a.show_date || a.published) ? 1 : -1);
       buildGrid("allVideosGrid", videos);
-      const meta = document.getElementById("archiveMeta");
-      if (meta && videos.length > 0) meta.textContent = videos.length + " live shows \u2014 most recent first";
     })
     .catch(() => {
       const grid = document.getElementById("allVideosGrid");
       if (grid) grid.innerHTML = '<p style="color:#888;padding:40px">Video archive loading...</p>';
     });
-
   const scrollBtn = document.getElementById("scrollTopBtn");
   if (scrollBtn) {
     window.addEventListener("scroll", () => {

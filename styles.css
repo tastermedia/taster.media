@@ -1,226 +1,29 @@
-/* styles.css */
-
-/* 1. Import Josefin Sans from Google */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
-
-/* === GLOBAL RESET & BASE === */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Josefin Sans', sans-serif;
-  background: #000;
-  color: #fff;
-  text-align: center;
-  line-height: 1.4;
-}
-
-/* === HEADER === */
-.header-container { padding: 20px; }
-
-.logo {
-  width: 150px;
-  animation: pulse 2s infinite alternate;
-}
-
-@keyframes pulse {
-  from { transform: scale(1); }
-  to   { transform: scale(1.2); }
-}
-
-.glow-text {
-  font-size: 2.5rem;
-  text-shadow: 0 0 5px #fff, 0 0 10px #8000ff, 0 0 20px #8000ff;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 5px #fff, 0 0 10px #8000ff; }
-  to   { text-shadow: 0 0 10px #fff, 0 0 20px #8000ff; }
-}
-
-.subtitle {
-  margin: 0.5em 0 1em;
-  font-style: italic;
-  color: #aaa;
-  font-size: 0.85rem;
-}
-
-/* === NAVIGATION === */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.nav-link {
-  padding: 8px 16px;
-  border-radius: 6px;
-  background: #8000ff;
-  color: #fff;
-  text-decoration: none;
-  transition: transform 0.2s, background 0.2s;
-}
-
-.nav-link:hover {
-  transform: scale(1.1);
-  background: #ff00ff;
-}
-
-/* === PLAYLIST SECTIONS === */
-.playlist-section { margin: 40px 0; }
-
-.playlist-section h2 {
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-/* Archive meta line (e.g. "47 live shows — sorted by popularity") */
-.archive-meta {
-  font-size: 0.85rem;
-  color: #888;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-/* === GRID LAYOUT === */
-.grid {
-  display: grid;
-  gap: 20px;
-  padding: 0 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-/* === VIDEO CARD & THUMBNAIL === */
-.video {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #111;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.video img,
-.video iframe {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
-}
-
-.video .player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  display: none;
-  border-radius: 8px 8px 0 0;
-}
-
-/* Hover-to-play & glow on hover */
-.video:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
-  z-index: 1;
-}
-
-.video:hover .thumb  { visibility: hidden; }
-.video:hover .player { display: block; }
-
-/* === VIDEO INFO (title + views) === */
-.video-info {
-  padding: 8px 10px 10px;
-  text-align: left;
-  flex: 1;
-}
-
-.video-title {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ddd;
-  line-height: 1.3;
-  margin-bottom: 3px;
-  /* clamp to 2 lines */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.video-views {
-  font-size: 0.72rem;
-  color: #888;
-  letter-spacing: 0.03em;
-}
-
-/* === CONTACT BUTTON === */
-.contact-button {
-  display: inline-block;
-  margin: 20px 0;
-  padding: 10px 20px;
-  background: #8000ff;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: transform 0.2s;
-}
-
-.contact-button:hover { transform: scale(1.1); }
-
-/* === SCROLL-TO-TOP BUTTON === */
-#scrollTopBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 15px;
-  font-size: 1.5rem;
-  background: #8000ff;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s;
-}
-
-/* === MOBILE OPTIMIZATIONS === */
-@media (max-width: 600px) {
-  .header-container {
-    padding: 10px 20px;
-    position: relative;
-    z-index: 1000;
-  }
-  nav {
-    flex-direction: column !important;
-    gap: 12px !important;
-  }
-  .nav-link {
-    width: 100%;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 1.1rem;
-  }
-  .grid {
-    padding: 0 10px;
-    gap: 12px;
-    grid-template-columns: 1fr !important;
-  }
-}
-
-#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;align-items:center;justify-content:center;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align:center;line-height:1.4;}
+.header-container{padding:20px;}
+.logo{width:150px;animation:spinIn 1.2s cubic-bezier(0.2,0.8,0.4,1) forwards,spinLoop 8s linear 1.2s infinite;transform-origin:center center;}
+@keyframes spinIn{from{transform:scale(0) rotate(-360deg);opacity:0;}to{transform:scale(1) rotate(0deg);opacity:1;}}
+@keyframes spinLoop{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.glow-text{font-size:2.5rem;text-shadow:0 0 5px #fff,0 0 10px #8000ff,0 0 20px #8000ff;animation:glow 2s infinite alternate;}
+@keyframes glow{from{text-shadow:0 0 5px #fff,0 0 10px #8000ff;}to{text-shadow:0 0 10px #fff,0 0 20px #8000ff;}}
+nav{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:12px 0 20px;}
+.nav-link{padding:8px 16px;border-radius:6px;background:#8000ff;color:#fff;text-decoration:none;transition:transform 0.2s,background 0.2s;}
+.nav-link:hover{transform:scale(1.1);background:#ff00ff;}
+.playlist-section{margin:30px 0;}
+.playlist-section h2{font-size:2rem;margin-bottom:16px;}
+.grid{display:grid;gap:24px;padding:0 24px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));overflow:visible;}
+.video{position:relative;border-radius:10px;background:#111;cursor:pointer;display:flex;flex-direction:column;transition:transform 0.25s ease,box-shadow 0.25s ease;z-index:0;overflow:hidden;}
+.video:hover{transform:scale(1.05);box-shadow:0 0 20px #8000ff,0 0 40px #ff00ff44;z-index:2;}
+.video .thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px 10px 0 0;transition:transform 0.25s ease;}
+.video:hover .thumb{transform:scale(1.08);}
+.play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:3rem;color:rgba(255,255,255,0.9);text-shadow:0 0 20px #8000ff,0 0 40px #ff00ff;opacity:0;transition:opacity 0.2s ease;pointer-events:none;}
+.video:hover .play-icon{opacity:1;}
+.video-info{padding:10px 12px 12px;text-align:left;flex:1;}
+.video-title{font-size:0.82rem;font-weight:600;color:#ddd;line-height:1.3;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.video-views{font-size:0.73rem;color:#888;letter-spacing:0.03em;}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;align-items:center;justify-content:center;}
 #lightbox.active{display:flex;animation:lbFadeIn 0.2s ease;}
 @keyframes lbFadeIn{from{opacity:0;}to{opacity:1;}}
 #lightbox-inner{position:relative;width:90vw;max-width:1200px;aspect-ratio:16/9;animation:lbScaleIn 0.25s ease;}
@@ -228,5 +31,19 @@ nav {
 #lightbox-iframe{width:100%;height:100%;border:none;border-radius:8px;box-shadow:0 0 60px #8000ff88;}
 #lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;opacity:0.7;transition:opacity 0.2s,transform 0.2s;line-height:1;}
 #lightbox-close:hover{opacity:1;transform:scale(1.2);}
-.play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:2.8rem;color:rgba(255,255,255,0.9);text-shadow:0 0 20px #8000ff,0 0 40px #ff00ff;opacity:0;transition:opacity 0.2s ease;pointer-events:none;}
-.video:hover .play-icon{opacity:1;}
+.contact-button{display:inline-block;margin:20px 0;padding:10px 20px;background:#8000ff;color:#fff;border-radius:6px;text-decoration:none;transition:transform 0.2s;}
+.contact-button:hover{transform:scale(1.1);}
+#scrollTopBtn{position:fixed;bottom:20px;right:20px;padding:10px 15px;font-size:1.5rem;background:#8000ff;color:#fff;border:none;border-radius:50%;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.3s;}
+@media(max-width:600px){
+  .header-container{padding:12px 16px;}
+  .logo{width:110px;}
+  .glow-text{font-size:1.8rem;}
+  nav{gap:10px;}
+  .nav-link{padding:8px 12px;font-size:0.9rem;}
+  .grid{padding:0 12px;gap:16px;grid-template-columns:1fr!important;}
+  .video:hover{transform:none;}
+  #lightbox-inner{width:98vw;}
+}
+@media(min-width:601px) and (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+}

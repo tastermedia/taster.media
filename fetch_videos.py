@@ -1,5 +1,5 @@
 import os, json, re, urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 API_KEY = os.environ["YOUTUBE_API_KEY"]
 
@@ -24,22 +24,26 @@ while True:
     if not next_page:
         break
 
-def parse_show_date(text):
-    # "Month DD, YYYY" or "Month DD YYYY"
-    m = re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}', text, re.IGNORECASE)
-    if m:
-        try: return datetime.strptime(m.group(0).replace(",",""), "%B %d %Y").replace(tzinfo=timezone.utc).isoformat()
+def parse_show_date(text, published_dt):
+    candidates = []
+    for m in re.finditer(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}', text, re.IGNORECASE):
+        try:
+            dt = datetime.strptime(m.group(0).replace(",",""), "%B %d %Y").replace(tzinfo=timezone.utc)
+            candidates.append(dt)
         except: pass
-    # MM/DD/YYYY
-    m = re.search(r'\b(\d{1,2})/(\d{1,2})/(20\d{2})\b', text)
-    if m:
-        try: return datetime(int(m.group(3)),int(m.group(1)),int(m.group(2)),tzinfo=timezone.utc).isoformat()
+    for m in re.finditer(r'\b(\d{1,2})/(\d{1,2})/(20\d{2})\b', text):
+        try:
+            dt = datetime(int(m.group(3)),int(m.group(1)),int(m.group(2)),tzinfo=timezone.utc)
+            candidates.append(dt)
         except: pass
-    # YYYY-MM-DD
-    m = re.search(r'\b(20\d{2})-(\d{2})-(\d{2})\b', text)
-    if m:
-        try: return datetime(int(m.group(1)),int(m.group(2)),int(m.group(3)),tzinfo=timezone.utc).isoformat()
+    for m in re.finditer(r'\b(20\d{2})-(\d{2})-(\d{2})\b', text):
+        try:
+            dt = datetime(int(m.group(1)),int(m.group(2)),int(m.group(3)),tzinfo=timezone.utc)
+            candidates.append(dt)
         except: pass
+    valid = [dt for dt in candidates if dt <= published_dt + timedelta(days=7)]
+    if valid:
+        return max(valid).isoformat()
     return None
 
 videos = []
@@ -50,15 +54,16 @@ for i in range(0, len(video_ids), 50):
         title = item["snippet"]["title"]
         if "(live)" not in title.lower():
             continue
-        desc = item["snippet"].get("description", "")
+        desc = item["snippet"].get("description","")
         published = item["snippet"]["publishedAt"]
-        views = int(item["statistics"].get("viewCount", 0))
-        show_date = parse_show_date(desc) or parse_show_date(title) or published
-        videos.append({"id": item["id"], "title": title, "views": views, "published": published, "show_date": show_date})
+        views = int(item["statistics"].get("viewCount",0))
+        pub_dt = datetime.fromisoformat(published.replace("Z","+00:00"))
+        show_date = parse_show_date(desc, pub_dt) or parse_show_date(title, pub_dt) or published
+        videos.append({"id":item["id"],"title":title,"views":views,"published":published,"show_date":show_date})
 
 videos.sort(key=lambda v: v["show_date"], reverse=True)
 
-with open("videos.json", "w") as f:
-    json.dump({"updated": datetime.now(timezone.utc).isoformat(), "channel": channel_id, "total": len(videos), "videos": videos}, f, indent=2)
+with open("videos.json","w") as f:
+    json.dump({"updated":datetime.now(timezone.utc).isoformat(),"channel":channel_id,"total":len(videos),"videos":videos},f,indent=2)
 
 print(f"Done: {len(videos)} videos")
