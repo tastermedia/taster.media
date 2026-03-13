@@ -1,20 +1,16 @@
-/* styles.css – Full Copy & Paste */
+/* styles.css */
 
 /* 1. Import Josefin Sans from Google */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
 
 /* === GLOBAL RESET & BASE === */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Josefin Sans', sans-serif;
@@ -25,9 +21,7 @@ body {
 }
 
 /* === HEADER === */
-.header-container {
-  padding: 20px;
-}
+.header-container { padding: 20px; }
 
 .logo {
   width: 150px;
@@ -41,10 +35,7 @@ body {
 
 .glow-text {
   font-size: 2.5rem;
-  text-shadow:
-    0 0 5px #fff,
-    0 0 10px #8000ff,
-    0 0 20px #8000ff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #8000ff, 0 0 20px #8000ff;
   animation: glow 2s infinite alternate;
 }
 
@@ -56,6 +47,8 @@ body {
 .subtitle {
   margin: 0.5em 0 1em;
   font-style: italic;
+  color: #aaa;
+  font-size: 0.85rem;
 }
 
 /* === NAVIGATION === */
@@ -82,13 +75,20 @@ nav {
 }
 
 /* === PLAYLIST SECTIONS === */
-.playlist-section {
-  margin: 40px 0;
-}
+.playlist-section { margin: 40px 0; }
 
 .playlist-section h2 {
   font-size: 2rem;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+}
+
+/* Archive meta line (e.g. "47 live shows — sorted by popularity") */
+.archive-meta {
+  font-size: 0.85rem;
+  color: #888;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 /* === GRID LAYOUT === */
@@ -103,37 +103,67 @@ nav {
 .video {
   position: relative;
   overflow: hidden;
-  border-radius: 8px;      /* glow will hug this border */
+  border-radius: 8px;
   background: #111;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .video img,
 .video iframe {
-  display: block;          /* remove inline-gap */
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;       /* fill container exactly */
-  border-radius: inherit;  /* match container corners */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
 }
 
 .video .player {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   display: none;
+  border-radius: 8px 8px 0 0;
 }
 
 /* Hover-to-play & glow on hover */
 .video:hover {
   transform: scale(1.05);
-  box-shadow:
-    0 0 10px #8000ff,
-    0 0 20px #ff00ff;
+  box-shadow: 0 0 10px #8000ff, 0 0 20px #ff00ff;
   z-index: 1;
 }
 
-.video:hover .thumb  { display: none; }
+.video:hover .thumb  { visibility: hidden; }
 .video:hover .player { display: block; }
+
+/* === VIDEO INFO (title + views) === */
+.video-info {
+  padding: 8px 10px 10px;
+  text-align: left;
+  flex: 1;
+}
+
+.video-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ddd;
+  line-height: 1.3;
+  margin-bottom: 3px;
+  /* clamp to 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video-views {
+  font-size: 0.72rem;
+  color: #888;
+  letter-spacing: 0.03em;
+}
 
 /* === CONTACT BUTTON === */
 .contact-button {
@@ -147,9 +177,7 @@ nav {
   transition: transform 0.2s;
 }
 
-.contact-button:hover {
-  transform: scale(1.1);
-}
+.contact-button:hover { transform: scale(1.1); }
 
 /* === SCROLL-TO-TOP BUTTON === */
 #scrollTopBtn {
@@ -175,28 +203,19 @@ nav {
     position: relative;
     z-index: 1000;
   }
-
   nav {
     flex-direction: column !important;
     gap: 12px !important;
   }
-
   .nav-link {
     width: 100%;
     text-align: center;
     padding: 12px 0;
     font-size: 1.1rem;
   }
-
   .grid {
     padding: 0 10px;
     gap: 12px;
-  }
-}
-
-@media (max-width: 600px) {
-  .grid {
     grid-template-columns: 1fr !important;
-    /* background: rgba(255,0,255,0.1);  /* you can remove this visual aid */
   }
 }
