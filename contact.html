@@ -4,29 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Taster Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- DYNAMIC HEADER -->
   <div id="header-placeholder"></div>
   <script>
-    fetch('header.html')
-      .then(r => r.text())
-      .then(html => { document.getElementById('header-placeholder').innerHTML = html; })
-      .catch(console.error);
+    fetch("header.html").then(r=>r.text()).then(h=>{document.getElementById("header-placeholder").innerHTML=h;}).catch(console.error);
   </script>
-
-  <main>
-    <section class="contact-container">
-      <h2>Let's Connect</h2>
-      <p>Have a project, an idea, or just want to chat about live music? Let’s make something great together.</p>
-      <a href="mailto:taster@taster.media" class="email-link">📩 taster@taster.media</a>
-    </section>
-    
+  <main class="content-page">
+    <h2>Let's Connect</h2>
+    <p>Have a project, an idea, or just want to chat about live music?</p>
+    <p>We'd love to hear from you.</p>
+    <a href="mailto:taster@taster.media" class="contact-button">📩 taster@taster.media</a>
   </main>
-
-  <footer>
-    <p>&copy; 2025 Taster Media</p>
-  </footer>
+  <footer><p>&copy; 2025 Taster Media</p></footer>
 </body>
 </html>

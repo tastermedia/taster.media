@@ -52,3 +52,29 @@ nav{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:12px 0 20
   background: #ff00ff;
   box-shadow: 0 0 10px #ff00ff88;
 }
+
+/* === CONTENT PAGES (about, contact) === */
+.content-page {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 0 30px;
+  text-align: left;
+}
+.content-page h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.content-page p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+.content-page .contact-button {
+  display: block;
+  width: fit-content;
+  margin: 40px auto 0;
+  font-size: 1.1rem;
+  padding: 14px 28px;
+}
