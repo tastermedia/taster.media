@@ -11,9 +11,7 @@
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <script>
-    fetch("header.html").then(r=>r.text()).then(h=>{document.getElementById("header-placeholder").innerHTML=h;}).catch(console.error);
-  </script>
+  <script>fetch("header.html").then(r=>r.text()).then(h=>{document.getElementById("header-placeholder").innerHTML=h;}).catch(console.error);</script>
   <main class="content-page">
     <h2>Who We Are</h2>
     <p>Welcome to <strong>Taster Media</strong>, where we capture and preserve live music moments that matter. Whether it's intimate acoustic sets or high-energy jam sessions, we bring the experience straight to you.</p>
