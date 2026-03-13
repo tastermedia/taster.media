@@ -1,122 +1,64 @@
-#!/usr/bin/env python3
-"""
-fetch_videos.py
-Fetches all uploads from the @taster_media YouTube channel,
-filters to videos with "(live)" in the title (case-insensitive),
-sorts by view count descending, and writes videos.json.
-
-Requires: YOUTUBE_API_KEY environment variable
-"""
-
-import os
-import json
-import sys
+import os, json, re, urllib.request
 from datetime import datetime, timezone
-from urllib.request import urlopen
-from urllib.parse import urlencode
-from urllib.error import HTTPError
 
-API_KEY = os.environ.get("YOUTUBE_API_KEY")
-CHANNEL_HANDLE = "@taster_media"
-OUTPUT_FILE = "videos.json"
+API_KEY = os.environ["YOUTUBE_API_KEY"]
 
-def api_get(endpoint, params):
-    params["key"] = API_KEY
-    url = f"https://www.googleapis.com/youtube/v3/{endpoint}?{urlencode(params)}"
-    with urlopen(url) as r:
-        return json.loads(r.read().decode())
+def api(path):
+    url = f"https://www.googleapis.com/youtube/v3/{path}&key={API_KEY}"
+    with urllib.request.urlopen(url) as r:
+        return json.loads(r.read())
 
-def get_channel_id():
-    """Resolve @handle -> channel ID via the channels endpoint."""
-    data = api_get("channels", {
-        "part": "id",
-        "forHandle": CHANNEL_HANDLE
-    })
-    items = data.get("items", [])
-    if not items:
-        raise RuntimeError(f"Could not find channel for handle {CHANNEL_HANDLE}")
-    return items[0]["id"]
+data = api("channels?part=id,contentDetails&forHandle=@taster_media")
+channel = data["items"][0]
+channel_id = channel["id"]
+uploads_playlist = channel["contentDetails"]["relatedPlaylists"]["uploads"]
 
-def get_uploads_playlist_id(channel_id):
-    data = api_get("channels", {
-        "part": "contentDetails",
-        "id": channel_id
-    })
-    return data["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+video_ids = []
+next_page = ""
+while True:
+    pg = f"&pageToken={next_page}" if next_page else ""
+    data = api(f"playlistItems?part=snippet&maxResults=50&playlistId={uploads_playlist}{pg}")
+    for item in data["items"]:
+        video_ids.append(item["snippet"]["resourceId"]["videoId"])
+    next_page = data.get("nextPageToken", "")
+    if not next_page:
+        break
 
-def get_all_video_ids(playlist_id):
-    """Page through the uploads playlist and collect all video IDs."""
-    ids = []
-    params = {
-        "part": "contentDetails",
-        "playlistId": playlist_id,
-        "maxResults": 50
-    }
-    while True:
-        data = api_get("playlistItems", params)
-        for item in data.get("items", []):
-            ids.append(item["contentDetails"]["videoId"])
-        next_page = data.get("nextPageToken")
-        if not next_page:
-            break
-        params["pageToken"] = next_page
-    return ids
+def parse_show_date(text):
+    # "Month DD, YYYY" or "Month DD YYYY"
+    m = re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}', text, re.IGNORECASE)
+    if m:
+        try: return datetime.strptime(m.group(0).replace(",",""), "%B %d %Y").replace(tzinfo=timezone.utc).isoformat()
+        except: pass
+    # MM/DD/YYYY
+    m = re.search(r'\b(\d{1,2})/(\d{1,2})/(20\d{2})\b', text)
+    if m:
+        try: return datetime(int(m.group(3)),int(m.group(1)),int(m.group(2)),tzinfo=timezone.utc).isoformat()
+        except: pass
+    # YYYY-MM-DD
+    m = re.search(r'\b(20\d{2})-(\d{2})-(\d{2})\b', text)
+    if m:
+        try: return datetime(int(m.group(1)),int(m.group(2)),int(m.group(3)),tzinfo=timezone.utc).isoformat()
+        except: pass
+    return None
 
-def get_video_details(video_ids):
-    """Fetch title + view count in batches of 50."""
-    videos = []
-    for i in range(0, len(video_ids), 50):
-        batch = video_ids[i:i+50]
-        data = api_get("videos", {
-            "part": "snippet,statistics",
-            "id": ",".join(batch)
-        })
-        for item in data.get("items", []):
-            videos.append({
-                "id": item["id"],
-                "title": item["snippet"]["title"],
-                "views": int(item["statistics"].get("viewCount", 0)),
-                "published": item["snippet"]["publishedAt"]
-            })
-    return videos
+videos = []
+for i in range(0, len(video_ids), 50):
+    batch = ",".join(video_ids[i:i+50])
+    data = api(f"videos?part=snippet,statistics&id={batch}")
+    for item in data["items"]:
+        title = item["snippet"]["title"]
+        if "(live)" not in title.lower():
+            continue
+        desc = item["snippet"].get("description", "")
+        published = item["snippet"]["publishedAt"]
+        views = int(item["statistics"].get("viewCount", 0))
+        show_date = parse_show_date(desc) or parse_show_date(title) or published
+        videos.append({"id": item["id"], "title": title, "views": views, "published": published, "show_date": show_date})
 
-def main():
-    if not API_KEY:
-        print("ERROR: YOUTUBE_API_KEY environment variable not set", file=sys.stderr)
-        sys.exit(1)
+videos.sort(key=lambda v: v["show_date"], reverse=True)
 
-    print(f"Resolving channel ID for {CHANNEL_HANDLE}...")
-    channel_id = get_channel_id()
-    print(f"Channel ID: {channel_id}")
+with open("videos.json", "w") as f:
+    json.dump({"updated": datetime.now(timezone.utc).isoformat(), "channel": channel_id, "total": len(videos), "videos": videos}, f, indent=2)
 
-    uploads_playlist = get_uploads_playlist_id(channel_id)
-    print(f"Uploads playlist: {uploads_playlist}")
-
-    print("Fetching all video IDs...")
-    all_ids = get_all_video_ids(uploads_playlist)
-    print(f"Total videos on channel: {len(all_ids)}")
-
-    print("Fetching video details...")
-    all_videos = get_video_details(all_ids)
-
-    # Filter: title must contain "(live)" (case-insensitive)
-    live_videos = [v for v in all_videos if "(live)" in v["title"].lower()]
-    print(f"Videos with '(live)' in title: {len(live_videos)}")
-
-    # Sort by view count descending (most popular first)
-    live_videos.sort(key=lambda v: v["views"], reverse=True)
-
-    output = {
-        "updated": datetime.now(timezone.utc).isoformat(),
-        "channel": CHANNEL_HANDLE,
-        "total": len(live_videos),
-        "videos": live_videos
-    }
-
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-
-    print(f"Written {OUTPUT_FILE} with {len(live_videos)} live videos.")
-
-if __name__ == "__main__":
-    main()
+print(f"Done: {len(videos)} videos")
