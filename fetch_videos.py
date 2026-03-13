@@ -46,6 +46,18 @@ def parse_show_date(text, published_dt):
         return max(valid).isoformat()
     return None
 
+
+# Title-based show date overrides for known events where description parsing fails
+TITLE_DATE_OVERRIDES = [
+    ('2024 in Fabulous 360', '2024-09-20T00:00:00+00:00'),  # Winfield 2024
+]
+
+def apply_title_overrides(title):
+    for pattern, date in TITLE_DATE_OVERRIDES:
+        if pattern.lower() in title.lower():
+            return date
+    return None
+
 videos = []
 for i in range(0, len(video_ids), 50):
     batch = ",".join(video_ids[i:i+50])
@@ -58,7 +70,7 @@ for i in range(0, len(video_ids), 50):
         published = item["snippet"]["publishedAt"]
         views = int(item["statistics"].get("viewCount",0))
         pub_dt = datetime.fromisoformat(published.replace("Z","+00:00"))
-        show_date = parse_show_date(desc, pub_dt) or parse_show_date(title, pub_dt) or published
+        show_date = apply_title_overrides(title) or parse_show_date(desc, pub_dt) or parse_show_date(title, pub_dt) or published
         videos.append({"id":item["id"],"title":title,"views":views,"published":published,"show_date":show_date})
 
 videos.sort(key=lambda v: v["show_date"], reverse=True)
