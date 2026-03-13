@@ -6,10 +6,7 @@
   <title>Taster Media</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -17,7 +14,6 @@
     <div class="header-container">
       <img src="images/logo.png" alt="Taster Media Logo" class="logo" />
       <h1 class="glow-text">Taster Media</h1>
-      <p id="subtitle" class="subtitle"></p>
       <nav>
         <a href="index.html" class="nav-link">Home/Media</a>
         <a href="about.html" class="nav-link">About</a>
@@ -25,30 +21,16 @@
       </nav>
     </div>
   </header>
-
   <main>
     <section class="playlist-section">
       <h2>Video Archive</h2>
-      <div class="grid" id="allVideosGrid">
-        <!-- populated by scripts.js -->
-      </div>
-    </section>
-
-    <section class="playlist-section">
-      <h2>Front Porch Archive</h2>
-      <div class="grid" id="frontPorchGrid">
-        <!-- populated by scripts.js -->
-      </div>
+      <p class="archive-meta" id="archiveMeta"></p>
+      <div class="grid" id="allVideosGrid"></div>
     </section>
   </main>
-
-  <a href="mailto:taster@taster.media" class="contact-button">📩 Email Us</a>
-
-  <footer>
-    <p>&copy; 2025 Taster Media</p>
-  </footer>
-
-  <button id="scrollTopBtn">▲</button>
+  <a href="mailto:taster@taster.media" class="contact-button">Email Us</a>
+  <footer><p>&copy; 2025 Taster Media</p></footer>
+  <button id="scrollTopBtn">&#9650;</button>
   <script src="scripts.js"></script>
 </body>
 </html>
