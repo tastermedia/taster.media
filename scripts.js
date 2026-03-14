@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var iframe = document.getElementById("lightbox-iframe");
 
   function openLightbox(id) {
-    var mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (mobile) {
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
       window.open("https://www.youtube.com/watch?v=" + id, "_blank");
       return;
     }
