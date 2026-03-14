@@ -13,13 +13,11 @@
   <div id="header-placeholder"></div>
   <script>
     fetch("header.html?t=" + Date.now()).then(function(r){return r.text();}).then(function(h){
-      var el = document.getElementById("header-placeholder");
-      el.outerHTML = h;
+      document.getElementById("header-placeholder").outerHTML = h;
     }).catch(console.error);
   </script>
-<main>
+  <main>
     <section class="playlist-section">
-      
       <div class="grid" id="allVideosGrid"></div>
     </section>
   </main>
