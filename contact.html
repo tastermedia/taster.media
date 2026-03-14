@@ -11,7 +11,7 @@
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <script>fetch("header.html").then(r=>r.text()).then(h=>{document.getElementById("header-placeholder").innerHTML=h;}).catch(console.error);</script>
+  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;}).catch(console.error);</script>
   <main class="content-page">
     <h2>Let's Connect</h2>
     <p>Have a project, an idea, or just want to chat about live music?</p>

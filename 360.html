@@ -12,7 +12,10 @@
 <body>
   <div id="header-placeholder"></div>
   <script>
-    fetch("header.html").then(r=>r.text()).then(h=>{document.getElementById("header-placeholder").innerHTML=h;}).catch(console.error);
+    fetch("header.html?t=" + Date.now()).then(function(r){return r.text();}).then(function(h){
+      var el = document.getElementById("header-placeholder");
+      el.outerHTML = h;
+    }).catch(console.error);
   </script>
     <div class="search-container">
     <input type="text" id="searchInput" class="search-input" placeholder="Search videos..." autocomplete="off" />

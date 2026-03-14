@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Cinzel:wght@700&family=Rajdhani:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Rajdhani:wght@600&display=swap');
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -11,7 +11,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .logo{width:90px;flex-shrink:0;animation:spinIn 1.2s cubic-bezier(0.2,0.8,0.4,1) forwards,spinLoop 8s linear 1.2s infinite;transform-origin:center center;}
 @keyframes spinIn{from{transform:scale(0) rotate(-360deg);opacity:0;}to{transform:scale(1) rotate(0deg);opacity:1;}}
 @keyframes spinLoop{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-.glow-text{font-family:'Cinzel',serif;font-size:2.8rem;letter-spacing:0.1em;color:#fff;text-shadow:0 0 12px #8000ff88,0 0 24px #8000ff44;margin:0;line-height:1;white-space:nowrap;text-transform:none;}
+.glow-text{font-family:'Rajdhani',sans-serif;font-size:2.8rem;letter-spacing:0.1em;color:#fff;text-shadow:0 0 12px #8000ff88,0 0 24px #8000ff44;margin:0;line-height:1;white-space:nowrap;text-transform:none;}
 nav{display:flex;gap:8px;align-items:center;margin:0;}
 .nav-link{padding:7px 18px;border-radius:999px;background:transparent;border:1px solid #8000ff;color:#cc88ff;font-family:'Rajdhani',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.07em;text-decoration:none;transition:background 0.2s,color 0.2s;white-space:nowrap;text-transform:none;}
 .nav-link:hover{background:#8000ff44;color:#fff;}
