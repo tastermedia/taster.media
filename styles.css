@@ -19,8 +19,8 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 @keyframes spinLoop{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .glow-text{
   font-family:"Bebas Neue",sans-serif;
-  font-size:2rem;
-  letter-spacing:0.12em;
+  font-size:2.8rem;
+  letter-spacing:0.1em;
   color:#fff;
   text-shadow:0 0 12px #8000ff88,0 0 24px #8000ff44;
   margin:0;
