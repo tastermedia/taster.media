@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>360&#176; Videos - Taster Media</title>
+  <title>360&deg; Videos - Taster Media</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -13,13 +13,11 @@
   <div id="header-placeholder"></div>
   <script>
     fetch("header.html?t=" + Date.now()).then(function(r){return r.text();}).then(function(h){
-      var el = document.getElementById("header-placeholder");
-      el.outerHTML = h;
+      document.getElementById("header-placeholder").outerHTML = h;
     }).catch(console.error);
   </script>
-<main>
+  <main>
     <section class="playlist-section">
-      
       <div class="grid" id="allVideosGrid"></div>
     </section>
   </main>
