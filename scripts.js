@@ -77,6 +77,38 @@ document.addEventListener("DOMContentLoaded", function () {
       if (grid) grid.innerHTML = '<p style="color:#888;padding:40px">Video archive loading...</p>';
     });
 
+
+  function initSearch(videos) {
+    const input = document.getElementById('searchInput');
+    const results = document.getElementById('searchResults');
+    if (!input || !results) return;
+    input.addEventListener('input', function() {
+      const query = this.value.trim().toLowerCase();
+      results.innerHTML = '';
+      if (query.length < 2) { results.classList.remove('active'); return; }
+      const matches = videos.filter(v => v.title.toLowerCase().includes(query)).slice(0, 8);
+      if (matches.length === 0) {
+        results.innerHTML = '<div class="search-no-results">No results found</div>';
+        results.classList.add('active');
+        return;
+      }
+      matches.forEach(video => {
+        const item = document.createElement('div');
+        item.className = 'search-result-item';
+        item.innerHTML = '<img class="search-result-thumb" src="https://img.youtube.com/vi/' + video.id + '/mqdefault.jpg" loading="lazy" /><span class="search-result-title">' + video.title + '</span>';
+        item.addEventListener('click', () => { openLightbox(video.id); input.value = ''; results.classList.remove('active'); });
+        results.appendChild(item);
+      });
+      results.classList.add('active');
+    });
+    document.addEventListener('click', function(e) {
+      if (!input.contains(e.target) && !results.contains(e.target)) results.classList.remove('active');
+    });
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { results.classList.remove('active'); input.blur(); }
+    });
+  }
+
   const scrollBtn = document.getElementById("scrollTopBtn");
   if (scrollBtn) {
     window.addEventListener("scroll", () => {
