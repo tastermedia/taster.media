@@ -14,7 +14,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
   z-index:100;
 }
 .header-left{display:flex;align-items:center;gap:16px;}
-.logo{width:48px;animation:spinIn 1.2s cubic-bezier(0.2,0.8,0.4,1) forwards,spinLoop 8s linear 1.2s infinite;transform-origin:center center;}
+.logo{width:80px;animation:spinIn 1.2s cubic-bezier(0.2,0.8,0.4,1) forwards,spinLoop 8s linear 1.2s infinite;transform-origin:center center;}
 @keyframes spinIn{from{transform:scale(0) rotate(-360deg);opacity:0;}to{transform:scale(1) rotate(0deg);opacity:1;}}
 @keyframes spinLoop{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .glow-text{
