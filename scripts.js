@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       videos.sort((a, b) => (b.show_date || b.published) > (a.show_date || a.published) ? 1 : -1);
       buildGrid("allVideosGrid", videos);
+      initSearch(videos);
     })
     .catch(() => {
       const grid = document.getElementById("allVideosGrid");
