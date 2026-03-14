@@ -1,7 +1,7 @@
 {
-  "updated": "2026-03-14T02:24:29.389938+00:00",
+  "updated": "2026-03-14T15:50:02.264Z",
   "channel": "UC4jtpyiA5WIQsObGh5E2oCg",
-  "total": 82,
+  "total": 91,
   "videos": [
     {
       "id": "rDEatJTL5WA",
@@ -33,6 +33,14 @@
       "views": 112,
       "published": "2026-01-22T00:47:39Z",
       "show_date": "2026-01-18T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "YI4VW6rj6XU",
+      "title": "The Hoodoo Soul Band (live) from Rumba Cafe - Full Show - 4k Multi-cam - Soundboard Audio",
+      "views": 0,
+      "published": "2026-01-11T00:00:00Z",
+      "show_date": "2026-01-11T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -89,6 +97,14 @@
       "views": 96,
       "published": "2025-12-20T00:22:26Z",
       "show_date": "2025-12-18T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "oi1ZsaFGDDc",
+      "title": "Front Porch (live) from Lucia - Full Show - 4k Mulitcam - Soundboard Audio",
+      "views": 0,
+      "published": "2025-11-23T00:00:00Z",
+      "show_date": "2025-11-23T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -196,6 +212,14 @@
       "type": "4k"
     },
     {
+      "id": "4mS8xtfxbLE",
+      "title": "Front Porch (live) from Cervantes - Full Show - 4k Multi-cam",
+      "views": 0,
+      "published": "2025-08-30T00:00:00Z",
+      "show_date": "2025-08-30T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
       "id": "sPu8r12eKyc",
       "title": "Front Porch (live) from 10 Mile Music Hall",
       "views": 87,
@@ -212,6 +236,22 @@
       "type": "360"
     },
     {
+      "id": "0Jprv8XmSx8",
+      "title": "Front Porch (live) from Crow Peak Brewing Co. - Full Show - 4k Multi-cam - Soundboard Audio",
+      "views": 0,
+      "published": "2025-08-27T00:00:00Z",
+      "show_date": "2025-08-27T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "zzmkJFJe_Y4",
+      "title": "Front Porch (live) from Blue Goose Stage - Full Show - 4k Multi-cam - Soundboard Audio",
+      "views": 0,
+      "published": "2025-08-26T00:00:00Z",
+      "show_date": "2025-08-26T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
       "id": "sGaLqE7swGo",
       "title": "The Pickpockets (live) from Creekside Festival 2025",
       "views": 12,
@@ -226,6 +266,22 @@
       "published": "2025-09-12T02:57:47Z",
       "show_date": "2025-08-23T00:00:00+00:00",
       "type": "4k"
+    },
+    {
+      "id": "bCcbZOiq32w",
+      "title": "Front Porch - KC Backer Party - Full Show - 4k Multi-cam - Soundboard Audio",
+      "views": 0,
+      "published": "2025-08-15T00:00:00Z",
+      "show_date": "2025-08-15T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "eccWVQe5yAE",
+      "title": "Front Porch (live) KC Backer Party - Set 2 in Fabulous 360!",
+      "views": 0,
+      "published": "2025-08-15T00:00:00Z",
+      "show_date": "2025-08-15T00:00:00+00:00",
+      "type": "360"
     },
     {
       "id": "z9F-1DoLDMg",
@@ -360,6 +416,14 @@
       "title": "Front Porch (live) on KKFI River Trade Radio",
       "views": 131,
       "published": "2025-04-18T00:24:13Z",
+      "show_date": "2025-04-13T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "bsQkyVYA8I8",
+      "title": "Front Porch (live) from Stockyards Brewing Co. - Full Show - 4k Multi-cam - Soundboard Audio",
+      "views": 0,
+      "published": "2025-04-13T00:00:00Z",
       "show_date": "2025-04-13T00:00:00+00:00",
       "type": "4k"
     },
@@ -653,10 +717,18 @@
     },
     {
       "id": "WuUsgJqPnu4",
-      "title": "brown wh\u00f6rnet (live) somewhere in Austin",
+      "title": "brown whörnet (live) somewhere in Austin",
       "views": 84,
       "published": "2022-01-24T17:19:28Z",
       "show_date": "2022-01-24T17:19:28Z",
+      "type": "4k"
+    },
+    {
+      "id": "yEp6Kjl_mX0",
+      "title": "Flecktones Interview - 1993",
+      "views": 0,
+      "published": "1993-01-01T00:00:00Z",
+      "show_date": "1993-01-01T00:00:00+00:00",
       "type": "4k"
     }
   ]
