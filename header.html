@@ -1,5 +1,5 @@
 <!-- header.html -->
-<div class="header-container">
+<div class="header-wrapper"><div class="header-container">
   <div class="header-left">
     <a href="index.html">
       <img src="images/logo.png" alt="Taster Media Logo" class="logo" />
@@ -12,7 +12,7 @@
     <a href="about.html" class="nav-link" data-page="about">About</a>
     <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
   </nav>
-</div>
+</div></div>
 <script>
   var page = window.location.pathname.split("/").pop().replace(".html","") || "index";
   document.querySelectorAll(".nav-link[data-page]").forEach(function(a) {
