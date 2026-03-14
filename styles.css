@@ -14,7 +14,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
   z-index:100;
 }
 .header-left{display:flex;align-items:center;gap:16px;}
-.logo{width:80px;animation:spinIn 1.2s cubic-bezier(0.2,0.8,0.4,1) forwards,spinLoop 8s linear 1.2s infinite;transform-origin:center center;}
+.logo{width:100px;animation:spinIn 1.2s cubic-bezier(0.2,0.8,0.4,1) forwards,spinLoop 8s linear 1.2s infinite;transform-origin:center center;}
 @keyframes spinIn{from{transform:scale(0) rotate(-360deg);opacity:0;}to{transform:scale(1) rotate(0deg);opacity:1;}}
 @keyframes spinLoop{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .glow-text{
@@ -67,9 +67,9 @@ nav{display:flex;gap:8px;align-items:center;margin:0;}
 .contact-button:hover{transform:scale(1.1);}
 #scrollTopBtn{position:fixed;bottom:20px;right:20px;padding:10px 15px;font-size:1.5rem;background:#8000ff;color:#fff;border:none;border-radius:50%;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 0.3s;}
 @media(max-width:600px){
-  .header-container{padding:12px 16px;}
-  .logo{width:110px;}
-  .glow-text{font-size:1.8rem;}
+  .header-container{padding:8px 16px;}
+  .logo{width:64px;}
+  .glow-text{font-size:1.2rem;}
   nav{gap:10px;}
   .nav-link{padding:8px 12px;font-size:0.9rem;}
   .grid{padding:0 12px;gap:16px;grid-template-columns:1fr!important;}
