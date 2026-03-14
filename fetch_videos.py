@@ -63,7 +63,7 @@ ID_DATE_OVERRIDES = {
     'Pc_lSdrv3H0': ('2025-10-10T00:00:00+00:00', '4k'),    # Mountain Grass Unit Hillberry 2025
     '5s3TVwGdtQg': ('2025-08-08T00:00:00+00:00', '4k'),    # Front Porch @ Lovegrass Aug 8 2025 (4k not 360)
     '3N54tQj83zU': ('2024-10-11T00:00:00+00:00', '4k'),    # Front Porch @ Knuckleheads Oct 11 2024
-    'EklPeX4QiMw': ('2026-01-25T00:00:00+00:00', '4k'),    # The Engine Room @ West Church Social
+    'EklPeX4QiMw': ('2025-05-30T00:00:00+00:00', '4k'),    # The Engine Room @ West Church Social
 }
 
 # Video IDs to include even if title lacks "(live)"
