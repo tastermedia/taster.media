@@ -28,30 +28,6 @@
       "type": "4k"
     },
     {
-      "id": "yNhJ6I9akQw",
-      "title": "Magoo (live) from Lovegrass 2025 - Full Show",
-      "views": 60,
-      "published": "2026-02-17T17:17:45Z",
-      "show_date": "2026-02-17T17:17:45Z",
-      "type": "4k"
-    },
-    {
-      "id": "VqFnBIL4tHw",
-      "title": "Whiskey Mash (live) from Hillberry 2025 - 4k - Single Cam",
-      "views": 45,
-      "published": "2026-02-11T03:51:17Z",
-      "show_date": "2026-02-11T03:51:17Z",
-      "type": "4k"
-    },
-    {
-      "id": "Pc_lSdrv3H0",
-      "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 454,
-      "published": "2026-02-10T20:45:38Z",
-      "show_date": "2026-02-10T20:45:38Z",
-      "type": "4k"
-    },
-    {
       "id": "3BvZP4Znq94",
       "title": "The HooDoo Soul Band (live) from Rumba Cafe - Full Show - 4k Multi-cam - Soundboard Audio",
       "views": 112,
@@ -124,11 +100,27 @@
       "type": "4k"
     },
     {
+      "id": "VqFnBIL4tHw",
+      "title": "Whiskey Mash (live) from Hillberry 2025 - 4k - Single Cam",
+      "views": 45,
+      "published": "2026-02-11T03:51:17Z",
+      "show_date": "2025-10-11T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
       "id": "sbS3kh2ipkQ",
       "title": "John Henry And Friends (live) from Hillberry 2025",
       "views": 21,
       "published": "2026-02-03T23:21:27Z",
       "show_date": "2025-10-11T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "Pc_lSdrv3H0",
+      "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
+      "views": 454,
+      "published": "2026-02-10T20:45:38Z",
+      "show_date": "2025-10-10T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -170,6 +162,14 @@
       "published": "2025-10-08T13:55:36Z",
       "show_date": "2025-10-04T00:00:00+00:00",
       "type": "4k"
+    },
+    {
+      "id": "5s3TVwGdtQg",
+      "title": "Front Porch (live) from Lovegrass 2025",
+      "views": 112,
+      "published": "2025-09-01T14:15:39Z",
+      "show_date": "2025-10-04T00:00:00+00:00",
+      "type": "360"
     },
     {
       "id": "pWZDxY0824c",
@@ -236,10 +236,18 @@
       "type": "4k"
     },
     {
-      "id": "5s3TVwGdtQg",
-      "title": "Front Porch (live) from Lovegrass 2025",
-      "views": 112,
-      "published": "2025-09-01T14:15:39Z",
+      "id": "yNhJ6I9akQw",
+      "title": "Magoo (live) from Lovegrass 2025 - Full Show",
+      "views": 60,
+      "published": "2026-02-17T17:17:45Z",
+      "show_date": "2025-08-08T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "3N54tQj83zU",
+      "title": "Front Porch (live) from Knuckleheads",
+      "views": 423,
+      "published": "2024-10-16T21:10:39Z",
       "show_date": "2025-08-08T00:00:00+00:00",
       "type": "4k"
     },
@@ -402,14 +410,6 @@
       "published": "2024-10-27T17:36:11Z",
       "show_date": "2024-10-27T17:36:11Z",
       "type": "360"
-    },
-    {
-      "id": "3N54tQj83zU",
-      "title": "Front Porch (live) from Knuckleheads",
-      "views": 423,
-      "published": "2024-10-16T21:10:39Z",
-      "show_date": "2024-10-16T21:10:39Z",
-      "type": "4k"
     },
     {
       "id": "Kki2nnAu8gg",
