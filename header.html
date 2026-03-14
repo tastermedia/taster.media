@@ -1,18 +1,18 @@
 <!-- header.html -->
-<header>
-  <div class="header-container">
+<div class="header-container">
+  <div class="header-left">
     <a href="index.html">
       <img src="images/logo.png" alt="Taster Media Logo" class="logo" />
     </a>
-    <h1 class="glow-text">Taster Media</h1>
-    <nav>
-      <a href="index.html" class="nav-link" data-page="index">4K Multi-cam</a>
-      <a href="360.html" class="nav-link" data-page="360">360&deg; Videos</a>
-      <a href="about.html" class="nav-link" data-page="about">About</a>
-      <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
-    </nav>
+    <h1 class="glow-text">TASTER MEDIA</h1>
   </div>
-</header>
+  <nav>
+    <a href="index.html" class="nav-link" data-page="index">4K Multi-cam</a>
+    <a href="360.html" class="nav-link" data-page="360">360&deg; Videos</a>
+    <a href="about.html" class="nav-link" data-page="about">About</a>
+    <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+  </nav>
+</div>
 <script>
   var page = window.location.pathname.split("/").pop().replace(".html","") || "index";
   document.querySelectorAll(".nav-link[data-page]").forEach(function(a) {
