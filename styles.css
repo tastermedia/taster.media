@@ -8,8 +8,8 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .header-sub{display:flex;align-items:center;justify-content:center;gap:16px;padding:8px 24px 10px;border-top:1px solid #8000ff22;}
 .header-search-wrap{position:relative;width:100%;max-width:480px;}
 .header-sort{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.logo{will-change:transform;width:200px;flex-shrink:0;animation:logoEntry 1.4s cubic-bezier(0.25,0,0.5,1) forwards,spinLoop 6s linear 1.4s infinite;transform-origin:center center;}
-@keyframes logoEntry{0%{transform:scale(0) rotate(-360deg);opacity:0;}100%{transform:scale(1) rotate(0deg);opacity:1;}}
+.logo{width:200px;flex-shrink:0;animation:spinLoop 6s linear infinite;transform-origin:center center;}
+100%{transform:scale(1) rotate(0deg);opacity:1;}}
 @keyframes spinLoop{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 .glow-text{font-family:'Rajdhani',sans-serif;font-size:3.2rem;letter-spacing:0.08em;color:#fff;text-shadow:0 0 12px #8000ff88,0 0 24px #8000ff44;margin:0;line-height:1;white-space:nowrap;}
 .header-search-wrap{position:relative;width:100%;max-width:500px;}
