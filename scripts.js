@@ -1,4 +1,3 @@
-// v2
 document.addEventListener("DOMContentLoaded", function () {
   var is360 = window.location.pathname.includes('360');
   var overlay = document.createElement("div");
@@ -16,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   overlay.addEventListener("click", function(e) { if (e.target === overlay) closeLightbox(); });
   document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeLightbox(); });
+
   function buildGrid(containerId, videos) {
     var grid = document.getElementById(containerId);
     if (!grid) return;
@@ -31,13 +31,28 @@ document.addEventListener("DOMContentLoaded", function () {
       info.appendChild(title); card.appendChild(info); grid.appendChild(card);
     });
   }
-  function buildSortBar(allVideos) {
+
+  function buildControls(allVideos) {
     var section = document.querySelector(".playlist-section");
-    if (!section || document.getElementById("sortBar")) return;
+    if (!section || document.getElementById("controlsBar")) return;
     var sortState = { field: "date", dir: "desc" };
-    var bar = document.createElement("div"); bar.id = "sortBar";
-    bar.innerHTML = '<div class="sort-inner"><span class="sort-label">Sort by</span><div class="sort-buttons"><button class="sort-btn active" data-field="date">📅 Date ↓</button><button class="sort-btn" data-field="views">👁 Views ↓</button></div></div>';
+
+    var bar = document.createElement("div"); bar.id = "controlsBar";
+    bar.innerHTML = `
+      <div class="controls-search">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search videos..." autocomplete="off" />
+        <div id="searchResults" class="search-results"></div>
+      </div>
+      <div class="controls-sort">
+        <span class="sort-label">Sort by</span>
+        <div class="sort-buttons">
+          <button class="sort-btn active" data-field="date">📅 Date ↓</button>
+          <button class="sort-btn" data-field="views">👁 Views ↓</button>
+        </div>
+      </div>
+    `;
     section.insertBefore(bar, section.firstChild);
+
     bar.querySelectorAll(".sort-btn").forEach(function(btn) {
       btn.addEventListener("click", function() {
         var field = btn.dataset.field;
@@ -56,14 +71,13 @@ document.addEventListener("DOMContentLoaded", function () {
         buildGrid("allVideosGrid", sorted);
       });
     });
-  }
-  function initSearch(videos) {
-    var input = document.getElementById("searchInput"), results = document.getElementById("searchResults");
-    if (!input || !results) return;
+
+    var input = document.getElementById("searchInput");
+    var results = document.getElementById("searchResults");
     input.addEventListener("input", function() {
       var q = this.value.trim().toLowerCase(); results.innerHTML = "";
       if (q.length < 2) { results.classList.remove("active"); return; }
-      var matches = videos.filter(function(v) { return v.title.toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
+      var matches = allVideos.filter(function(v) { return v.title.toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
       if (!matches.length) { results.innerHTML = '<div class="search-no-results">No results found</div>'; results.classList.add("active"); return; }
       matches.forEach(function(v) {
         var item = document.createElement("div"); item.className = "search-result-item";
@@ -76,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function(e) { if (!input.contains(e.target) && !results.contains(e.target)) results.classList.remove("active"); });
     input.addEventListener("keydown", function(e) { if (e.key === "Escape") { results.classList.remove("active"); input.blur(); } });
   }
+
   fetch("videos.json?t=" + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(data) {
@@ -83,10 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
       videos = is360 ? videos.filter(function(v) { return v.type === "360"; }) : videos.filter(function(v) { return v.type === "4k" || !v.type; });
       videos.sort(function(a, b) { return (b.show_date || b.published) > (a.show_date || a.published) ? 1 : -1; });
       buildGrid("allVideosGrid", videos);
-      buildSortBar(videos);
-      initSearch(videos);
+      buildControls(videos);
     })
     .catch(function() { var grid = document.getElementById("allVideosGrid"); if (grid) grid.innerHTML = '<p style="color:#888;padding:40px">Video archive loading...</p>'; });
+
   var scrollBtn = document.getElementById("scrollTopBtn");
   if (scrollBtn) {
     window.addEventListener("scroll", function() { scrollBtn.style.opacity = window.scrollY > 300 ? 1 : 0; scrollBtn.style.visibility = window.scrollY > 300 ? "visible" : "hidden"; });
