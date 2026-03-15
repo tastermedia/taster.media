@@ -82,3 +82,15 @@ nav{display:flex;gap:6px;align-items:center;flex-shrink:0;}
   #lightbox-inner{width:98vw;}
   .content-page{margin:36px auto;padding:0 16px;}
 }
+.video-count{font-family:'Rajdhani',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8000ff;padding:12px 20px 0;text-align:center;}
+footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
+.footer-inner{max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;}
+.footer-brand{display:flex;align-items:center;gap:10px;}
+.footer-logo{width:36px;opacity:0.8;}
+.footer-name{font-family:'Rajdhani',sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:#cc88ff;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a,.footer-social a{font-family:'Rajdhani',sans-serif;font-size:0.85rem;letter-spacing:0.08em;color:#888;text-decoration:none;text-transform:uppercase;transition:color 0.2s;}
+.footer-links a:hover,.footer-social a:hover{color:#cc88ff;}
+.footer-social{display:flex;gap:24px;}
+.footer-copy{font-size:0.75rem;color:#444;letter-spacing:0.05em;}
+@media(max-width:600px){.footer-links,.footer-social{flex-wrap:wrap;justify-content:center;gap:14px;}}
