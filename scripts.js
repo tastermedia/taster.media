@@ -1,4 +1,4 @@
-// v5
+// v6
 document.addEventListener("DOMContentLoaded", function () {
   var is360 = window.location.pathname.includes('360');
   var overlay = document.createElement("div");
@@ -8,11 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var iframe = document.getElementById("lightbox-iframe");
   function openLightbox(id) {
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      var a = document.createElement('a');
-      a.href = "https://www.youtube.com/watch?v=" + id;
-      a.target = "_blank"; a.rel = "noopener";
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      return;
+      var a = document.createElement('a'); a.href = "https://www.youtube.com/watch?v=" + id;
+      a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); document.body.removeChild(a); return;
     }
     iframe.src = "https://www.youtube.com/embed/" + id + "?rel=0";
     overlay.classList.add("active"); document.body.style.overflow = "hidden";
@@ -21,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   overlay.addEventListener("click", function(e) { if (e.target === overlay) closeLightbox(); });
   document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeLightbox(); });
+
   function buildGrid(videos) {
     var grid = document.getElementById("allVideosGrid"); if (!grid) return; grid.innerHTML = "";
     videos.forEach(function(video) {
@@ -34,54 +32,92 @@ document.addEventListener("DOMContentLoaded", function () {
       info.appendChild(title); card.appendChild(info); grid.appendChild(card);
     });
   }
+
+  function updateCount(n) {
+    var el = document.getElementById("videoCount");
+    if (el) el.textContent = n + " video" + (n !== 1 ? "s" : "");
+  }
+
   fetch("videos.json?t=" + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(data) {
       var allVideos = data.videos || [];
-      allVideos = is360 ? allVideos.filter(function(v){return v.type==="360";}) : allVideos.filter(function(v){return v.type==="4k"||!v.type;});
+      allVideos = is360
+        ? allVideos.filter(function(v) { return v.type === "360"; })
+        : allVideos.filter(function(v) { return v.type === "4k" || !v.type; });
+
       var sortState = { field: "date", dir: "desc" };
-      function getSorted() {
-        return allVideos.slice().sort(function(a,b){
-          if(sortState.field==="date"){var da=a.show_date||a.published,db=b.show_date||b.published;return sortState.dir==="desc"?(db>da?1:-1):(da>db?1:-1);}
+      var searchQuery = "";
+
+      function getSorted(videos) {
+        return videos.slice().sort(function(a, b) {
+          if (sortState.field === "date") { var da = a.show_date||a.published, db = b.show_date||b.published; return sortState.dir==="desc"?(db>da?1:-1):(da>db?1:-1); }
           return sortState.dir==="desc"?(b.views-a.views):(a.views-b.views);
         });
       }
-      buildGrid(getSorted());
-      var countEl=document.getElementById("videoCount");
-      if(countEl){countEl.textContent=allVideos.length+" "+(is360?"360° videos":"4K videos");}
-      document.querySelectorAll(".sort-btn").forEach(function(btn){
-        btn.addEventListener("click",function(){
-          var field=btn.dataset.field;
-          if(sortState.field===field){sortState.dir=sortState.dir==="desc"?"asc":"desc";}else{sortState.field=field;sortState.dir="desc";}
-          document.querySelectorAll(".sort-btn").forEach(function(b){b.classList.remove("active");b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";});
+
+      function getFiltered() {
+        if (!searchQuery) return allVideos;
+        return allVideos.filter(function(v) { return v.title.toLowerCase().indexOf(searchQuery) !== -1; });
+      }
+
+      function refresh() {
+        var filtered = getFiltered();
+        buildGrid(getSorted(filtered));
+        updateCount(filtered.length);
+      }
+
+      refresh();
+
+      // Sort buttons
+      document.querySelectorAll(".sort-btn").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          var field = btn.dataset.field;
+          if (sortState.field === field) { sortState.dir = sortState.dir === "desc" ? "asc" : "desc"; }
+          else { sortState.field = field; sortState.dir = "desc"; }
+          document.querySelectorAll(".sort-btn").forEach(function(b) { b.classList.remove("active"); b.textContent = (b.dataset.field==="date" ? "📅 Date" : "👁 Views") + " ↓"; });
           btn.classList.add("active");
-          btn.textContent=(field==="date"?"📅 Date":"👁 Views")+(sortState.dir==="desc"?" ↓":" ↑");
-          buildGrid(getSorted());
+          btn.textContent = (field==="date" ? "📅 Date" : "👁 Views") + (sortState.dir==="desc" ? " ↓" : " ↑");
+          refresh();
         });
       });
-      var input=document.getElementById("searchInput"),results=document.getElementById("searchResults");
-      if(input&&results){
-        input.addEventListener("input",function(){
-          var q=this.value.trim().toLowerCase();results.innerHTML="";
-          if(q.length<2){results.classList.remove("active");return;}
-          var matches=data.videos.filter(function(v){return v.title.toLowerCase().indexOf(q)!==-1;}).slice(0,8);
-          if(!matches.length){results.innerHTML='<div class="search-no-results">No results found</div>';results.classList.add("active");return;}
-          matches.forEach(function(v){
-            var item=document.createElement("div");item.className="search-result-item";
-            item.innerHTML='<img class="search-result-thumb" src="https://img.youtube.com/vi/'+v.id+'/mqdefault.jpg" loading="lazy"><span class="search-result-title">'+v.title+'</span>';
-            item.addEventListener("click",function(){openLightbox(v.id);input.value="";results.classList.remove("active");});
-            results.appendChild(item);
-          });
-          results.classList.add("active");
+
+      // Search - filters the grid AND shows dropdown
+      var input = document.getElementById("searchInput");
+      var results = document.getElementById("searchResults");
+      if (input) {
+        input.addEventListener("input", function() {
+          searchQuery = this.value.trim().toLowerCase();
+          refresh();
+          // Also show dropdown for quick navigation
+          if (results) {
+            results.innerHTML = "";
+            if (searchQuery.length < 2) { results.classList.remove("active"); return; }
+            var matches = data.videos.filter(function(v) { return v.title.toLowerCase().indexOf(searchQuery) !== -1; }).slice(0, 6);
+            if (!matches.length) { results.innerHTML = '<div class="search-no-results">No results found</div>'; results.classList.add("active"); return; }
+            matches.forEach(function(v) {
+              var item = document.createElement("div"); item.className = "search-result-item";
+              item.innerHTML = '<img class="search-result-thumb" src="https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg" loading="lazy"><span class="search-result-title">' + v.title + '</span>';
+              item.addEventListener("click", function() { openLightbox(v.id); input.value = ""; searchQuery = ""; results.classList.remove("active"); refresh(); });
+              results.appendChild(item);
+            });
+            results.classList.add("active");
+          }
         });
-        document.addEventListener("click",function(e){if(!input.contains(e.target)&&!results.contains(e.target))results.classList.remove("active");});
-        input.addEventListener("keydown",function(e){if(e.key==="Escape"){results.classList.remove("active");input.blur();}});
+        // Clear search on escape
+        input.addEventListener("keydown", function(e) {
+          if (e.key === "Escape") { input.value = ""; searchQuery = ""; refresh(); if (results) results.classList.remove("active"); input.blur(); }
+        });
+        if (results) {
+          document.addEventListener("click", function(e) { if (!input.contains(e.target) && !results.contains(e.target)) results.classList.remove("active"); });
+        }
       }
     })
-    .catch(function(){var grid=document.getElementById("allVideosGrid");if(grid)grid.innerHTML='<p style="color:#888;padding:40px">Video archive loading...</p>';});
-  var scrollBtn=document.getElementById("scrollTopBtn");
-  if(scrollBtn){
-    window.addEventListener("scroll",function(){scrollBtn.style.opacity=window.scrollY>300?1:0;scrollBtn.style.visibility=window.scrollY>300?"visible":"hidden";});
-    scrollBtn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+    .catch(function() { var grid = document.getElementById("allVideosGrid"); if (grid) grid.innerHTML = '<p style="color:#888;padding:40px">Video archive loading...</p>'; });
+
+  var scrollBtn = document.getElementById("scrollTopBtn");
+  if (scrollBtn) {
+    window.addEventListener("scroll", function() { scrollBtn.style.opacity = window.scrollY>300?1:0; scrollBtn.style.visibility = window.scrollY>300?"visible":"hidden"; });
+    scrollBtn.addEventListener("click", function() { window.scrollTo({top:0,behavior:"smooth"}); });
   }
 });
