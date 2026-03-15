@@ -15,7 +15,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .header-search-wrap{position:relative;width:100%;max-width:500px;}
 .header-sort{display:flex;align-items:center;gap:10px;}
 nav{display:flex;gap:6px;align-items:center;flex-shrink:0;}
-.nav-link{padding:9px 22px;border-radius:999px;background:transparent;border:1px solid #8000ff;color:#cc88ff;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.07em;text-decoration:none;transition:background 0.2s,color 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;will-change:transform;}
+.nav-link{padding:9px 22px;border-radius:999px;background:transparent;border:1px solid #8000ff;color:#cc88ff;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.07em;text-decoration:none;transition:background 0.2s,color 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;}
 .nav-link:hover{background:#8000ff44;color:#fff;transform:scale(1.08);box-shadow:0 0 12px #8000ff88;}
 .nav-link.active{background:#8000ff;color:#fff;border-color:#8000ff;}
 .sort-label{font-family:'Rajdhani',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:#8000ff;white-space:nowrap;}
