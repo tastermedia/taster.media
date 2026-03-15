@@ -31,6 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var title = document.createElement("p"); title.className = "video-title"; title.textContent = video.title || "";
       info.appendChild(title); card.appendChild(info); grid.appendChild(card);
     });
+    // Pre-warm GPU compositing layers for instant hover
+    requestAnimationFrame(function() {
+      grid.querySelectorAll('.video').forEach(function(c) {
+        c.style.transform = 'translateZ(0)';
+        c.getBoundingClientRect(); // force reflow
+        c.style.transform = '';   // reset so hover works normally
+      });
+    });
   }
 
   function updateCount(n) {
