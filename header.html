@@ -1,8 +1,23 @@
 <!-- header.html -->
 <div class="header-wrapper">
   <div class="header-container">
-    <a href="index.html"><img src="images/logo.png" alt="Taster Media Logo" class="logo" /></a>
-    <h1 class="glow-text">Taster Media</h1>
+    <div class="header-left">
+      <a href="index.html"><img src="images/logo.png" alt="Taster Media Logo" class="logo" /></a>
+      <h1 class="glow-text">Taster Media</h1>
+    </div>
+    <div class="header-center">
+      <div class="header-search-wrap">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search videos..." autocomplete="off" />
+        <div id="searchResults" class="search-results"></div>
+      </div>
+      <div class="header-sort">
+        <span class="sort-label">Sort</span>
+        <div class="sort-buttons">
+          <button class="sort-btn active" data-field="date">📅 Date ↓</button>
+          <button class="sort-btn" data-field="views">👁 Views ↓</button>
+        </div>
+      </div>
+    </div>
     <nav>
       <a href="index.html" class="nav-link" data-page="index">4K Multi-cam</a>
       <a href="360.html" class="nav-link" data-page="360">360&deg; Videos</a>
