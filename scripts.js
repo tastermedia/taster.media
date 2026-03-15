@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         input.addEventListener("input",function(){
           var q=this.value.trim().toLowerCase();results.innerHTML="";
           if(q.length<2){results.classList.remove("active");return;}
-          var matches=allVideos.filter(function(v){return v.title.toLowerCase().indexOf(q)!==-1;}).slice(0,8);
+          var matches=data.videos.filter(function(v){return v.title.toLowerCase().indexOf(q)!==-1;}).slice(0,8);
           if(!matches.length){results.innerHTML='<div class="search-no-results">No results found</div>';results.classList.add("active");return;}
           matches.forEach(function(v){
             var item=document.createElement("div");item.className="search-result-item";
