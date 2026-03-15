@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
       buildGrid(getSorted());
+      var countEl=document.getElementById("videoCount");
+      if(countEl){countEl.textContent=allVideos.length+" "+(is360?"360° videos":"4K videos");}
       document.querySelectorAll(".sort-btn").forEach(function(btn){
         btn.addEventListener("click",function(){
           var field=btn.dataset.field;
