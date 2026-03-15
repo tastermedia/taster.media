@@ -1,3 +1,4 @@
+// v2
 document.addEventListener("DOMContentLoaded", function () {
   var is360 = window.location.pathname.includes('360');
   var overlay = document.createElement("div");
