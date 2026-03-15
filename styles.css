@@ -75,12 +75,12 @@ nav{display:flex;gap:6px;align-items:center;flex-shrink:0;}
   .content-page{margin:36px auto;padding:0 16px;}
 }undefined
 
-#controlsBar{padding:16px 20px 8px;display:flex;flex-direction:column;align-items:center;gap:12px;}
-.controls-search{position:relative;width:100%;max-width:600px;}
-.controls-sort{display:flex;align-items:center;gap:12px;}
-.sort-label{font-family:'Rajdhani',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8000ff;}
+#controlsBar{padding:16px 20px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.controls-search{position:relative;width:100%;max-width:560px;}
+.controls-sort{display:flex;align-items:center;justify-content:center;gap:12px;}
+.sort-label{font-family:'Rajdhani',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8000ff;white-space:nowrap;}
 .sort-buttons{display:flex;gap:8px;}
 .sort-btn{padding:6px 16px;border-radius:999px;background:transparent;border:1px solid #8000ff55;color:#888;font-family:'Rajdhani',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
 .sort-btn:hover{border-color:#8000ff;color:#cc88ff;}
 .sort-btn.active{background:#8000ff22;border-color:#8000ff;color:#fff;}
-@media(max-width:600px){#controlsBar{padding:12px 12px 6px;gap:10px;}.controls-sort{flex-wrap:wrap;justify-content:center;}}
+@media(max-width:600px){#controlsBar{padding:12px 12px 6px;gap:8px;}.controls-search{max-width:100%;}.controls-sort{flex-wrap:wrap;}}
