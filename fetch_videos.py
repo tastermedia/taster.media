@@ -69,6 +69,19 @@ ID_DATE_OVERRIDES = {
 # Video IDs to include even if title lacks "(live)"
 LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4'}
 
+# Individual song singles to exclude (full shows only)
+EXCLUDE_IDS = {
+    'sa-t5mE_lH8',  # Front Porch - Great Grandaddy's Barn
+    'yVBt-KqQv90',  # Front Porch - Fever Dreams
+    'arxyqBg2CaA',  # Front Porch - Angelina
+    'W_D0mGVwQI8',  # Front Porch - Life Boat
+    'y7b8WpNVQSw',  # Front Porch - Toolbox
+    'rVoXxerJzyA',  # Front Porch - Skillet
+    'ngljOpE-cE8',  # Front Porch - Roadside
+    '7GNaUC3jD4U',  # Front Porch - Haystack
+    'UGCyVg3F0UU',  # Front Porch - The Grove
+}
+
 def apply_title_overrides(title):
     t = title.lower()
     for pattern, date in TITLE_DATE_OVERRIDES:
@@ -88,6 +101,8 @@ for i in range(0, len(video_ids), 50):
         title = item["snippet"]["title"]
         vid_id = item["id"]
         if "(live)" not in title.lower() and vid_id not in LIVE_EXCEPTIONS:
+            continue
+        if vid_id in EXCLUDE_IDS:
             continue
         desc = item["snippet"].get("description","")
         published = item["snippet"]["publishedAt"]
