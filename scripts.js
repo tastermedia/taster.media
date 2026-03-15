@@ -103,9 +103,14 @@ document.addEventListener("DOMContentLoaded", function () {
             if (searchQuery.length < 2) { results.classList.remove("active"); return; }
             var matches = data.videos.filter(function(v) { return v.title.toLowerCase().indexOf(searchQuery) !== -1; }).slice(0, 6);
             if (!matches.length) { results.innerHTML = '<div class="search-no-results">No results found</div>'; results.classList.add("active"); return; }
+            var isMobile = window.innerWidth <= 600;
             matches.forEach(function(v) {
               var item = document.createElement("div"); item.className = "search-result-item";
-              item.innerHTML = '<img class="search-result-thumb" src="https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg" loading="lazy"><span class="search-result-title">' + v.title + '</span>';
+              if (isMobile) {
+                item.innerHTML = '<span class="search-result-title">' + v.title + '</span>';
+              } else {
+                item.innerHTML = '<img class="search-result-thumb" src="https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg" loading="lazy"><span class="search-result-title">' + v.title + '</span>';
+              }
               item.addEventListener("click", function() { openLightbox(v.id); input.value = ""; searchQuery = ""; results.classList.remove("active"); refresh(); });
               results.appendChild(item);
             });
