@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!section || document.getElementById("sortBar")) return;
     var sortState = { field: "date", dir: "desc" };
     var bar = document.createElement("div"); bar.id = "sortBar";
-    bar.innerHTML = '<span class="sort-label">Sort by</span><div class="sort-buttons"><button class="sort-btn active" data-field="date">📅 Date ↓</button><button class="sort-btn" data-field="views">👁 Views ↓</button></div>';
+    bar.innerHTML = '<div class="sort-inner"><span class="sort-label">Sort by</span><div class="sort-buttons"><button class="sort-btn active" data-field="date">📅 Date ↓</button><button class="sort-btn" data-field="views">👁 Views ↓</button></div></div>';
     section.insertBefore(bar, section.firstChild);
     bar.querySelectorAll(".sort-btn").forEach(function(btn) {
       btn.addEventListener("click", function() {
