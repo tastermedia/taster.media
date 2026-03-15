@@ -75,7 +75,7 @@ nav{display:flex;gap:6px;align-items:center;flex-shrink:0;}
   .content-page{margin:36px auto;padding:0 16px;}
 }undefined
 
-#sortBar{display:flex;align-items:center;gap:14px;padding:16px 20px 8px;}
+#sortBar{display:flex;align-items:center;justify-content:center;gap:14px;padding:16px 20px 8px;}
 .sort-label{font-family:'Rajdhani',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#8000ff;}
 .sort-buttons{display:flex;gap:8px;}
 .sort-btn{padding:6px 16px;border-radius:999px;background:transparent;border:1px solid #8000ff55;color:#888;font-family:'Rajdhani',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;cursor:pointer;transition:all 0.2s;}
