@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var a = document.createElement('a'); a.href = "https://www.youtube.com/watch?v=" + id;
       a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); document.body.removeChild(a); return;
     }
-    iframe.src = "https://www.youtube.com/embed/" + id + "?rel=0";
+    iframe.src = "https://www.youtube.com/embed/" + id + "?rel=0&autoplay=1";
     overlay.classList.add("active"); document.body.style.overflow = "hidden";
   }
   function closeLightbox() { overlay.classList.remove("active"); iframe.src = ""; document.body.style.overflow = ""; }
