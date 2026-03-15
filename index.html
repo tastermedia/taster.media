@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Taster Media</title>
   <link rel="icon" href="images/logo.png" type="image/png" />
+  <meta property="og:title" content="Taster Media" />
+  <meta property="og:description" content="Live music videos shot in 4K multi-cam with soundboard audio. Full shows from Kansas City and beyond." />
+  <meta property="og:image" content="https://taster.media/images/logo.png" />
+  <meta property="og:url" content="https://taster.media" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Taster Media" />
+  <meta name="twitter:description" content="Live music videos shot in 4K multi-cam with soundboard audio." />
+  <meta name="twitter:image" content="https://taster.media/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -16,10 +25,18 @@
   <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;}).catch(console.error);</script>
   <main>
     <section class="playlist-section">
+      <div id="videoCount" class="video-count"></div>
       <div class="grid" id="allVideosGrid"></div>
     </section>
   </main>
-  <footer><p>&copy; 2026 Taster Media</p></footer>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand"><img src="images/logo.png" alt="Taster Media" class="footer-logo" /><span class="footer-name">Taster Media</span></div>
+      <div class="footer-links"><a href="index.html">4K Multi-cam</a><a href="360.html">360° Videos</a><a href="contact.html">Contact</a></div>
+      <div class="footer-social"><a href="https://www.instagram.com/tastermedia" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/profile.php?id=61572960638831" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/@taster_media" target="_blank" rel="noopener">YouTube</a></div>
+      <p class="footer-copy">© 2026 Taster Media</p>
+    </div>
+  </footer>
   <button id="scrollTopBtn">&#9650;</button>
   <script src="scripts.js"></script>
 </body>
