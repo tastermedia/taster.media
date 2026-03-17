@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Pinegrow editor backups
+_pgbackup/
+
+# Editor
+*.swp
+*.swo
+.vscode/

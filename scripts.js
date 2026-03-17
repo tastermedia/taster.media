@@ -106,11 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
             var isMobile = window.innerWidth <= 600;
             matches.forEach(function(v) {
               var item = document.createElement("div"); item.className = "search-result-item";
-              if (isMobile) {
-                item.innerHTML = '<span class="search-result-title">' + v.title + '</span>';
-              } else {
-                item.innerHTML = '<img class="search-result-thumb" src="https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg" loading="lazy"><span class="search-result-title">' + v.title + '</span>';
+              if (!isMobile) {
+                var thumb = document.createElement("img"); thumb.className = "search-result-thumb"; thumb.src = "https://img.youtube.com/vi/" + v.id + "/mqdefault.jpg"; thumb.loading = "lazy"; item.appendChild(thumb);
               }
+              var titleSpan = document.createElement("span"); titleSpan.className = "search-result-title"; titleSpan.textContent = v.title; item.appendChild(titleSpan);
               item.addEventListener("click", function() { openLightbox(v.id); input.value = ""; searchQuery = ""; results.classList.remove("active"); refresh(); });
               results.appendChild(item);
             });
