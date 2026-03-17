@@ -21,7 +21,7 @@
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;}).catch(console.error);</script>
+  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;}).catch(function(){document.getElementById("header-placeholder").innerHTML='<nav style="padding:1rem"><a href="/">Taster Media</a></nav>';});</script>
   <main>
     <section class="playlist-section">
       <div id="videoCount" class="video-count"></div>
@@ -35,5 +35,10 @@
   </footer>
   <button id="scrollTopBtn">&#9650;</button>
   <script src="scripts.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
+    }
+  </script>
 </body>
 </html>

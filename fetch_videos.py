@@ -64,6 +64,16 @@ ID_DATE_OVERRIDES = {
     '5s3TVwGdtQg': ('2025-08-08T00:00:00+00:00', '4k'),    # Front Porch @ Lovegrass Aug 8 2025 (4k not 360)
     '3N54tQj83zU': ('2024-10-11T00:00:00+00:00', '4k'),    # Front Porch @ Knuckleheads Oct 11 2024
     'EklPeX4QiMw': ('2025-05-30T00:00:00+00:00', '4k'),    # The Engine Room @ West Church Social
+    # Previously falling back to published date — corrected show dates:
+    'yeyi0680Q-o': ('2025-10-04T00:00:00+00:00', '360'),   # KC Bear Fighters @ Space Cat 2025
+    'WL7Xg8--k8U': ('2025-06-25T00:00:00+00:00', '4k'),    # Crazy Folker @ George's Majestic Lounge
+    'UExNYPOI0UU': ('2025-03-29T00:00:00+00:00', '4k'),    # Cameron Keeling @ Tintoretta Tattoo
+    '0kdjhSyPQ1k': ('2024-09-20T00:00:00+00:00', '360'),   # Front Porch @ Winfield 2024 Stage 7 (360)
+    'Kki2nnAu8gg': ('2024-09-20T00:00:00+00:00', '4k'),    # Front Porch @ Winfield Lit On The Low Road 2024
+    'rbW9xQ--Y6A': ('2024-09-20T00:00:00+00:00', '4k'),    # Front Porch @ Winfield 2024 Stage 5
+    'cmRiw0ahuuc': ('2024-10-10T00:00:00+00:00', '4k'),    # Michael Cleveland @ Hillberry 2024
+    '-vJyLUWFBtM': ('2024-09-20T00:00:00+00:00', '4k'),    # Crying Uncle @ Winfield 2024 Stage 5
+    'WuUsgJqPnu4': ('2022-01-22T00:00:00+00:00', '4k'),    # brown whörnet @ Austin
 }
 
 # Video IDs to include even if title lacks "(live)"
