@@ -12,7 +12,9 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .glow-text{font-family:'Rajdhani',sans-serif;font-size:3.2rem;letter-spacing:0.08em;color:#fff;text-shadow:0 0 12px #8000ff88,0 0 24px #8000ff44;margin:0;line-height:1;white-space:nowrap;}
 .header-search-wrap{position:relative;width:100%;max-width:500px;}
 .header-sort{display:flex;align-items:center;gap:10px;}
-nav{display:flex;gap:6px;align-items:center;flex-shrink:0;margin-left:auto;}
+nav{display:flex;gap:6px;align-items:center;flex-shrink:0;}
+.nav-contact{padding:9px 22px;border-radius:999px;background:transparent;border:1px solid #8000ff;color:#cc88ff;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.07em;text-decoration:none;transition:background 0.2s,color 0.2s;white-space:nowrap;}
+.nav-contact:hover{background:#8000ff44;color:#fff;}
 .nav-link{padding:9px 22px;border-radius:999px;background:transparent;border:1px solid #8000ff;color:#cc88ff;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.07em;text-decoration:none;transition:background 0.2s,color 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;}
 .nav-link:hover{background:#8000ff44;color:#fff;transform:scale(1.08);box-shadow:0 0 12px #8000ff88;}
 .nav-link.active{background:#8000ff;color:#fff;border-color:#8000ff;}
@@ -138,7 +140,7 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
   .logo{width:108px;}
   .glow-text{font-size:2rem;text-align:center;}
   nav{justify-content:center;}
-  .nav-contact{font-size:0.85rem;padding:8px 20px;}
+  
   .header-sub{flex-direction:column;align-items:center;width:100%;gap:10px;padding:10px 16px;}
   .header-search-wrap{width:100%;max-width:100%;}
   .header-sort{flex-direction:column;align-items:center;gap:6px;width:100%;}
