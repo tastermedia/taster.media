@@ -1,7 +1,7 @@
 {
-  "updated": "2026-03-18T17:57:48.890Z",
+  "updated": "2026-03-18T23:17:35.383277+00:00",
   "channel": "UC4jtpyiA5WIQsObGh5E2oCg",
-  "total": 83,
+  "total": 74,
   "videos": [
     {
       "id": "rDEatJTL5WA",
@@ -30,7 +30,7 @@
     {
       "id": "3BvZP4Znq94",
       "title": "The HooDoo Soul Band (live) from Rumba Cafe - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 120,
+      "views": 122,
       "published": "2026-01-22T00:47:39Z",
       "show_date": "2026-01-18T00:00:00+00:00",
       "type": "4k"
@@ -46,7 +46,7 @@
     {
       "id": "lcajOd5FKAM",
       "title": "Back Porch Groove (live) from Fool's Yule - Full Show - 4k Multi-cam",
-      "views": 48,
+      "views": 50,
       "published": "2026-02-13T00:14:05Z",
       "show_date": "2025-12-20T00:00:00+00:00",
       "type": "4k"
@@ -54,14 +54,14 @@
     {
       "id": "Z1x2yA-bVZo",
       "title": "Barnum Jack (live) from Fool's Yule- Full Show - 4k Multi-cam",
-      "views": 35,
+      "views": 36,
       "published": "2026-02-13T00:13:45Z",
       "show_date": "2025-12-20T00:00:00+00:00",
       "type": "4k"
     },
     {
       "id": "c5ZjLthLEkM",
-      "title": "MoonShroom (live) from Fool's Yule 2025- Full Show - 4k Multi-cam",
+      "title": "MoonShroom (live) from Fool's Yule 2025 - Full Show - 4k Multi-cam",
       "views": 27,
       "published": "2026-02-13T00:13:23Z",
       "show_date": "2025-12-20T00:00:00+00:00",
@@ -86,23 +86,15 @@
     {
       "id": "nNCcbA2wP34",
       "title": "Old Sound (live) from RecordBar - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 98,
+      "views": 99,
       "published": "2025-12-20T00:22:26Z",
       "show_date": "2025-12-18T00:00:00+00:00",
       "type": "4k"
     },
     {
-      "id": "oi1ZsaFGDDc",
-      "title": "Front Porch (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 0,
-      "published": "2025-11-23T00:00:00Z",
-      "show_date": "2025-11-23T00:00:00+00:00",
-      "type": "4k"
-    },
-    {
       "id": "5Mj2WksIs-s",
       "title": "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 646,
+      "views": 648,
       "published": "2025-11-26T14:48:56Z",
       "show_date": "2025-11-19T00:00:00+00:00",
       "type": "4k"
@@ -126,7 +118,7 @@
     {
       "id": "Pc_lSdrv3H0",
       "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 506,
+      "views": 516,
       "published": "2026-02-10T20:45:38Z",
       "show_date": "2025-10-10T00:00:00+00:00",
       "type": "4k"
@@ -142,7 +134,7 @@
     {
       "id": "12sPE1oDkH4",
       "title": "Front Porch (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 1520,
+      "views": 1533,
       "published": "2025-11-04T16:49:04Z",
       "show_date": "2025-10-09T00:00:00+00:00",
       "type": "4k"
@@ -150,7 +142,7 @@
     {
       "id": "5BmffJ-MFsg",
       "title": "The Spooklights (live) from Knuckleheads - Full Show - 4k Multi-cam",
-      "views": 221,
+      "views": 227,
       "published": "2025-11-13T15:33:12Z",
       "show_date": "2025-10-04T00:00:00+00:00",
       "type": "4k"
@@ -196,14 +188,6 @@
       "type": "4k"
     },
     {
-      "id": "4mS8xtfxbLE",
-      "title": "Front Porch (live) from Cervantes - Full Show - 4k Multi-cam",
-      "views": 0,
-      "published": "2025-08-30T00:00:00Z",
-      "show_date": "2025-08-30T00:00:00+00:00",
-      "type": "4k"
-    },
-    {
       "id": "sPu8r12eKyc",
       "title": "Front Porch (live) from 10 Mile Music Hall - Full Show - 4k Multi-cam - Soundboard Audio",
       "views": 87,
@@ -218,22 +202,6 @@
       "published": "2025-10-17T18:50:33Z",
       "show_date": "2025-08-28T00:00:00+00:00",
       "type": "360"
-    },
-    {
-      "id": "0Jprv8XmSx8",
-      "title": "Front Porch (live) from Crow Peak Brewing Co. - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 0,
-      "published": "2025-08-27T00:00:00Z",
-      "show_date": "2025-08-27T00:00:00+00:00",
-      "type": "4k"
-    },
-    {
-      "id": "zzmkJFJe_Y4",
-      "title": "Front Porch (live) from Blue Goose Stage - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 0,
-      "published": "2025-08-26T00:00:00Z",
-      "show_date": "2025-08-26T00:00:00+00:00",
-      "type": "4k"
     },
     {
       "id": "sGaLqE7swGo",
@@ -252,25 +220,9 @@
       "type": "4k"
     },
     {
-      "id": "eccWVQe5yAE",
-      "title": "Front Porch (live) KC Backer Party - Set 2 in Fabulous 360!",
-      "views": 0,
-      "published": "2025-08-15T00:00:00Z",
-      "show_date": "2025-08-15T00:00:00+00:00",
-      "type": "360"
-    },
-    {
-      "id": "bCcbZOiq32w",
-      "title": "Front Porch (live) - KC Backer Party - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 0,
-      "published": "2025-08-15T00:00:00Z",
-      "show_date": "2025-08-15T00:00:00+00:00",
-      "type": "4k"
-    },
-    {
       "id": "z9F-1DoLDMg",
       "title": "Improvement Movement (live) from Knuckleheads - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 1573,
+      "views": 1576,
       "published": "2025-08-12T01:17:57Z",
       "show_date": "2025-08-10T00:00:00+00:00",
       "type": "4k"
@@ -302,7 +254,7 @@
     {
       "id": "P6anEkCEDDQ",
       "title": "East Nash Grass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 8843,
+      "views": 8851,
       "published": "2025-07-29T21:36:04Z",
       "show_date": "2025-07-23T00:00:00+00:00",
       "type": "4k"
@@ -313,14 +265,6 @@
       "views": 107,
       "published": "2025-07-25T14:09:24Z",
       "show_date": "2025-07-23T00:00:00+00:00",
-      "type": "4k"
-    },
-    {
-      "id": "nioEXdSpqak",
-      "title": "Front Porch (live) from Lemonade Park - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 0,
-      "published": "2025-07-21T00:00:00Z",
-      "show_date": "2025-07-19T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -353,14 +297,6 @@
       "views": 43,
       "published": "2025-07-18T20:08:26Z",
       "show_date": "2025-06-22T00:00:00+00:00",
-      "type": "4k"
-    },
-    {
-      "id": "swscjfyTW-E",
-      "title": "Front Porch (live) from Survivor's Ball 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 0,
-      "published": "2025-07-07T00:00:00Z",
-      "show_date": "2025-06-21T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -417,14 +353,6 @@
       "views": 55,
       "published": "2025-04-25T14:56:59Z",
       "show_date": "2025-04-23T00:00:00+00:00",
-      "type": "4k"
-    },
-    {
-      "id": "bsQkyVYA8I8",
-      "title": "Front Porch (live) from Stockyards Brewing Co. - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 0,
-      "published": "2025-04-13T00:00:00Z",
-      "show_date": "2025-04-13T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -486,7 +414,7 @@
     {
       "id": "RaUkKfppTIs",
       "title": "Paul Cauthen (live) from Hillberry 2024 - Full Show - Single-cam - Audience Mic Audio",
-      "views": 2697,
+      "views": 2699,
       "published": "2024-10-15T18:14:14Z",
       "show_date": "2024-10-10T00:00:00+00:00",
       "type": "4k"
@@ -661,7 +589,7 @@
     },
     {
       "id": "WuUsgJqPnu4",
-      "title": "brown whörnet (live) somewhere in Austin",
+      "title": "brown wh\u00f6rnet (live) somewhere in Austin",
       "views": 85,
       "published": "2022-01-24T17:19:28Z",
       "show_date": "2022-01-22T00:00:00+00:00",
