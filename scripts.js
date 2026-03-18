@@ -1,4 +1,4 @@
-// v7
+// v8
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -43,6 +43,18 @@ document.addEventListener("DOMContentLoaded", function () {
     return 'multi';
   }
 
+  function resetSortBtns(sortState){
+    document.querySelectorAll(".sort-btn").forEach(function(b){
+      b.classList.remove("active");
+      b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+(sortState.dir==="desc"&&sortState.field===b.dataset.field?" ↑":" ↓");
+    });
+    var activeSort=document.querySelector('.sort-btn[data-field="'+sortState.field+'"]');
+    if(activeSort){
+      activeSort.classList.add("active");
+      activeSort.textContent=(sortState.field==="date"?"📅 Date":"👁 Views")+(sortState.dir==="desc"?" ↓":" ↑");
+    }
+  }
+
   fetch("videos.json?t="+Date.now())
     .then(function(r){return r.json();})
     .then(function(data){
@@ -57,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
           return sortState.dir==="desc"?(b.views-a.views):(a.views-b.views);
         });
       }
-
       function getFiltered(){
         return allVideos.filter(function(v){
           if(searchQuery&&v.title.toLowerCase().indexOf(searchQuery)===-1)return false;
@@ -65,39 +76,36 @@ document.addEventListener("DOMContentLoaded", function () {
           return true;
         });
       }
-
       function refresh(){var filtered=getFiltered();buildGrid(getSorted(filtered));updateCount(filtered.length);}
 
       refresh();
 
-      // Sort buttons (date/views only)
-      document.querySelectorAll(".sort-btn:not(.type-btn)").forEach(function(btn){
+      // Sort buttons (date/views)
+      document.querySelectorAll(".sort-btn").forEach(function(btn){
         btn.addEventListener("click",function(){
           var field=btn.dataset.field;
-          if(sortState.field===field){sortState.dir=sortState.dir==="desc"?"asc":"desc";}else{sortState.field=field;sortState.dir="desc";}
-          document.querySelectorAll(".sort-btn:not(.type-btn)").forEach(function(b){b.classList.remove("active");b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";});
-          btn.classList.add("active");
-          btn.textContent=(field==="date"?"📅 Date":"👁 Views")+(sortState.dir==="desc"?" ↓":" ↑");
+          if(sortState.field===field){sortState.dir=sortState.dir==="desc"?"asc":"desc";}
+          else{sortState.field=field;sortState.dir="desc";}
+          resetSortBtns(sortState);
           refresh();
         });
       });
 
+      // Type filter buttons
       document.querySelectorAll(".type-btn").forEach(function(btn){
         btn.addEventListener("click",function(){
           typeFilter=btn.dataset.type;
-          // Reset sort to newest first
+          // Reset sort to date desc
           sortState={field:"date",dir:"desc"};
-          document.querySelectorAll(".sort-btn").forEach(function(b){
-            b.classList.remove("active");
-            b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";
-          });
-          document.querySelector('.sort-btn[data-field="date"]').classList.add("active");
+          resetSortBtns(sortState);
+          // Update active type btn
           document.querySelectorAll(".type-btn").forEach(function(b){b.classList.remove("active");});
           btn.classList.add("active");
           refresh();
         });
       });
 
+      // Search
       var input=document.getElementById("searchInput"),results=document.getElementById("searchResults");
       if(input){
         input.addEventListener("input",function(){
