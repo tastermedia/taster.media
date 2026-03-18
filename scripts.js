@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       refresh();
 
-      // Sort buttons (date/views)
-      document.querySelectorAll(".sort-btn").forEach(function(btn){
+      function initButtons(){
+        document.querySelectorAll(".sort-btn").forEach(function(btn){
         btn.addEventListener("click",function(){
           var field=btn.dataset.field;
           if(sortState.field===field){sortState.dir=sortState.dir==="desc"?"asc":"desc";}
