@@ -36,6 +36,7 @@
   </footer>
   <button id="scrollTopBtn">&#9650;</button>
   <script src="scripts.js"></script>
+<script>if("serviceWorker"in navigator){navigator.serviceWorker.getRegistrations().then(function(regs){regs.forEach(function(r){r.unregister();});});}</script>
   <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js");
