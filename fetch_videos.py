@@ -64,7 +64,7 @@ ID_DATE_OVERRIDES = {
     '5s3TVwGdtQg': ('2025-08-08T00:00:00+00:00', '4k'),    # Front Porch @ Lovegrass Aug 8 2025 (4k not 360)
     '3N54tQj83zU': ('2024-10-11T00:00:00+00:00', '4k'),    # Front Porch @ Knuckleheads Oct 11 2024
     'EklPeX4QiMw': ('2025-05-30T00:00:00+00:00', '4k'),    # The Engine Room @ West Church Social
-    # Previously falling back to published date — corrected show dates:
+    # Previously falling back to published date â corrected show dates:
     'yeyi0680Q-o': ('2025-10-04T00:00:00+00:00', '360'),   # KC Bear Fighters @ Space Cat 2025
     'WL7Xg8--k8U': ('2025-06-25T00:00:00+00:00', '4k'),    # Crazy Folker @ George's Majestic Lounge
     'UExNYPOI0UU': ('2025-03-29T00:00:00+00:00', '4k'),    # Cameron Keeling @ Tintoretta Tattoo
@@ -73,7 +73,30 @@ ID_DATE_OVERRIDES = {
     'rbW9xQ--Y6A': ('2024-09-20T00:00:00+00:00', '4k'),    # Front Porch @ Winfield 2024 Stage 5
     'cmRiw0ahuuc': ('2024-10-10T00:00:00+00:00', '4k'),    # Michael Cleveland @ Hillberry 2024
     '-vJyLUWFBtM': ('2024-09-20T00:00:00+00:00', '4k'),    # Crying Uncle @ Winfield 2024 Stage 5
-    'WuUsgJqPnu4': ('2022-01-22T00:00:00+00:00', '4k'),    # brown whörnet @ Austin
+    'WuUsgJqPnu4': ('2022-01-22T00:00:00+00:00', '4k'),    # brown whÃ¶rnet @ Austin
+}
+
+
+# Title text overrides — corrected display titles keyed by video ID
+TITLE_TEXT_OVERRIDES = {
+    'c5ZjLthLEkM': "MoonShroom (live) from Fool's Yule 2025 - Full Show - 4k Multi-cam",
+    'oi1ZsaFGDDc': "Front Porch (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
+    '5Mj2WksIs-s': "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
+    'VqFnBIL4tHw': "Whiskey Mash (live) from Hillberry 2025 - 4k - Single-cam",
+    'sbS3kh2ipkQ': "John Henry And Friends (live) from Hillberry 2025 - 4k Single-cam",
+    'r08yIarOHU4': "Alex Hawf Revue (live) from Hillberry 2025 - Full Show - 4k Multi-cam",
+    'yeyi0680Q-o': "Kansas City Bear Fighters (live) from Space Cat 2025 in Fabulous 360!",
+    'sGaLqE7swGo': "The Pickpockets (live) from Creekside Festival 2025 - 4k Single-cam",
+    'bCcbZOiq32w': "Front Porch (live) - KC Backer Party - Full Show - 4k Multi-cam - Soundboard Audio",
+    'zGZLec4CRfw': "MoonShroom (live) from Pickin' On Picknic 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
+    'EklPeX4QiMw': "The Engine Room (live) from West Church Social - Full Show - 4k Multi-cam - Soundboard Audio",
+    'lUA7Fd4chF8': "Mike Tipton & The Scoundrels (live) from Boulevard Brewing Co. - 4k Multi-cam - Soundboard Audio",
+    'RaUkKfppTIs': "Paul Cauthen (live) from Hillberry 2024 - Full Show - Single-cam - Audience Mic Audio",
+    'Cwi9jKTVhU8': "MoonShroom (live) from Winfield 2024 - Stage 5 - Single-cam",
+    'crdpHiTYcng': "MoonShroom (live) from Stage 5 2024 in Fabulous 360!",
+    '-vJyLUWFBtM': "Crying Uncle Bluegrass Band (live) from Winfield 2024 - Stage 5 - Full Set - Single-cam",
+    'Z0xwpslgi60': "Front Porch (live) from Winfield 2024 - Stage 1 - Full Set - 4k Multi-cam",
+    'WuUsgJqPnu4': "brown whörnet (live) somewhere in Austin",
 }
 
 # Video IDs to include even if title lacks "(live)"
@@ -108,7 +131,7 @@ for i in range(0, len(video_ids), 50):
     batch = ",".join(video_ids[i:i+50])
     data = api(f"videos?part=snippet,statistics&id={batch}")
     for item in data["items"]:
-        title = item["snippet"]["title"]
+        title = TITLE_TEXT_OVERRIDES.get(item["id"], item["snippet"]["title"])
         vid_id = item["id"]
         if "(live)" not in title.lower() and vid_id not in LIVE_EXCEPTIONS:
             continue
