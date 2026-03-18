@@ -17,12 +17,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=30" />
-<!-- v30 -->
+  <link rel="stylesheet" href="styles.css?v=31" />
+<!-- v31 -->
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;}).catch(function(){document.getElementById("header-placeholder").innerHTML='<nav style="padding:1rem"><a href="/">Taster Media</a></nav>';});</script>
+  <script>fetch("header.html?d="+Math.floor(Date.now()/86400000)).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;document.dispatchEvent(new Event("headerReady"));}).catch(function(){document.getElementById("header-placeholder").innerHTML='<nav style="padding:1rem"><a href="/">Taster Media</a></nav>';document.dispatchEvent(new Event("headerReady"));});</script>
   <main>
     <section class="playlist-section">
       <div id="videoCount" class="video-count"></div>
