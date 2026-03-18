@@ -70,11 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       refresh();
 
-      document.querySelectorAll(".sort-btn").forEach(function(btn){
+      // Sort buttons (date/views only)
+      document.querySelectorAll(".sort-btn:not(.type-btn)").forEach(function(btn){
         btn.addEventListener("click",function(){
           var field=btn.dataset.field;
           if(sortState.field===field){sortState.dir=sortState.dir==="desc"?"asc":"desc";}else{sortState.field=field;sortState.dir="desc";}
-          document.querySelectorAll(".sort-btn").forEach(function(b){b.classList.remove("active");b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";});
+          document.querySelectorAll(".sort-btn:not(.type-btn)").forEach(function(b){b.classList.remove("active");b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";});
           btn.classList.add("active");
           btn.textContent=(field==="date"?"📅 Date":"👁 Views")+(sortState.dir==="desc"?" ↓":" ↑");
           refresh();
