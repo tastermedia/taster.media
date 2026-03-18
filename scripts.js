@@ -85,6 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".type-btn").forEach(function(btn){
         btn.addEventListener("click",function(){
           typeFilter=btn.dataset.type;
+          // Reset sort to newest first
+          sortState={field:"date",dir:"desc"};
+          document.querySelectorAll(".sort-btn").forEach(function(b){
+            b.classList.remove("active");
+            b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";
+          });
+          document.querySelector('.sort-btn[data-field="date"]').classList.add("active");
           document.querySelectorAll(".type-btn").forEach(function(b){b.classList.remove("active");});
           btn.classList.add("active");
           refresh();
