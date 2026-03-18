@@ -28,6 +28,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 nav{display:flex;gap:6px;align-items:center;flex-shrink:0;position:absolute;right:24px;}
 .nav-contact{padding:9px 22px;border-radius:999px;background:transparent;border:1px solid #8000ff;color:#cc88ff;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.07em;text-decoration:none;transition:background 0.2s,color 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;}
 .nav-contact:hover{background:#8000ff44;color:#fff;transform:scale(1.08);box-shadow:0 0 12px #8000ff88;}
+.nav-contact-mobile{display:none;}
 .nav-link{padding:9px 22px;border-radius:999px;background:transparent;border:1px solid #8000ff;color:#cc88ff;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.07em;text-decoration:none;transition:background 0.2s,color 0.2s,transform 0.2s,box-shadow 0.2s;white-space:nowrap;}
 .nav-link:hover{background:#8000ff44;color:#fff;transform:scale(1.08);box-shadow:0 0 12px #8000ff88;}
 .nav-link.active{background:#8000ff;color:#fff;border-color:#8000ff;}
@@ -123,6 +124,7 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
   .logo{width:52px;}
   .glow-text{font-size:1.5rem;}
   nav{display:none;}
+  .nav-contact-mobile{display:inline-flex;flex-shrink:0;}
   .nav-contact{padding:6px 12px!important;font-size:0.78rem!important;}
   .header-sub{flex-direction:column;align-items:stretch;width:100%;gap:8px;padding:8px 14px;}
   .header-sub>nav{order:0;}
