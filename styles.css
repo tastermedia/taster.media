@@ -33,7 +33,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .type-buttons{display:flex;gap:6px;align-items:center;}
 
 /* ── Type + Sort buttons — override browser defaults ── */
-button.type-btn,button.sort-btn{-webkit-appearance:none!important;appearance:none!important;background-color:transparent!important;border:1px solid rgba(128,0,255,0.33)!important;color:#888!important;border-radius:999px!important;padding:5px 0!important;font-family:'Rajdhani',sans-serif!important;font-size:0.75rem!important;font-weight:600!important;letter-spacing:0.06em!important;cursor:pointer!important;transition:all 0.2s!important;white-space:nowrap!important;min-width:80px!important;text-align:center!important;}
+button.type-btn,button.sort-btn{-webkit-appearance:none!important;appearance:none!important;background-color:transparent!important;border:1px solid rgba(128,0,255,0.33)!important;color:#888!important;border-radius:999px!important;padding:5px 0!important;font-family:'Rajdhani',sans-serif!important;font-size:0.75rem!important;font-weight:600!important;letter-spacing:0.06em!important;cursor:pointer!important;transition:all 0.2s!important;white-space:nowrap!important;width:90px!important;text-align:center!important;overflow:hidden!important;}
 button.type-btn:hover,button.sort-btn:hover{border-color:#8000ff!important;color:#cc88ff!important;}
 button.type-btn.active,button.sort-btn.active{background-color:rgba(128,0,255,0.13)!important;border-color:#8000ff!important;color:#fff!important;}
 
@@ -122,7 +122,7 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
   .nav-contact{padding:6px 10px;font-size:0.78rem;white-space:nowrap;flex-shrink:0;}
   .header-sort{flex-direction:column;align-items:center;gap:4px;width:100%;}
   .sort-buttons{flex-wrap:wrap;justify-content:center;gap:5px;}
-  button.type-btn,button.sort-btn{min-width:70px!important;padding:6px 0!important;font-size:0.78rem!important;}
+  button.type-btn,button.sort-btn{width:90px!important;padding:6px 0!important;font-size:0.78rem!important;}
   .grid{padding:10px;gap:10px;grid-template-columns:1fr;}
   .video:hover{transform:none;}
   #lightbox-inner{width:98vw;}
