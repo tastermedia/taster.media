@@ -9,6 +9,9 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .header-left{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .header-sub{display:flex;align-items:center;justify-content:center;gap:16px;padding:8px 24px 10px;border-top:1px solid #8000ff22;}
 .header-search-wrap{position:relative;width:100%;max-width:500px;}
+.header-search-row{display:flex;align-items:center;gap:8px;width:100%;max-width:500px;}
+.header-search-row .header-search-wrap{flex:1;}
+.nav-contact-mobile{display:none;}
 .header-search-row{display:flex;align-items:center;gap:8px;width:100%;}
 .header-search-row .header-search-wrap{flex:1;}
 .header-search-row .nav-contact{display:inline-flex;}
