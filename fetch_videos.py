@@ -77,7 +77,7 @@ ID_DATE_OVERRIDES = {
 }
 
 # Video IDs to include even if title lacks "(live)"
-LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4'}
+LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4', 'nioEXdSpqak', 'swscjfyTW-E'}
 
 # Individual song singles to exclude (full shows only)
 EXCLUDE_IDS = {
