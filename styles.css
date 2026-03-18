@@ -9,6 +9,9 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .header-left{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .header-sub{display:flex;align-items:center;justify-content:center;gap:16px;padding:8px 24px 10px;border-top:1px solid #8000ff22;}
 .header-search-wrap{position:relative;width:100%;max-width:500px;}
+.header-search-row{display:flex;align-items:center;gap:8px;width:100%;}
+.header-search-row .header-search-wrap{flex:1;}
+.header-search-row .nav-contact{display:inline-flex;}
 .header-sort{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 
 /* ── Logo ── */
@@ -116,13 +119,16 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
   .header-left{flex:1;gap:8px;}
   .logo{width:52px;}
   .glow-text{font-size:1.5rem;}
-  nav{position:static;margin-left:auto;flex-shrink:0;}
-  .nav-contact{padding:6px 12px;font-size:0.78rem;}
-  .header-sub{flex-direction:column;align-items:center;width:100%;gap:8px;padding:8px 14px;}
-  .header-search-wrap{width:100%;max-width:100%;}
+  nav{display:none;}
+  .nav-contact{padding:6px 12px!important;font-size:0.78rem!important;}
+  .header-sub{flex-direction:column;align-items:stretch;width:100%;gap:8px;padding:8px 14px;}
+  .header-sub>nav{order:0;}
+  .header-search-row{display:flex;align-items:center;gap:8px;width:100%;}
+  .header-search-wrap{flex:1;max-width:100%;}
   .header-sort{flex-direction:column;align-items:center;gap:6px;width:100%;}
   .sort-buttons{flex-wrap:wrap;justify-content:center;gap:5px;}
-  button.type-btn,button.sort-btn{padding:7px 16px!important;font-size:0.85rem!important;}
+  button.type-btn,button.sort-btn{-webkit-appearance:none!important;appearance:none!important;background-color:transparent!important;border:1px solid rgba(128,0,255,0.33)!important;color:#888!important;border-radius:999px!important;padding:7px 14px!important;font-family:'Rajdhani',sans-serif!important;font-size:0.82rem!important;font-weight:600!important;cursor:pointer!important;}
+  button.type-btn.active,button.sort-btn.active{background-color:rgba(128,0,255,0.13)!important;border-color:#8000ff!important;color:#fff!important;}
   .grid{padding:10px;gap:10px;grid-template-columns:1fr;}
   .video:hover{transform:none;}
   #lightbox-inner{width:98vw;}
