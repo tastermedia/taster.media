@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var grid=document.getElementById("allVideosGrid");if(!grid)return;grid.innerHTML="";
     videos.forEach(function(video){
       var card=document.createElement("div");card.className="video";
-      var thumb=document.createElement("img");thumb.className="thumb";thumb.alt=video.title||"";thumb.loading=(videos.indexOf(video)<8)?"eager":"lazy";thumb.src="https://img.youtube.com/vi/"+video.id+"/hqdefault.jpg";
+      var thumb=document.createElement("img");thumb.className="thumb";thumb.alt=video.title||"";thumb.loading=(videos.indexOf(video)<8)?"eager":"lazy";var isMob=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      thumb.src="https://img.youtube.com/vi/"+video.id+(isMob?"/mqdefault.jpg":"/hqdefault.jpg");
       var play=document.createElement("div");play.className="play-icon";play.innerHTML="▶";
       card.appendChild(thumb);card.appendChild(play);
       card.addEventListener("click",function(){openLightbox(video.id);});
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  fetch("videos.json?t="+Date.now())
+  fetch("videos.json?d="+Math.floor(Date.now()/86400000))
     .then(function(r){return r.json();})
     .then(function(data){
       var allVideos=data.videos||[];
