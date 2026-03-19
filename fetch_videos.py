@@ -166,9 +166,8 @@ static_ids_to_fetch = [vid for vid in STATIC_IDS if vid not in {v["id"] for v in
 if static_ids_to_fetch:
     for i in range(0, len(static_ids_to_fetch), 50):
         chunk = static_ids_to_fetch[i:i+50]
-        sr = requests.get("https://www.googleapis.com/youtube/v3/videos",
-            params={"part":"snippet,statistics","id":",".join(chunk),"key":api_key})
-        for item in sr.json().get("items",[]):
+        static_data = api(f"videos?part=snippet,statistics&id={','.join(chunk)}&key={API_KEY}")
+        for item in static_data.get("items",[]):
             vid_id = item["id"]
             title = TITLE_TEXT_OVERRIDES.get(vid_id, item["snippet"]["title"])
             published = item["snippet"]["publishedAt"]
