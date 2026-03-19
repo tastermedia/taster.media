@@ -14,7 +14,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .header-sort{display:flex;align-items:center;justify-content:center;gap:10px;}
 
 /* ------------ Logo ------------ */
-.logo{width:200px;flex-shrink:0;animation:spinLoop 6s linear infinite;transform-origin:center center;}
+.logo{width:200px;height:200px;flex-shrink:0;animation:spinLoop 6s linear infinite;transform-origin:center center;}
 @keyframes spinLoop{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
 /* ------------ Title ------------ */
@@ -42,14 +42,14 @@ button.type-btn.active,button.sort-btn.active{background-color:rgba(128,0,255,0.
 .search-input{width:100%;height:32px;padding:0 16px;box-sizing:border-box;background:#111;border:1px solid #8000ff55;border-radius:999px;color:#fff;font-family:'Josefin Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s;}
 .search-input::placeholder{color:#555;}
 .search-input:focus{border-color:#8000ff;box-shadow:0 0 10px #8000ff44;}
-.search-results{display:none;position:fixed;left:0;right:0;width:100%;background:rgba(8,0,16,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid #8000ff55;border-bottom:1px solid #8000ff55;overflow-y:auto;max-height:50vh;z-index:500;}
-.search-results.active{display:block;}
-.search-result-item{display:flex;align-items:center;gap:12px;padding:10px 16px;cursor:pointer;border-bottom:1px solid #8000ff22;transition:background 0.15s;text-align:left;}
-.search-result-item:last-child{border-bottom:none;}
-.search-result-item:hover{background:#8000ff22;}
-.search-result-thumb{width:80px;height:45px;object-fit:cover;border-radius:6px;flex-shrink:0;}
-.search-result-title{font-size:0.82rem;color:#ddd;line-height:1.3;}
-.search-no-results{padding:16px;color:#666;font-size:0.85rem;text-align:center;}
+
+
+
+
+
+
+
+
 
 /* ------------ Video grid ------------ */
 .playlist-section{margin:0;}
@@ -129,8 +129,8 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
   .video:hover{transform:none;}
   #lightbox-inner{width:98vw;}
   .content-page{margin:36px auto;padding:0 16px;}
-  .search-result-thumb{display:none;}
-  .search-result-item{padding:14px 16px;font-size:0.95rem;}
-  .search-results{max-height:none;overflow-y:auto;}
+  
+  
+  
   .footer-links,.footer-social{flex-wrap:wrap;justify-content:center;gap:14px;}
 }
