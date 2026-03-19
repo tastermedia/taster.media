@@ -1,4 +1,4 @@
-// v21
+// v22
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var grid=document.getElementById("allVideosGrid"); if(!grid) return; grid.innerHTML="";
     videos.forEach(function(video,i) {
       var card=document.createElement("div"); card.className="video";
-      if(video.featured) card.dataset.featured="true";
+
       var thumb=document.createElement("img"); thumb.className="thumb"; thumb.alt=video.title||"";
       thumb.loading=i<8?"eager":"lazy";
       thumb.onload=function(){this.classList.add('loaded');};
@@ -153,12 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var cards=grid.querySelectorAll('.video');
       cards.forEach(function(c){ c.style.transform='translateZ(0)'; c.getBoundingClientRect(); c.style.transform=''; });
       // Hero: first card gets featured treatment
-      // Use featured video as hero if present, otherwise first card
-      var heroSet = false;
-      cards.forEach(function(c,i){
-        if(!heroSet && c.dataset && c.dataset.featured==='true'){ c.classList.add('hero-card'); heroSet=true; }
-      });
-      if(!heroSet && cards.length>0) cards[0].classList.add('hero-card');
+
       observeCards();
     });
   }
