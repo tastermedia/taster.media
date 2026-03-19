@@ -160,3 +160,7 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 
 /* ── #4 Cursor trail ── */
 #cursor-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
+
+/* ── Non-index header search replacement ── */
+.nav-back-search{padding:0 18px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;border-radius:999px;border:1px solid #8000ff55;color:#888;font-family:'Josefin Sans',sans-serif;font-size:0.82rem;letter-spacing:0.08em;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;}
+.nav-back-search:hover{border-color:#8000ff;color:#cc88ff;background:#8000ff11;}
