@@ -39,4 +39,29 @@
     </div>
   </div>
 </div>
-<script>var page=window.location.pathname.split('/').pop().replace('.html','');document.querySelectorAll('.nav-contact').forEach(function(a){if((a.dataset.page||'')===(page||'index'))a.classList.add('active');});</script>
+<script>
+var page=window.location.pathname.split('/').pop().replace('.html','');
+if(!page||page==='index') page='index';
+// Active nav state
+document.querySelectorAll('.nav-contact').forEach(function(a){
+  if((a.dataset.page||'')===(page||'index')) a.classList.add('active');
+});
+// On contact page: relabel nav button to Videos
+if(page==='contact'){
+  var nav=document.querySelector('.nav-contact');
+  if(nav){nav.textContent='← Videos';nav.href='index.html';}
+}
+// Hide sort/filter row on non-index pages
+if(page!=='index'){
+  var sortRow=document.querySelector('.header-sort');
+  if(sortRow) sortRow.style.display='none';
+  // Also hide the search bar — make it a "search" link back to index instead
+  var searchWrap=document.querySelector('.header-search-wrap');
+  if(searchWrap){
+    var fakeSearch=document.createElement('a');
+    fakeSearch.href='index.html';
+    fakeSearch.className='nav-back-search';
+    fakeSearch.textContent='🔎 Browse videos';
+    searchWrap.parentNode.replaceChild(fakeSearch,searchWrap);
+  }
+}</script>
