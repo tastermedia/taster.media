@@ -9,44 +9,121 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .radio-wrap{max-width:700px;margin:0 auto;padding:40px 20px 60px;}
-    .radio-title{font-family:'Rajdhani',sans-serif;font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:0.08em;text-align:center;margin-bottom:6px;}
-    .radio-subtitle{text-align:center;color:#666;font-family:'Josefin Sans',sans-serif;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:40px;}
-    .radio-selectors{display:flex;gap:16px;margin-bottom:32px;flex-wrap:wrap;}
-    .radio-group{flex:1;min-width:140px;}
-    .radio-group label{display:block;font-family:'Rajdhani',sans-serif;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:#8000ff;margin-bottom:8px;}
-    .radio-select{width:100%;background:#0d0020;border:1px solid #8000ff55;border-radius:10px;color:#ccc;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;padding:10px 14px;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238000ff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;transition:border-color 0.2s,box-shadow 0.2s;}
+    .radio-wrap{max-width:680px;margin:0 auto;padding:40px 20px 80px;}
+
+    /* Mode toggle */
+    .mode-toggle{display:flex;gap:0;margin-bottom:28px;border:1px solid #8000ff55;border-radius:999px;overflow:hidden;width:fit-content;margin-left:auto;margin-right:auto;}
+    .mode-btn{background:transparent;border:none;color:#666;font-family:'Rajdhani',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:7px 22px;cursor:pointer;transition:all 0.2s;}
+    .mode-btn.active{background:#8000ff22;color:#cc88ff;}
+
+    /* Selectors */
+    .radio-selectors{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+    .radio-group{flex:1;min-width:120px;}
+    .radio-group label{display:block;font-family:'Rajdhani',sans-serif;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:#8000ff;margin-bottom:6px;}
+    .radio-select{width:100%;background:#0d0020;border:1px solid #8000ff55;border-radius:10px;color:#ccc;font-family:'Josefin Sans',sans-serif;font-size:0.88rem;padding:9px 32px 9px 12px;outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238000ff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;transition:border-color 0.2s,box-shadow 0.2s;}
     .radio-select:focus,.radio-select:hover{border-color:#8000ff;box-shadow:0 0 10px #8000ff33;}
     .radio-select option{background:#0d0020;color:#ccc;}
-    .radio-player{border-radius:16px;overflow:hidden;border:1px solid #8000ff33;box-shadow:0 0 40px #8000ff22;opacity:0;transform:translateY(12px);transition:opacity 0.4s ease,transform 0.4s ease;}
+
+    /* Year range */
+    .year-range{display:flex;gap:12px;align-items:flex-end;margin-bottom:16px;}
+    .year-group{flex:1;}
+    .year-group label{display:block;font-family:'Rajdhani',sans-serif;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:#8000ff;margin-bottom:6px;}
+    .year-input{width:100%;background:#0d0020;border:1px solid #8000ff55;border-radius:10px;color:#ccc;font-family:'Josefin Sans',sans-serif;font-size:0.88rem;padding:9px 12px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;box-sizing:border-box;}
+    .year-input:focus,.year-input:hover{border-color:#8000ff;box-shadow:0 0 10px #8000ff33;}
+    .year-input::placeholder{color:#444;}
+    .year-error{font-family:'Josefin Sans',sans-serif;font-size:0.75rem;color:#ff4466;margin-top:-10px;margin-bottom:10px;min-height:18px;}
+
+    /* Genre row */
+    .genre-row{margin-bottom:20px;}
+    .genre-row label{display:block;font-family:'Rajdhani',sans-serif;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:#8000ff;margin-bottom:6px;}
+
+    /* Action buttons */
+    .radio-actions{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+    .action-btn{flex:1;min-width:100px;background:transparent;border:1px solid #8000ff55;border-radius:999px;color:#888;font-family:'Rajdhani',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:9px 16px;cursor:pointer;transition:all 0.2s;}
+    .action-btn:hover{border-color:#8000ff;color:#cc88ff;background:#8000ff11;}
+    .action-btn.primary{border-color:#8000ff;color:#cc88ff;background:#8000ff22;}
+    .action-btn.primary:hover{background:#8000ff44;color:#fff;}
+
+    /* Now playing */
+    .now-playing{text-align:center;margin-bottom:16px;min-height:20px;}
+    .now-playing-label{font-family:'Josefin Sans',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:#555;}
+    .now-playing-name{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;color:#cc88ff;letter-spacing:0.06em;}
+
+    /* Player */
+    .radio-player{border-radius:16px;overflow:hidden;border:1px solid #8000ff33;box-shadow:0 0 40px #8000ff1a;opacity:0;transform:translateY(10px);transition:opacity 0.35s ease,transform 0.35s ease;}
     .radio-player.visible{opacity:1;transform:translateY(0);}
     .radio-player iframe{display:block;width:100%;border:none;}
-    .radio-none{text-align:center;padding:60px 20px;color:#444;font-family:'Josefin Sans',sans-serif;font-size:0.85rem;letter-spacing:0.1em;}
-    @media(max-width:500px){.radio-selectors{flex-direction:column;}.radio-group{min-width:unset;}}
+    .radio-hint{text-align:center;padding:50px 20px;color:#3a3a3a;font-family:'Josefin Sans',sans-serif;font-size:0.82rem;letter-spacing:0.1em;}
+
+    .hidden{display:none!important;}
+    @media(max-width:500px){
+      .radio-selectors,.year-range,.radio-actions{flex-direction:column;}
+      .action-btn{min-width:unset;}
+    }
   </style>
 </head>
 <body>
 <div id="headerMount"></div>
 <main class="radio-wrap">
-  <div class="radio-title">Taster Radio</div>
-  <div class="radio-subtitle">Select a decade and genre</div>
-  <div class="radio-selectors">
-    <div class="radio-group">
-      <label for="decadeSelect">Decade</label>
-      <select id="decadeSelect" class="radio-select">
-        <option value="">-- Decade --</option>
-        <option value="60s">1960s</option>
-        <option value="70s">1970s</option>
-        <option value="80s">1980s</option>
-        <option value="90s">1990s</option>
-        <option value="00s">2000s</option>
-        <option value="10s">2010s</option>
-        <option value="20s">2020s</option>
-      </select>
+
+  <!-- Mode toggle -->
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="modeDecade" onclick="setMode('decade')">Decades</button>
+    <button class="mode-btn" id="modeYear" onclick="setMode('year')">Year Range</button>
+  </div>
+
+  <!-- Decade mode -->
+  <div id="decadeMode">
+    <div class="radio-selectors">
+      <div class="radio-group">
+        <label for="decadeSelect">Decade</label>
+        <select id="decadeSelect" class="radio-select">
+          <option value="">-- Decade --</option>
+          <option value="50s">1950s</option>
+          <option value="60s">1960s</option>
+          <option value="70s">1970s</option>
+          <option value="80s">1980s</option>
+          <option value="90s">1990s</option>
+          <option value="00s">2000s</option>
+          <option value="10s">2010s</option>
+          <option value="20s">2020s</option>
+        </select>
+      </div>
+      <div class="radio-group">
+        <label for="genreSelect">Genre</label>
+        <select id="genreSelect" class="radio-select">
+          <option value="">-- Genre --</option>
+          <option value="rock">Rock</option>
+          <option value="folk">Folk</option>
+          <option value="bluegrass">Bluegrass</option>
+          <option value="country">Country</option>
+          <option value="blues">Blues</option>
+          <option value="jazz">Jazz</option>
+          <option value="soul">Soul &amp; R&amp;B</option>
+          <option value="pop">Pop</option>
+          <option value="electronic">Electronic</option>
+          <option value="hiphop">Hip-Hop</option>
+        </select>
+      </div>
     </div>
-    <div class="radio-group">
-      <label for="genreSelect">Genre</label>
-      <select id="genreSelect" class="radio-select">
+  </div>
+
+  <!-- Year range mode -->
+  <div id="yearMode" class="hidden">
+    <div class="year-range">
+      <div class="year-group">
+        <label for="yearFrom">From</label>
+        <input type="number" id="yearFrom" class="year-input" placeholder="e.g. 1973" min="1950" max="2026" />
+      </div>
+      <div class="year-group">
+        <label for="yearTo">To</label>
+        <input type="number" id="yearTo" class="year-input" placeholder="e.g. 1981" min="1950" max="2026" />
+      </div>
+    </div>
+    <div class="year-error" id="yearError"></div>
+    <div class="genre-row">
+      <label for="genreSelectYear">Genre</label>
+      <select id="genreSelectYear" class="radio-select">
         <option value="">-- Genre --</option>
         <option value="rock">Rock</option>
         <option value="folk">Folk</option>
@@ -61,143 +138,231 @@
       </select>
     </div>
   </div>
+
+  <!-- Actions -->
+  <div class="radio-actions">
+    <button class="action-btn primary" onclick="play()">&#9654; Play</button>
+    <button class="action-btn" onclick="shuffle()">&#8635; Shuffle</button>
+    <button class="action-btn" onclick="lucky()">&#10024; I&apos;m Feeling Lucky</button>
+  </div>
+
+  <!-- Now playing -->
+  <div class="now-playing" id="nowPlaying" style="display:none;">
+    <div class="now-playing-label">Now Playing</div>
+    <div class="now-playing-name" id="nowPlayingName"></div>
+  </div>
+
+  <!-- Player -->
   <div id="radioPlayer" class="radio-player">
-    <div id="radioInner" class="radio-none">Choose a decade and genre above</div>
+    <div class="radio-hint">Select a genre and decade — or just hit Feeling Lucky</div>
   </div>
+
 </main>
-<footer>
-  <div class="footer-inner">
-    <p class="footer-copy">© 2026 Taster Media</p>
-  </div>
-</footer>
+<footer><div class="footer-inner"><p class="footer-copy">© 2026 Taster Media</p></div></footer>
 <script>
-// Playlist map: decade_genre -> Spotify playlist ID
-// Using official Spotify editorial + high-quality curated playlists
-var PLAYLISTS = {
+// ── Playlist map: decade_genre → [playlistId, name] ──────────────────────────
+var P = {
   // ROCK
-  '60s_rock': '37i9dQZF1DWXRqgorJj26U', // All Out 60s (mixed but rock-heavy)
-  '70s_rock': '37i9dQZF1DWTJ7xPn4vNaz', // All Out 70s
-  '80s_rock': '37i9dQZF1DX1spT6G94GFC', // All Out 80s
-  '90s_rock': '37i9dQZF1DXbbuFewYq1TVB', // All Out 90s
-  '00s_rock': '37i9dQZF1DX4o1oenSJRJd', // All Out 00s
-  '10s_rock': '37i9dQZF1DX5Ejj0EkURtP', // All Out 10s
-  '20s_rock': '37i9dQZF1DX2L0iB23Enbq', // Rock This (current)
+  '50s_rock':['37i9dQZF1DXaKIA8E7WcJj','Rock Around the Clock'],
+  '60s_rock':['37i9dQZF1DXaKIA8E7WcJj','Classic 60s Rock'],
+  '70s_rock':['37i9dQZF1DWTJ7xPn4vNaz','70s Rock Classics'],
+  '80s_rock':['37i9dQZF1DX1spT6G94GFC','80s Rock Hits'],
+  '90s_rock':['37i9dQZF1DXbbuFewYq1TVB','90s Rock'],
+  '00s_rock':['37i9dQZF1DX4o1oenSJRJd','2000s Rock'],
+  '10s_rock':['37i9dQZF1DX5Ejj0EkURtP','2010s Rock'],
+  '20s_rock':['37i9dQZF1DX2L0iB23Enbq','Rock Right Now'],
   // FOLK
-  '60s_folk': '37i9dQZF1DX6ujZpAN0v2r', // 60s folk
-  '70s_folk': '37i9dQZF1DWTkxQvqMy4WW', // 70s singer-songwriter
-  '80s_folk': '37i9dQZF1DX3oM43eGEXBb', // 80s folk
-  '90s_folk': '37i9dQZF1DXbx3HF2PaUx4', // 90s folk/alt
-  '00s_folk': '37i9dQZF1DX2SK4ytI2KAZ', // 00s indie folk
-  '10s_folk': '37i9dQZF1DX4E3UdUs7fUx', // Folk & Friends
-  '20s_folk': '37i9dQZF1DWVmps5U8gHNv', // Today's Folk
+  '50s_folk':['37i9dQZF1DX6ujZpAN0v2r','Classic Folk'],
+  '60s_folk':['0ZcdhVTeR3X95ExYBODghl','60s Folk Favorites'],
+  '70s_folk':['37i9dQZF1DWTkxQvqMy4WW','70s Singer-Songwriter'],
+  '80s_folk':['37i9dQZF1DX3oM43eGEXBb','80s Folk & Acoustic'],
+  '90s_folk':['37i9dQZF1DXbx3HF2PaUx4','90s Folk & Alt'],
+  '00s_folk':['37i9dQZF1DX2SK4ytI2KAZ','2000s Indie Folk'],
+  '10s_folk':['37i9dQZF1DX4E3UdUs7fUx','Folk & Friends'],
+  '20s_folk':['37i9dQZF1DWVmps5U8gHNv',"Today's Folk"],
   // BLUEGRASS
-  '60s_bluegrass': '37i9dQZF1DXd9zR4W9Q7bN', // Classic Bluegrass
-  '70s_bluegrass': '37i9dQZF1DXd9zR4W9Q7bN',
-  '80s_bluegrass': '37i9dQZF1DX3YSRoSdA634', // Bluegrass Classics
-  '90s_bluegrass': '37i9dQZF1DX3YSRoSdA634',
-  '00s_bluegrass': '37i9dQZF1DX3YSRoSdA634',
-  '10s_bluegrass': '37i9dQZF1DX1grx1lQX9jR', // Hot Bluegrass
-  '20s_bluegrass': '37i9dQZF1DX1grx1lQX9jR',
+  '50s_bluegrass':['37i9dQZF1DX3YSRoSdA634','Bluegrass Classics'],
+  '60s_bluegrass':['37i9dQZF1DX3YSRoSdA634','Bluegrass Classics'],
+  '70s_bluegrass':['37i9dQZF1DX3YSRoSdA634','Bluegrass Classics'],
+  '80s_bluegrass':['37i9dQZF1DX3YSRoSdA634','Bluegrass Classics'],
+  '90s_bluegrass':['37i9dQZF1DX3YSRoSdA634','Bluegrass Classics'],
+  '00s_bluegrass':['37i9dQZF1DX1grx1lQX9jR','Hot Bluegrass'],
+  '10s_bluegrass':['37i9dQZF1DX1grx1lQX9jR','Hot Bluegrass'],
+  '20s_bluegrass':['37i9dQZF1DX1grx1lQX9jR','Hot Bluegrass'],
   // COUNTRY
-  '60s_country': '37i9dQZF1DWZd79rJ6a7lp', // Classic Country
-  '70s_country': '37i9dQZF1DWYV7OOaKhoEK', // 70s Country
-  '80s_country': '37i9dQZF1DX1vSJnMeoy3V', // 80s Country
-  '90s_country': '37i9dQZF1DX13ZzIgLJMnF', // 90s Country
-  '00s_country': '37i9dQZF1DX3f0XGl8CJKZ', // 00s Country
-  '10s_country': '37i9dQZF1DX1lVhptIYRda', // Hot Country
-  '20s_country': '37i9dQZF1DX1lVhptIYRda',
+  '50s_country':['37i9dQZF1DWZd79rJ6a7lp','Classic Country'],
+  '60s_country':['37i9dQZF1DWZd79rJ6a7lp','Classic Country'],
+  '70s_country':['37i9dQZF1DWYV7OOaKhoEK','70s Country'],
+  '80s_country':['37i9dQZF1DX1vSJnMeoy3V','80s Country'],
+  '90s_country':['37i9dQZF1DX13ZzIgLJMnF','90s Country'],
+  '00s_country':['37i9dQZF1DX3f0XGl8CJKZ','2000s Country'],
+  '10s_country':['37i9dQZF1DX1lVhptIYRda','Hot Country'],
+  '20s_country':['37i9dQZF1DX1lVhptIYRda','Hot Country'],
   // BLUES
-  '60s_blues': '37i9dQZF1DXd9rSDyQguIk', // Blues Classics
-  '70s_blues': '37i9dQZF1DXd9rSDyQguIk',
-  '80s_blues': '37i9dQZF1DXd9rSDyQguIk',
-  '90s_blues': '37i9dQZF1DXd9rSDyQguIk',
-  '00s_blues': '37i9dQZF1DXd9rSDyQguIk',
-  '10s_blues': '37i9dQZF1DX4ThKuPSGpGz', // Contemporary Blues
-  '20s_blues': '37i9dQZF1DX4ThKuPSGpGz',
+  '50s_blues':['37i9dQZF1DXd9rSDyQguIk','Blues Classics'],
+  '60s_blues':['37i9dQZF1DXd9rSDyQguIk','Blues Classics'],
+  '70s_blues':['37i9dQZF1DXd9rSDyQguIk','Blues Classics'],
+  '80s_blues':['37i9dQZF1DXd9rSDyQguIk','Blues Classics'],
+  '90s_blues':['37i9dQZF1DXd9rSDyQguIk','Blues Classics'],
+  '00s_blues':['37i9dQZF1DX4ThKuPSGpGz','Contemporary Blues'],
+  '10s_blues':['37i9dQZF1DX4ThKuPSGpGz','Contemporary Blues'],
+  '20s_blues':['37i9dQZF1DX4ThKuPSGpGz','Contemporary Blues'],
   // JAZZ
-  '60s_jazz': '37i9dQZF1DX2SKuMlo7kEs', // Jazz Classics
-  '70s_jazz': '37i9dQZF1DXbHcQh43gOSM', // 70s Jazz
-  '80s_jazz': '37i9dQZF1DX4wta20PHzhA', // Smooth Jazz
-  '90s_jazz': '37i9dQZF1DX4wta20PHzhA',
-  '00s_jazz': '37i9dQZF1DX4wta20PHzhA',
-  '10s_jazz': '37i9dQZF1DXbITuG1shgrJ', // Jazz Vibes
-  '20s_jazz': '37i9dQZF1DXbITuG1shgrJ',
+  '50s_jazz':['37i9dQZF1DX2SKuMlo7kEs','Jazz Classics'],
+  '60s_jazz':['37i9dQZF1DX2SKuMlo7kEs','Jazz Classics'],
+  '70s_jazz':['37i9dQZF1DXbHcQh43gOSM','70s Jazz'],
+  '80s_jazz':['37i9dQZF1DX4wta20PHzhA','Smooth Jazz'],
+  '90s_jazz':['37i9dQZF1DX4wta20PHzhA','Smooth Jazz'],
+  '00s_jazz':['37i9dQZF1DXbITuG1shgrJ','Jazz Vibes'],
+  '10s_jazz':['37i9dQZF1DXbITuG1shgrJ','Jazz Vibes'],
+  '20s_jazz':['37i9dQZF1DXbITuG1shgrJ','Jazz Vibes'],
   // SOUL & R&B
-  '60s_soul': '37i9dQZF1DX5KpyEZsYewe', // Soul Classics
-  '70s_soul': '37i9dQZF1DWUgX5f5jUQCS', // 70s Soul
-  '80s_soul': '37i9dQZF1DX4UtSsGT1Sbe', // 80s R&B
-  '90s_soul': '37i9dQZF1DX6VDO8a6cQME', // 90s R&B
-  '00s_soul': '37i9dQZF1DX4JAvHpjipBk', // 00s R&B
-  '10s_soul': '37i9dQZF1DX4SBhb3fqCJd', // RnB Xclusive
-  '20s_soul': '37i9dQZF1DX4SBhb3fqCJd',
+  '50s_soul':['37i9dQZF1DX5KpyEZsYewe','Soul Classics'],
+  '60s_soul':['37i9dQZF1DX5KpyEZsYewe','Soul Classics'],
+  '70s_soul':['37i9dQZF1DWUgX5f5jUQCS','70s Soul'],
+  '80s_soul':['37i9dQZF1DX4UtSsGT1Sbe','80s R&B'],
+  '90s_soul':['37i9dQZF1DX6VDO8a6cQME','90s R&B'],
+  '00s_soul':['37i9dQZF1DX4JAvHpjipBk','2000s R&B'],
+  '10s_soul':['37i9dQZF1DX4SBhb3fqCJd','R&B Xclusive'],
+  '20s_soul':['37i9dQZF1DX4SBhb3fqCJd','R&B Xclusive'],
   // POP
-  '60s_pop': '37i9dQZF1DWXRqgorJj26U', // All Out 60s
-  '70s_pop': '37i9dQZF1DWTJ7xPn4vNaz', // All Out 70s
-  '80s_pop': '37i9dQZF1DX4o1oenSJRJd', // All Out 80s pop
-  '90s_pop': '37i9dQZF1DXbbuFewYq1TVB', // All Out 90s
-  '00s_pop': '37i9dQZF1DX4o1oenSJRJd', // All Out 00s
-  '10s_pop': '37i9dQZF1DX5Ejj0EkURtP', // All Out 10s
-  '20s_pop': '37i9dQZF1DXcBWIGoYBM5M', // Today's Top Hits
+  '50s_pop':['37i9dQZF1DXaKIA8E7WcJj','50s Pop Classics'],
+  '60s_pop':['37i9dQZF1DXRqgorJj26U','All Out 60s'],
+  '70s_pop':['37i9dQZF1DWTJ7xPn4vNaz','All Out 70s'],
+  '80s_pop':['37i9dQZF1DXda8J1HKgEXO','All Out 80s'],
+  '90s_pop':['37i9dQZF1DXbbuFewYq1TVB','All Out 90s'],
+  '00s_pop':['37i9dQZF1DX4o1oenSJRJd','All Out 2000s'],
+  '10s_pop':['37i9dQZF1DX5Ejj0EkURtP','All Out 2010s'],
+  '20s_pop':['37i9dQZF1DXcBWIGoYBM5M',"Today's Top Hits"],
   // ELECTRONIC
-  '60s_electronic': '37i9dQZF1DX6J5NfMJS675', // Electronic classics
-  '70s_electronic': '37i9dQZF1DX6J5NfMJS675',
-  '80s_electronic': '37i9dQZF1DX6J5NfMJS675', // 80s electro/synth
-  '90s_electronic': '37i9dQZF1DX6GwdWRQMQpq', // 90s dance/electronic
-  '00s_electronic': '37i9dQZF1DX8tZsk88tuoP', // Dance Classics
-  '10s_electronic': '37i9dQZF1DX4dyzvuaRJ0n', // Mint
-  '20s_electronic': '37i9dQZF1DX4dyzvuaRJ0n',
+  '60s_electronic':['37i9dQZF1DX6J5NfMJS675','Electronic Classics'],
+  '70s_electronic':['37i9dQZF1DX6J5NfMJS675','Electronic Classics'],
+  '80s_electronic':['37i9dQZF1DX6J5NfMJS675','80s Synth & Electronic'],
+  '90s_electronic':['37i9dQZF1DX6GwdWRQMQpq','90s Dance Classics'],
+  '00s_electronic':['37i9dQZF1DX8tZsk88tuoP','Dance Classics'],
+  '10s_electronic':['37i9dQZF1DX4dyzvuaRJ0n','Mint'],
+  '20s_electronic':['37i9dQZF1DX4dyzvuaRJ0n','Mint'],
   // HIP-HOP
-  '80s_hiphop': '37i9dQZF1DX186v583rmzp', // Old School Hip-Hop
-  '90s_hiphop': '37i9dQZF1DX186v583rmzp', // 90s Hip-Hop
-  '00s_hiphop': '37i9dQZF1DX0XUsuxWHRQd', // 00s Hip-Hop
-  '10s_hiphop': '37i9dQZF1DX2RxBh64BHjQ', // Most Necessary
-  '20s_hiphop': '37i9dQZF1DX0XUsuxWHRQd',
+  '80s_hiphop':['37i9dQZF1DX186v583rmzp','Old School Hip-Hop'],
+  '90s_hiphop':['37i9dQZF1DX186v583rmzp','90s Hip-Hop'],
+  '00s_hiphop':['37i9dQZF1DX0XUsuxWHRQd','2000s Hip-Hop'],
+  '10s_hiphop':['37i9dQZF1DX2RxBh64BHjQ','Most Necessary'],
+  '20s_hiphop':['37i9dQZF1DX2RxBh64BHjQ','Most Necessary'],
 };
 
-var decadeEl = document.getElementById('decadeSelect');
-var genreEl = document.getElementById('genreSelect');
-var playerEl = document.getElementById('radioPlayer');
-var innerEl = document.getElementById('radioInner');
-var current = null;
+var GENRES = ['rock','folk','bluegrass','country','blues','jazz','soul','pop','electronic','hiphop'];
+var DECADES = ['50s','60s','70s','80s','90s','00s','10s','20s'];
+var GENRE_NAMES = {rock:'Rock',folk:'Folk',bluegrass:'Bluegrass',country:'Country',blues:'Blues',jazz:'Jazz',soul:'Soul & R&B',pop:'Pop',electronic:'Electronic',hiphop:'Hip-Hop'};
+var DECADE_NAMES = {'50s':'1950s','60s':'1960s','70s':'1970s','80s':'1980s','90s':'1990s','00s':'2000s','10s':'2010s','20s':'2020s'};
 
-function update() {
-  var decade = decadeEl.value;
-  var genre = genreEl.value;
-  if (!decade || !genre) {
-    innerEl.innerHTML = '<div class="radio-none">Choose a decade and genre above</div>';
-    playerEl.classList.remove('visible');
-    current = null;
-    return;
-  }
-  var key = decade + '_' + genre;
-  var pid = PLAYLISTS[key];
-  if (!pid) {
-    innerEl.innerHTML = '<div class="radio-none">No playlist found for that combination — try another!</div>';
-    playerEl.classList.remove('visible');
-    current = null;
-    return;
-  }
-  if (pid === current) return;
-  current = pid;
-  playerEl.classList.remove('visible');
-  setTimeout(function() {
-    innerEl.innerHTML = '<iframe src="https://open.spotify.com/embed/playlist/' + pid + '?utm_source=generator&theme=0" width="100%" height="380" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
-    playerEl.classList.add('visible');
-  }, 200);
+var currentMode = 'decade';
+var currentPid = null;
+
+function setMode(m) {
+  currentMode = m;
+  document.getElementById('modeDecade').classList.toggle('active', m==='decade');
+  document.getElementById('modeYear').classList.toggle('active', m==='year');
+  document.getElementById('decadeMode').classList.toggle('hidden', m!=='decade');
+  document.getElementById('yearMode').classList.toggle('hidden', m!=='year');
+  document.getElementById('yearError').textContent = '';
 }
 
-decadeEl.addEventListener('change', update);
-genreEl.addEventListener('change', update);
+function yearToDecade(y) {
+  if (y < 1950) return '50s';
+  if (y < 1960) return '50s';
+  if (y < 1970) return '60s';
+  if (y < 1980) return '70s';
+  if (y < 1990) return '80s';
+  if (y < 2000) return '90s';
+  if (y < 2010) return '00s';
+  if (y < 2020) return '10s';
+  return '20s';
+}
+
+function getPlaylist(decade, genre) {
+  var key = decade + '_' + genre;
+  return P[key] || null;
+}
+
+function loadPlayer(pid, name) {
+  if (pid === currentPid) return;
+  currentPid = pid;
+  var player = document.getElementById('radioPlayer');
+  var nowPlaying = document.getElementById('nowPlaying');
+  var nowName = document.getElementById('nowPlayingName');
+  player.classList.remove('visible');
+  setTimeout(function() {
+    player.innerHTML = '<iframe src="https://open.spotify.com/embed/playlist/' + pid + '?utm_source=generator&theme=0" width="100%" height="400" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';
+    player.classList.add('visible');
+    nowName.textContent = name;
+    nowPlaying.style.display = 'block';
+  }, 220);
+}
+
+function play() {
+  if (currentMode === 'decade') {
+    var decade = document.getElementById('decadeSelect').value;
+    var genre = document.getElementById('genreSelect').value;
+    if (!decade || !genre) { alert('Please select a decade and genre.'); return; }
+    var pl = getPlaylist(decade, genre);
+    if (!pl) { alert('No playlist for that combo yet — try Shuffle!'); return; }
+    loadPlayer(pl[0], DECADE_NAMES[decade] + ' • ' + GENRE_NAMES[genre] + ' — ' + pl[1]);
+  } else {
+    var from = parseInt(document.getElementById('yearFrom').value);
+    var to = parseInt(document.getElementById('yearTo').value);
+    var errEl = document.getElementById('yearError');
+    var genre2 = document.getElementById('genreSelectYear').value;
+    errEl.textContent = '';
+    if (!from || !to) { errEl.textContent = 'Enter both a start and end year.'; return; }
+    if (from > to) { errEl.textContent = 'Start year must be before end year.'; return; }
+    if (from < 1950 || to > 2026) { errEl.textContent = 'Years must be between 1950 and 2026.'; return; }
+    if (!genre2) { errEl.textContent = 'Pick a genre.'; return; }
+    // Find the dominant decade (midpoint)
+    var mid = Math.round((from + to) / 2);
+    var decade2 = yearToDecade(mid);
+    var pl2 = getPlaylist(decade2, genre2);
+    if (!pl2) { errEl.textContent = 'No playlist for that combo yet.'; return; }
+    var span = from === to ? from : from + '–' + to;
+    loadPlayer(pl2[0], span + ' • ' + GENRE_NAMES[genre2] + ' — ' + pl2[1]);
+  }
+}
+
+function shuffle() {
+  // Pick a random valid combo
+  var keys = Object.keys(P);
+  var key = keys[Math.floor(Math.random() * keys.length)];
+  var parts = key.split('_');
+  var decade = parts[0], genre = parts[1];
+  var pl = P[key];
+  // Set the UI to match
+  if (currentMode === 'decade') {
+    document.getElementById('decadeSelect').value = decade;
+    document.getElementById('genreSelect').value = genre;
+  }
+  currentPid = null;
+  loadPlayer(pl[0], DECADE_NAMES[decade] + ' • ' + GENRE_NAMES[genre] + ' — ' + pl[1]);
+}
+
+function lucky() {
+  // Fully randomize — switch to decade mode, pick random
+  setMode('decade');
+  var keys = Object.keys(P);
+  var key = keys[Math.floor(Math.random() * keys.length)];
+  var parts = key.split('_');
+  var decade = parts[0], genre = parts[1];
+  document.getElementById('decadeSelect').value = decade;
+  document.getElementById('genreSelect').value = genre;
+  currentPid = null;
+  var pl = P[key];
+  loadPlayer(pl[0], DECADE_NAMES[decade] + ' • ' + GENRE_NAMES[genre] + ' — ' + pl[1]);
+}
 </script>
 <script>
-// Load header
 fetch('header.html').then(function(r){return r.text();}).then(function(h){
   document.getElementById('headerMount').innerHTML=h;
   document.dispatchEvent(new Event('headerReady'));
-  // Set active nav
   document.querySelectorAll('.nav-contact').forEach(function(a){a.classList.remove('active');});
 });
-// SW
 if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}
 </script>
 </body>
