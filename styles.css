@@ -14,7 +14,7 @@ body{font-family:'Josefin Sans',sans-serif;background:#000;color:#fff;text-align
 .header-sort{display:flex;align-items:center;justify-content:center;gap:10px;}
 
 /* ------------ Logo ------------ */
-.logo{width:200px;height:200px;flex-shrink:0;animation:spinLoop 6s linear infinite;transform-origin:center center;}
+.logo{width:200px;height:200px;aspect-ratio:1/1;flex-shrink:0;animation:spinLoop 6s linear infinite;transform-origin:center center;}
 @keyframes spinLoop{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
 /* ------------ Title ------------ */
@@ -115,6 +115,7 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 /* ------------ Mobile ------------ */
 @media(max-width:600px){
   .sort-sep{display:none;}
+  .logo{width:100px;height:100px;}
   .header-container{padding:6px 12px;}
   .header-left{gap:6px;}
   .logo{width:48px;}
