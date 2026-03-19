@@ -21,7 +21,7 @@
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;}).catch(function(){document.getElementById("header-placeholder").innerHTML='<nav style="padding:1rem"><a href="/">Taster Media</a></nav>';});</script>
+  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;;var hs=document.querySelector('.header-sort');if(hs)hs.style.display='none';var sw=document.querySelector('.header-search-wrap');if(sw){var lnk=document.createElement('a');lnk.href='index.html';lnk.className='nav-back-search';lnk.textContent='🔎 Browse videos';sw.parentNode.replaceChild(lnk,sw);}var nav=document.querySelector('.nav-contact');if(nav){nav.textContent='← Videos';nav.href='index.html';}}).catch(function(){document.getElementById("header-placeholder").innerHTML='<nav style="padding:1rem"><a href="/">Taster Media</a></nav>';});</script>
   <main>
     <section class="playlist-section">
       <div id="videoCount" class="video-count"></div>
