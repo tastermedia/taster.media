@@ -1,4 +1,4 @@
-// v15
+// v16
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inner.animate([
       {transform: 'scale('+startScale+')', opacity: 0},
       {transform: 'scale(1)', opacity: 1}
-    ], {duration: 380, easing: 'cubic-bezier(0.22,1,0.36,1)', fill: 'forwards'});
+    ], {duration: 500, easing: 'cubic-bezier(0.22,1,0.36,1)', fill: 'forwards'});
   }
 
   function closeLightbox() {
