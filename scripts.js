@@ -1,4 +1,4 @@
-// v11
+// v12
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -115,8 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       if(document.querySelector('.type-btn')){
         initButtons();
+        resetSortBtns(sortState);
       } else {
-        document.addEventListener("headerReady", function(){initButtons();}, {once:true});
+        document.addEventListener("headerReady", function(){initButtons();resetSortBtns(sortState);}, {once:true});
       }
     })
     .catch(function(){var grid=document.getElementById("allVideosGrid");if(grid)grid.innerHTML='<p style="color:#888;padding:40px">Video archive loading...</p>';});
