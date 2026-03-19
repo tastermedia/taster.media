@@ -193,3 +193,26 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 #lightbox-next{right:-60px;}
 #lightbox-prev:hover,#lightbox-next:hover{opacity:1;background:#8000ff33;box-shadow:0 0 16px #8000ff44;}
 @media(max-width:900px){#lightbox-prev,#lightbox-next{display:none;}}
+
+/* ── #1 Artist filter link ── */
+.artist-link{cursor:pointer;transition:color 0.15s;}
+.artist-link:hover{color:#fff;text-decoration:underline;text-decoration-color:#8000ff55;}
+
+/* ── #2 View count + date meta ── */
+.video-meta{font-family:'Josefin Sans',sans-serif;font-size:0.68rem;color:#555;letter-spacing:0.08em;text-align:center;margin-top:3px;}
+
+/* ── #2 Hover info panel ── */
+.hover-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(8,0,16,0.97) 0%,rgba(8,0,16,0.85) 70%,transparent 100%);padding:32px 12px 12px;transform:translateY(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);border-radius:0 0 10px 10px;pointer-events:none;}
+.video:hover .hover-info{transform:translateY(0);}
+.hover-title{font-family:'Josefin Sans',sans-serif;font-size:0.75rem;color:#ddd;line-height:1.4;margin-bottom:4px;}
+.hover-views{font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#8000ff;font-weight:600;letter-spacing:0.1em;}
+
+/* ── #5 Hero card ── */
+.hero-card{grid-column:span 2;position:relative;}
+.hero-card .thumb{aspect-ratio:16/9;}
+.hero-card .video-artist{font-size:1.3rem;}
+.hero-card .video-venue{font-size:0.82rem;}
+.hero-card::before{content:'LATEST';position:absolute;top:12px;left:12px;background:#8000ff;color:#fff;font-family:'Rajdhani',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.18em;padding:3px 10px;border-radius:999px;z-index:3;}
+.hero-card .hover-info{padding:48px 20px 20px;}
+.hero-card .hover-title{font-size:0.9rem;}
+@media(max-width:600px){.hero-card{grid-column:span 1;}}
