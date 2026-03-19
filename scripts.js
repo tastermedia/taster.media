@@ -1,4 +1,4 @@
-// v18
+// v19
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -146,6 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       function refresh(){ var filtered=getFiltered(); buildGrid(getSorted(filtered)); updateCount(filtered.length); }
       refresh();
+
+      // Pre-fill search from URL param e.g. index.html?q=front+porch
+      (function(){
+        var params=new URLSearchParams(window.location.search);
+        var q=params.get('q');
+        if(q){
+          searchQuery=q.toLowerCase();
+          var input=document.getElementById('searchInput');
+          if(input) input.value=q;
+          refresh();
+        }
+      })();
 
       function initButtons() {
         document.querySelectorAll(".sort-btn").forEach(function(btn){
