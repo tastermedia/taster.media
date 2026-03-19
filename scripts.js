@@ -1,17 +1,26 @@
-// v19
+// v20
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
-  overlay.innerHTML = '<div id="lightbox-inner"><button id="lightbox-close">✕</button><iframe id="lightbox-iframe" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
+  overlay.innerHTML = '<div id="lightbox-inner"><button id="lightbox-close">✕</button><div id="lightbox-title"></div><button id="lightbox-prev">‹</button><button id="lightbox-next">›</button><iframe id="lightbox-iframe" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
   document.body.appendChild(overlay);
   var iframe = document.getElementById("lightbox-iframe");
+  var lbTitle = null, lbPrev = null, lbNext = null;
+  var currentVideoId = null, currentSortedList = [];
   var inner = document.getElementById("lightbox-inner");
   var isMob = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  function openLightbox(id, cardEl) {
+  function openLightbox(id, cardEl, title) {
     if (isMob) {
       var a=document.createElement('a');a.href="https://www.youtube.com/watch?v="+id;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();document.body.removeChild(a);return;
     }
+    currentVideoId = id;
+    if (!lbTitle) lbTitle = document.getElementById('lightbox-title');
+    if (!lbPrev) { lbPrev = document.getElementById('lightbox-prev'); lbPrev.addEventListener('click', function(){ navLightbox(-1); }); }
+    if (!lbNext) { lbNext = document.getElementById('lightbox-next'); lbNext.addEventListener('click', function(){ navLightbox(1); }); }
+    if (lbTitle) lbTitle.textContent = title || '';
+    // Update URL hash for deep linking
+    if (history.replaceState) history.replaceState(null,'','#v='+id);
     iframe.src="https://www.youtube.com/embed/"+id+"?rel=0&autoplay=1";
     overlay.classList.add("active");
     document.body.style.overflow="hidden";
@@ -39,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function closeLightbox() {
+    if (history.replaceState) history.replaceState(null,'',window.location.pathname+window.location.search);
+    currentVideoId = null;
     overlay.classList.add("closing");
     // Reverse the open animation back to origin
     inner.animate([
@@ -53,9 +64,29 @@ document.addEventListener("DOMContentLoaded", function () {
       };
   }
 
+  function navLightbox(dir) {
+    if (!currentVideoId || !currentSortedList.length) return;
+    var idx = currentSortedList.findIndex(function(v){ return v.id===currentVideoId; });
+    if (idx === -1) return;
+    var next = currentSortedList[idx + dir];
+    if (!next) return;
+    currentVideoId = null; // allow re-open
+    // Find the card element for animation origin
+    var cards = document.querySelectorAll('.video');
+    var nextCard = null;
+    cards.forEach(function(c,i){ if(currentSortedList[idx+dir] && i===(idx+dir)) nextCard=c; });
+    if (history.replaceState) history.replaceState(null,'','#v='+next.id);
+    if (lbTitle) lbTitle.textContent = next.title || '';
+    currentVideoId = next.id;
+    iframe.src = "https://www.youtube.com/embed/"+next.id+"?rel=0&autoplay=1";
+  }
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   overlay.addEventListener("click", function(e){ if(e.target===overlay) closeLightbox(); });
-  document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeLightbox(); });
+  document.addEventListener("keydown", function(e){
+    if(e.key==="Escape") closeLightbox();
+    if(e.key==="ArrowLeft" && overlay.classList.contains("active")) navLightbox(-1);
+    if(e.key==="ArrowRight" && overlay.classList.contains("active")) navLightbox(1);
+  });
 
   // Intersection observer for card entrance animation
   var _observer = null;
@@ -80,10 +111,14 @@ document.addEventListener("DOMContentLoaded", function () {
       thumb.src="https://img.youtube.com/vi/"+video.id+(isMob?"/mqdefault.jpg":"/hqdefault.jpg");
       var play=document.createElement("div"); play.className="play-icon"; play.innerHTML="▶";
       card.appendChild(thumb); card.appendChild(play);
-      card.addEventListener("click", function(){ openLightbox(video.id, card); });
+      card.addEventListener("click", function(){ openLightbox(video.id, card, video.title); });
       var info=document.createElement("div"); info.className="video-info";
-      var title=document.createElement("p"); title.className="video-title"; title.textContent=video.title||"";
-      info.appendChild(title); card.appendChild(info); grid.appendChild(card);
+      var pt=parseTitle(video.title||"");
+      var ae=document.createElement("div"); ae.className="video-artist"; ae.textContent=pt.artist;
+      var ve=document.createElement("div"); ve.className="video-venue"; ve.textContent=(pt.venue?pt.venue+' • ':'')+pt.details;
+      var te=document.createElement("p"); te.className="video-title"; te.textContent=video.title||"";
+      info.appendChild(ae); info.appendChild(ve); info.appendChild(te);
+      card.appendChild(info); grid.appendChild(card);
     });
     requestAnimationFrame(function(){
       grid.querySelectorAll('.video').forEach(function(c){ c.style.transform='translateZ(0)'; c.getBoundingClientRect(); c.style.transform=''; });
@@ -98,6 +133,16 @@ document.addEventListener("DOMContentLoaded", function () {
     var t=(v.title||'').toLowerCase();
     if(t.includes('single-cam')) return 'single';
     return 'multi';
+  }
+  function parseTitle(raw) {
+    var artist='',venue='',details='';
+    var lm=raw.match(/^(.+?)\s*\(live\)/i);
+    artist=lm?lm[1].trim():raw.split(' - ')[0];
+    var fm=raw.match(/from\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
+    if(fm) venue=fm[1].trim();
+    var di=raw.indexOf(' - ');
+    if(di>-1) details=raw.slice(di+3);
+    return {artist:artist,venue:venue,details:details};
   }
 
   function resetSortBtns(sortState) {
@@ -144,7 +189,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      function refresh(){ var filtered=getFiltered(); buildGrid(getSorted(filtered)); updateCount(filtered.length); }
+      function refresh(){
+        var filtered=getFiltered(),sorted=getSorted(filtered);
+        currentSortedList = sorted;
+        if(!sorted.length){
+          var g=document.getElementById("allVideosGrid");
+          if(g) g.innerHTML='<div class="no-results"><div class="no-results-icon">🎵</div><div class="no-results-text">No videos found</div><div class="no-results-sub">'+(searchQuery?'No results for “'+searchQuery+'”':'No videos match that filter')+'</div><button class="no-results-clear" onclick="clearAll()">Clear filters</button></div>';
+          updateCount(0);
+        } else { buildGrid(sorted); updateCount(filtered.length); }
+      }
       refresh();
 
       // Pre-fill search from URL param e.g. index.html?q=front+porch
@@ -158,7 +211,23 @@ document.addEventListener("DOMContentLoaded", function () {
           refresh();
         }
       })();
+      // Deep link: open video from URL hash #v=videoId
+      (function(){
+        var hash=window.location.hash;
+        var m=hash.match(/#v=([\w-]+)/);
+        if(m){
+          var vid=allVideos.find(function(v){return v.id===m[1];});
+          if(vid) setTimeout(function(){ openLightbox(vid.id, null, vid.title); }, 400);
+        }
+      })();
 
+      window.clearAll=function(){
+        searchQuery="";typeFilter="all";
+        var inp=document.getElementById('searchInput');if(inp) inp.value='';
+        document.querySelectorAll('.type-btn').forEach(function(b){b.classList.remove('active');});
+        var ab=document.querySelector('.type-btn[data-type="all"]');if(ab) ab.classList.add('active');
+        refresh();
+      };
       function initButtons() {
         document.querySelectorAll(".sort-btn").forEach(function(btn){
           btn.addEventListener("click", function(){
