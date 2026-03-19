@@ -1,4 +1,4 @@
-// v10
+// v11
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function resetSortBtns(sortState){
     document.querySelectorAll(".sort-btn").forEach(function(b){
       b.classList.remove("active");
-      b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";
+      b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views");
     });
     var active=document.querySelector('.sort-btn[data-field="'+sortState.field+'"]');
     if(active){active.classList.add("active");active.textContent=(sortState.field==="date"?"📅 Date":"👁 Views")+" "+(sortState.dir==="desc"?"↓":"↑");}
