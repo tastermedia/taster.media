@@ -207,12 +207,3 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 .hover-title{font-family:'Josefin Sans',sans-serif;font-size:0.75rem;color:#ddd;line-height:1.4;margin-bottom:4px;}
 .hover-views{font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#8000ff;font-weight:600;letter-spacing:0.1em;}
 
-/* ── #5 Hero card ── */
-.hero-card{grid-column:span 2;position:relative;}
-.hero-card .thumb{aspect-ratio:16/9;}
-.hero-card .video-artist{font-size:1.3rem;}
-.hero-card .video-venue{font-size:0.82rem;}
-.hero-card::before{content:'LATEST';position:absolute;top:12px;left:12px;background:#8000ff;color:#fff;font-family:'Rajdhani',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.18em;padding:3px 10px;border-radius:999px;z-index:3;}
-.hero-card .hover-info{padding:48px 20px 20px;}
-.hero-card .hover-title{font-size:0.9rem;}
-@media(max-width:600px){.hero-card{grid-column:span 1;}}
