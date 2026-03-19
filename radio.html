@@ -63,7 +63,6 @@
   </style>
 </head>
 <body>
-<div id="headerMount"></div>
 <main class="radio-wrap">
 
   <!-- Mode toggle -->
@@ -358,11 +357,6 @@ function lucky() {
 }
 </script>
 <script>
-fetch('header.html').then(function(r){return r.text();}).then(function(h){
-  document.getElementById('headerMount').innerHTML=h;
-  document.dispatchEvent(new Event('headerReady'));
-  document.querySelectorAll('.nav-contact').forEach(function(a){a.classList.remove('active');});
-});
 if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js');}
 </script>
 </body>
