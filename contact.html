@@ -17,7 +17,7 @@
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;}).catch(console.error);</script>
+  <script>fetch("header.html?t="+Date.now()).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;var hs=document.querySelector('.header-sort');if(hs)hs.style.display='none';var sw=document.querySelector('.header-search-wrap');if(sw){var lnk=document.createElement('a');lnk.href='index.html';lnk.className='nav-back-search';lnk.textContent='🔎 Browse videos';sw.parentNode.replaceChild(lnk,sw);}var nav=document.querySelector('.nav-contact');if(nav){nav.textContent='← Videos';nav.href='index.html';};}).catch(console.error);</script>
   <main class="content-page">
     <a href="mailto:taster@taster.media" class="contact-button">📩 taster@taster.media</a>
     <div class="social-links">
