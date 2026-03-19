@@ -102,6 +102,19 @@ TITLE_TEXT_OVERRIDES = {
 # Video IDs to include even if title lacks "(live)"
 LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4', 'nioEXdSpqak', 'swscjfyTW-E'}
 
+# Unlisted videos not returned by channel API — fetched individually every run
+STATIC_IDS = {
+    'oi1ZsaFGDDc': ('2025-11-23T00:00:00+00:00', '4k'),  # Front Porch from Lucia Nov 2025
+    '4mS8xtfxbLE': ('2025-08-30T00:00:00+00:00', '4k'),  # Front Porch from Cervantes
+    '0Jprv8XmSx8': ('2025-08-27T00:00:00+00:00', '4k'),  # Front Porch from Crow Peak Brewing Co.
+    'zzmkJFJe_Y4': ('2025-08-26T00:00:00+00:00', '4k'),  # Front Porch from Blue Goose Stage
+    'eccWVQe5yAE': ('2025-08-15T00:00:00+00:00', '360'), # Front Porch KC Backer Party 360
+    'bCcbZOiq32w': ('2025-08-15T00:00:00+00:00', '4k'),  # Front Porch KC Backer Party Full Show
+    'nioEXdSpqak': ('2025-07-19T00:00:00+00:00', '4k'),  # Front Porch from Lemonade Park
+    'swscjfyTW-E': ('2025-06-21T00:00:00+00:00', '4k'),  # Front Porch from Survivor's Ball
+    'bsQkyVYA8I8': ('2025-04-25T00:00:00+00:00', '4k'),  # Front Porch from Stockyards Brewing Co.
+}
+
 # Individual song singles to exclude (full shows only)
 EXCLUDE_IDS = {
     'sa-t5mE_lH8',  # Front Porch - Great Grandaddy's Barn
@@ -147,6 +160,21 @@ for i in range(0, len(video_ids), 50):
             continue
         show_date = apply_title_overrides(title) or parse_show_date(desc, pub_dt) or parse_show_date(title, pub_dt) or published
         videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":show_date,"type":"360" if is_360(title) else "4k"})
+
+# Fetch unlisted videos by ID and merge in
+static_ids_to_fetch = [vid for vid in STATIC_IDS if vid not in {v["id"] for v in videos}]
+if static_ids_to_fetch:
+    for i in range(0, len(static_ids_to_fetch), 50):
+        chunk = static_ids_to_fetch[i:i+50]
+        sr = requests.get("https://www.googleapis.com/youtube/v3/videos",
+            params={"part":"snippet,statistics","id":",".join(chunk),"key":api_key})
+        for item in sr.json().get("items",[]):
+            vid_id = item["id"]
+            title = TITLE_TEXT_OVERRIDES.get(vid_id, item["snippet"]["title"])
+            published = item["snippet"]["publishedAt"]
+            views = int(item["statistics"].get("viewCount",0))
+            show_date, vid_type = STATIC_IDS[vid_id]
+            videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":show_date,"type":vid_type})
 
 videos.sort(key=lambda v: v["show_date"], reverse=True)
 
