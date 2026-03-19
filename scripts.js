@@ -1,4 +1,4 @@
-// v20
+// v21
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var grid=document.getElementById("allVideosGrid"); if(!grid) return; grid.innerHTML="";
     videos.forEach(function(video,i) {
       var card=document.createElement("div"); card.className="video";
+      if(video.featured) card.dataset.featured="true";
       var thumb=document.createElement("img"); thumb.className="thumb"; thumb.alt=video.title||"";
       thumb.loading=i<8?"eager":"lazy";
       thumb.onload=function(){this.classList.add('loaded');};
@@ -112,16 +113,52 @@ document.addEventListener("DOMContentLoaded", function () {
       var play=document.createElement("div"); play.className="play-icon"; play.innerHTML="▶";
       card.appendChild(thumb); card.appendChild(play);
       card.addEventListener("click", function(){ openLightbox(video.id, card, video.title); });
+      // Hover info overlay
+      var hoverInfo=document.createElement("div"); hoverInfo.className="hover-info";
+      var hoverTitle=document.createElement("div"); hoverTitle.className="hover-title"; hoverTitle.textContent=video.title||"";
+      var hoverViews=document.createElement("div"); hoverViews.className="hover-views";
+      var hv=video.views||0;
+      hoverViews.textContent=(hv>999999?(Math.round(hv/100000)/10)+'M':hv>999?(Math.round(hv/100)/10)+'K':hv)+' views';
+      hoverInfo.appendChild(hoverTitle); hoverInfo.appendChild(hoverViews);
+      card.appendChild(hoverInfo);
       var info=document.createElement("div"); info.className="video-info";
       var pt=parseTitle(video.title||"");
-      var ae=document.createElement("div"); ae.className="video-artist"; ae.textContent=pt.artist;
+      var ae=document.createElement("div"); ae.className="video-artist";
+      var artistLink=document.createElement("span"); artistLink.className="artist-link"; artistLink.textContent=pt.artist;
+      artistLink.addEventListener("click",function(e){
+        e.stopPropagation();
+        typeFilter="all";
+        searchQuery=pt.artist.toLowerCase();
+        var inp=document.getElementById('searchInput');if(inp) inp.value=pt.artist;
+        document.querySelectorAll('.type-btn').forEach(function(b){b.classList.remove('active');});
+        var ab=document.querySelector('.type-btn[data-type="all"]');if(ab) ab.classList.add('active');
+        refresh();
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+      ae.appendChild(artistLink);
       var ve=document.createElement("div"); ve.className="video-venue"; ve.textContent=(pt.venue?pt.venue+' • ':'')+pt.details;
       var te=document.createElement("p"); te.className="video-title"; te.textContent=video.title||"";
-      info.appendChild(ae); info.appendChild(ve); info.appendChild(te);
+      // View count + date badge
+      var metaEl=document.createElement("div"); metaEl.className="video-meta";
+      var views=video.views||0;
+      var viewStr=views>999999?(Math.round(views/100000)/10)+'M views':views>999?(Math.round(views/100)/10)+'K views':views+' views';
+      var showDate=video.show_date||video.published||'';
+      var dateStr='';
+      if(showDate){var d=new Date(showDate);dateStr=d.toLocaleDateString('en-US',{month:'short',year:'numeric'});}
+      metaEl.textContent=(dateStr?dateStr+' • ':'')+viewStr;
+      info.appendChild(ae); info.appendChild(ve); info.appendChild(metaEl); info.appendChild(te);
       card.appendChild(info); grid.appendChild(card);
     });
     requestAnimationFrame(function(){
-      grid.querySelectorAll('.video').forEach(function(c){ c.style.transform='translateZ(0)'; c.getBoundingClientRect(); c.style.transform=''; });
+      var cards=grid.querySelectorAll('.video');
+      cards.forEach(function(c){ c.style.transform='translateZ(0)'; c.getBoundingClientRect(); c.style.transform=''; });
+      // Hero: first card gets featured treatment
+      // Use featured video as hero if present, otherwise first card
+      var heroSet = false;
+      cards.forEach(function(c,i){
+        if(!heroSet && c.dataset && c.dataset.featured==='true'){ c.classList.add('hero-card'); heroSet=true; }
+      });
+      if(!heroSet && cards.length>0) cards[0].classList.add('hero-card');
       observeCards();
     });
   }
