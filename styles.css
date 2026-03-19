@@ -164,3 +164,32 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 /* ── Non-index header search replacement ── */
 .nav-back-search{padding:0 18px;height:32px;box-sizing:border-box;display:inline-flex;align-items:center;border-radius:999px;border:1px solid #8000ff55;color:#888;font-family:'Josefin Sans',sans-serif;font-size:0.82rem;letter-spacing:0.08em;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;}
 .nav-back-search:hover{border-color:#8000ff;color:#cc88ff;background:#8000ff11;}
+
+/* ── #2 Scroll-to-top button ── */
+#scrollTopBtn{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:999px;background:#0d0020;border:1px solid #8000ff;color:#cc88ff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s,transform 0.2s,box-shadow 0.2s;box-shadow:0 0 12px #8000ff44;z-index:500;}
+#scrollTopBtn:hover{transform:scale(1.12);box-shadow:0 0 20px #8000ff,0 0 40px #ff00ff44;}
+
+/* ── #7 Artist name styling ── */
+.video-artist{font-family:'Rajdhani',sans-serif;font-size:0.95rem;font-weight:700;color:#cc88ff;letter-spacing:0.04em;margin-bottom:2px;text-align:center;}
+.video-venue{font-family:'Josefin Sans',sans-serif;font-size:0.72rem;color:#666;letter-spacing:0.06em;text-align:center;line-height:1.3;}
+.video-info{padding:10px 12px 12px;text-align:center;flex:1;}
+.video-title{display:none;}
+
+/* ── #8 No results state ── */
+.no-results{text-align:center;padding:80px 20px;color:#444;}
+.no-results-icon{font-size:3rem;margin-bottom:16px;opacity:0.4;}
+.no-results-text{font-family:'Rajdhani',sans-serif;font-size:1.4rem;color:#666;letter-spacing:0.08em;}
+.no-results-sub{font-family:'Josefin Sans',sans-serif;font-size:0.8rem;color:#444;margin-top:8px;letter-spacing:0.1em;}
+.no-results-clear{margin-top:20px;background:transparent;border:1px solid #8000ff55;border-radius:999px;color:#888;font-family:'Rajdhani',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.1em;padding:8px 24px;cursor:pointer;transition:all 0.2s;}
+.no-results-clear:hover{border-color:#8000ff;color:#cc88ff;background:#8000ff11;}
+
+/* ── #9 Lightbox title ── */
+#lightbox-title{position:absolute;bottom:calc(100% + 10px);left:0;right:0;text-align:center;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;color:#cc88ff;letter-spacing:0.06em;opacity:0.9;pointer-events:none;text-shadow:0 0 20px #8000ff88;}
+
+/* ── #5 Meta description (handled in index.html) ── */
+/* ── #3 Keyboard nav cursor hints ── */
+#lightbox-prev,#lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(128,0,255,0.15);border:1px solid #8000ff44;border-radius:999px;color:#cc88ff;font-size:1.4rem;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;opacity:0.6;}
+#lightbox-prev{left:-60px;}
+#lightbox-next{right:-60px;}
+#lightbox-prev:hover,#lightbox-next:hover{opacity:1;background:#8000ff33;box-shadow:0 0 16px #8000ff44;}
+@media(max-width:900px){#lightbox-prev,#lightbox-next{display:none;}}
