@@ -1,4 +1,4 @@
-// v12
+// v13
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getVideoType(v){
     if(v.type==='360')return '360';
     var t=(v.title||'').toLowerCase();
-    if(t.includes('single cam')||t.includes('single-cam'))return 'single';
+    if(t.includes('single-cam'))return 'single';
     return 'multi';
   }
   function resetSortBtns(sortState){
@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var sortState={field:"date",dir:"desc"};
       var searchQuery="";
       var typeFilter="all";
+      var searchTimer=null;
       function getSorted(videos){
         return videos.slice().sort(function(a,b){
           if(sortState.field==="date"){var da=a.show_date||a.published,db=b.show_date||b.published;return sortState.dir==="desc"?(db>da?1:-1):(da>db?1:-1);}
@@ -90,34 +91,25 @@ document.addEventListener("DOMContentLoaded", function () {
             refresh();
           });
         });
-        var input=document.getElementById("searchInput"),results=document.getElementById("searchResults");
+        var input=document.getElementById("searchInput");
         if(input){
           input.addEventListener("input",function(){
-            searchQuery=this.value.trim().toLowerCase();refresh();
-            if(results){
-              results.innerHTML="";
-              if(searchQuery.length<2){results.classList.remove("active");return;}
-              var matches=allVideos.filter(function(v){return v.title.toLowerCase().indexOf(searchQuery)!==-1;}).slice(0,8);
-              if(!matches.length){results.innerHTML='<div class="search-no-results">No results found</div>';results.classList.add("active");return;}
-              matches.forEach(function(v){
-                var item=document.createElement("div");item.className="search-result-item";
-                if(isMob){item.innerHTML='<span class="search-result-title">'+v.title+'</span>';}
-                else{item.innerHTML='<img class="search-result-thumb" src="https://img.youtube.com/vi/'+v.id+'/mqdefault.jpg" loading="lazy"><span class="search-result-title">'+v.title+'</span>';}
-                item.addEventListener("click",function(){openLightbox(v.id);input.value="";searchQuery="";results.classList.remove("active");refresh();});
-                results.appendChild(item);
-              });
-              results.classList.add("active");
-            }
+            clearTimeout(searchTimer);
+            searchTimer=setTimeout(function(){
+              searchQuery=input.value.trim().toLowerCase();
+              refresh();
+            },150);
           });
-          input.addEventListener("keydown",function(e){if(e.key==="Escape"){input.value="";searchQuery="";refresh();if(results)results.classList.remove("active");input.blur();}});
-          if(results){document.addEventListener("click",function(e){if(!input.contains(e.target)&&!results.contains(e.target))results.classList.remove("active");});}
+          input.addEventListener("keydown",function(e){
+            if(e.key==="Escape"){input.value="";searchQuery="";refresh();input.blur();}
+          });
         }
+        resetSortBtns(sortState);
       }
       if(document.querySelector('.type-btn')){
         initButtons();
-        resetSortBtns(sortState);
       } else {
-        document.addEventListener("headerReady", function(){initButtons();resetSortBtns(sortState);}, {once:true});
+        document.addEventListener("headerReady",function(){initButtons();},{once:true});
       }
     })
     .catch(function(){var grid=document.getElementById("allVideosGrid");if(grid)grid.innerHTML='<p style="color:#888;padding:40px">Video archive loading...</p>';});
