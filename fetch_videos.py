@@ -115,6 +115,13 @@ STATIC_IDS = {
     'bsQkyVYA8I8': ('2025-04-25T00:00:00+00:00', '4k'),  # Front Porch from Stockyards Brewing Co.
 }
 
+# Videos to feature as hero/pinned — first in sort order
+FEATURED_IDS = {
+    # Add video IDs here to pin them as featured
+    # e.g. 'videoId123',
+}
+
+
 # Individual song singles to exclude (full shows only)
 EXCLUDE_IDS = {
     'sa-t5mE_lH8',  # Front Porch - Great Grandaddy's Barn
@@ -156,10 +163,10 @@ for i in range(0, len(video_ids), 50):
         pub_dt = datetime.fromisoformat(published.replace("Z","+00:00"))
         if vid_id in ID_DATE_OVERRIDES:
             id_date, id_type = ID_DATE_OVERRIDES[vid_id]
-            videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":id_date,"type":id_type})
+            videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":id_date,"type":id_type,"featured":vid_id in FEATURED_IDS})
             continue
         show_date = apply_title_overrides(title) or parse_show_date(desc, pub_dt) or parse_show_date(title, pub_dt) or published
-        videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":show_date,"type":"360" if is_360(title) else "4k"})
+        videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":show_date,"type":"360" if is_360(title) else "4k","featured":vid_id in FEATURED_IDS})
 
 # Fetch unlisted videos by ID and merge in
 static_ids_to_fetch = [vid for vid in STATIC_IDS if vid not in {v["id"] for v in videos}]
@@ -173,7 +180,7 @@ if static_ids_to_fetch:
             published = item["snippet"]["publishedAt"]
             views = int(item["statistics"].get("viewCount",0))
             show_date, vid_type = STATIC_IDS[vid_id]
-            videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":show_date,"type":vid_type})
+            videos.append({"id":vid_id,"title":title,"views":views,"published":published,"show_date":show_date,"type":vid_type,"featured":vid_id in FEATURED_IDS})
 
 videos.sort(key=lambda v: v["show_date"], reverse=True)
 
