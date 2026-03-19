@@ -12,7 +12,7 @@
   <script>
     fetch('header.html')
       .then(r => r.text())
-      .then(html => { document.getElementById('header-placeholder').innerHTML = html; })
+      .then(html => { document.getElementById('header-placeholder').innerHTML = html;;var hs=document.querySelector('.header-sort');if(hs)hs.style.display='none';var sw=document.querySelector('.header-search-wrap');if(sw){var lnk=document.createElement('a');lnk.href='index.html';lnk.className='nav-back-search';lnk.textContent='🔎 Browse videos';sw.parentNode.replaceChild(lnk,sw);}var nav=document.querySelector('.nav-contact');if(nav){nav.textContent='← Videos';nav.href='index.html';} })
       .catch(console.error);
   </script>
 
