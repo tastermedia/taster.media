@@ -133,3 +133,19 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
   
   .footer-links,.footer-social{flex-wrap:wrap;justify-content:center;gap:14px;}
 }
+/* ── Shimmer skeleton ── */
+.skeleton{background:#111;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+.skeleton-thumb{width:100%;aspect-ratio:16/9;background:linear-gradient(90deg,#111 25%,#1e0033 50%,#111 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;}
+.skeleton-line{height:12px;border-radius:4px;margin:10px 12px 4px;background:linear-gradient(90deg,#111 25%,#1e0033 50%,#111 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;}
+.skeleton-line.short{width:60%;margin-bottom:12px;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+/* ── Card scroll entrance ── */
+.video{opacity:0;transform:translateY(24px);}
+.video.visible{opacity:1;transform:translateY(0);transition:opacity 0.45s ease,transform 0.45s ease;}
+
+/* ── Lightbox close animation ── */
+@keyframes lbScaleOut{from{transform:scale(1);opacity:1;}to{transform:scale(0);opacity:0;}}
+@keyframes lbFadeOut{from{opacity:1;}to{opacity:0;}}
+#lightbox.closing{animation:lbFadeOut 0.3s ease forwards;}
+#lightbox.closing #lightbox-inner{animation:lbScaleOut 0.3s cubic-bezier(0.55,0,0.45,1) forwards;}
