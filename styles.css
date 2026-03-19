@@ -114,6 +114,7 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 
 /* ------------ Mobile ------------ */
 @media(max-width:600px){
+  .sort-sep{display:none;}
   .header-container{padding:6px 12px;}
   .header-left{gap:6px;}
   .logo{width:48px;}
