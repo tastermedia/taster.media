@@ -1,4 +1,4 @@
-// v14
+// v15
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -12,20 +12,30 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isMob) {
       var a=document.createElement('a');a.href="https://www.youtube.com/watch?v="+id;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();document.body.removeChild(a);return;
     }
-    // Get thumbnail position for origin animation
-    if (cardEl) {
-      var rect = cardEl.getBoundingClientRect();
-      var vw = window.innerWidth, vh = window.innerHeight;
-      // Calculate transform origin as percentage of viewport
-      var ox = ((rect.left + rect.width / 2) / vw * 100).toFixed(1) + '% ';
-      var oy = ((rect.top + rect.height / 2) / vh * 100).toFixed(1) + '%';
-      inner.style.transformOrigin = ox + oy;
-    } else {
-      inner.style.transformOrigin = '50% 50%';
-    }
     iframe.src="https://www.youtube.com/embed/"+id+"?rel=0&autoplay=1";
     overlay.classList.add("active");
     document.body.style.overflow="hidden";
+    // Animate inner panel expanding from thumbnail position
+    var startScale = 0.05;
+    if (cardEl) {
+      var rect = cardEl.getBoundingClientRect();
+      var vw = window.innerWidth, vh = window.innerHeight;
+      // Set transform origin to thumbnail center relative to the lightbox-inner element
+      // lightbox-inner is centered in viewport, so origin offset from its center
+      var innerW = inner.offsetWidth, innerH = inner.offsetHeight;
+      var innerLeft = (vw - innerW) / 2, innerTop = (vh - innerH) / 2;
+      var ox = ((rect.left + rect.width/2 - innerLeft) / innerW * 100).toFixed(1) + '%';
+      var oy = ((rect.top + rect.height/2 - innerTop) / innerH * 100).toFixed(1) + '%';
+      inner.style.transformOrigin = ox + ' ' + oy;
+      // Scale factor so animation starts at actual thumbnail size
+      startScale = Math.max(rect.width / innerW, 0.04);
+    } else {
+      inner.style.transformOrigin = '50% 50%';
+    }
+    inner.animate([
+      {transform: 'scale('+startScale+')', opacity: 0},
+      {transform: 'scale(1)', opacity: 1}
+    ], {duration: 380, easing: 'cubic-bezier(0.22,1,0.36,1)', fill: 'forwards'});
   }
 
   function closeLightbox() {
