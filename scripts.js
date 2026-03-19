@@ -1,4 +1,4 @@
-// v16
+// v17
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -39,14 +39,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function closeLightbox() {
-    overlay.classList.remove("active");
-    setTimeout(function(){ iframe.src=""; }, 300);
-    document.body.style.overflow="";
+    overlay.classList.add("closing");
+    // Reverse the open animation back to origin
+    inner.animate([
+      {transform: 'scale(1)', opacity: 1},
+      {transform: 'scale(0)', opacity: 0}
+    ], {duration: 300, easing: 'cubic-bezier(0.55,0,0.45,1)', fill: 'forwards'})
+      .onfinish = function() {
+        overlay.classList.remove("active","closing");
+        inner.style.animation = '';
+        iframe.src = "";
+        document.body.style.overflow = "";
+      };
   }
 
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   overlay.addEventListener("click", function(e){ if(e.target===overlay) closeLightbox(); });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeLightbox(); });
+
+  // Intersection observer for card entrance animation
+  var _observer = null;
+  function observeCards() {
+    if (_observer) _observer.disconnect();
+    _observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); _observer.unobserve(e.target); }
+      });
+    }, {threshold: 0.08, rootMargin: '0px 0px -20px 0px'});
+    document.querySelectorAll('.video:not(.visible)').forEach(function(c) { _observer.observe(c); });
+  }
 
   function buildGrid(videos) {
     var grid=document.getElementById("allVideosGrid"); if(!grid) return; grid.innerHTML="";
@@ -64,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     requestAnimationFrame(function(){
       grid.querySelectorAll('.video').forEach(function(c){ c.style.transform='translateZ(0)'; c.getBoundingClientRect(); c.style.transform=''; });
+      observeCards();
     });
   }
 
@@ -84,6 +106,17 @@ document.addEventListener("DOMContentLoaded", function () {
     var active=document.querySelector('.sort-btn[data-field="'+sortState.field+'"]');
     if(active){ active.classList.add("active"); active.textContent=(sortState.field==="date"?"📅 Date":"👁 Views")+" "+(sortState.dir==="desc"?"↓":"↑"); }
   }
+
+  // Show shimmer skeletons while loading
+  (function(){
+    var grid=document.getElementById("allVideosGrid");
+    if(grid){
+      grid.innerHTML='';
+      for(var s=0;s<12;s++){
+        grid.innerHTML+='<div class="skeleton"><div class="skeleton-thumb"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>';
+      }
+    }
+  })();
 
   fetch("videos.json?d="+Math.floor(Date.now()/86400000))
     .then(function(r){ return r.json(); })
