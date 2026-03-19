@@ -1,4 +1,4 @@
-// v9
+// v10
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.appendChild(overlay);
   var iframe = document.getElementById("lightbox-iframe");
   var isMob = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
   function openLightbox(id) {
     if (isMob) {
       var a=document.createElement('a');a.href="https://www.youtube.com/watch?v="+id;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();document.body.removeChild(a);return;
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("lightbox-close").addEventListener("click",closeLightbox);
   overlay.addEventListener("click",function(e){if(e.target===overlay)closeLightbox();});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLightbox();});
-
   function buildGrid(videos){
     var grid=document.getElementById("allVideosGrid");if(!grid)return;grid.innerHTML="";
     videos.forEach(function(video,i){
@@ -37,25 +35,21 @@ document.addEventListener("DOMContentLoaded", function () {
       grid.querySelectorAll('.video').forEach(function(c){c.style.transform='translateZ(0)';c.getBoundingClientRect();c.style.transform='';});
     });
   }
-
   function updateCount(n){var el=document.getElementById("videoCount");if(el)el.textContent=n+" video"+(n!==1?"s":"");}
-
   function getVideoType(v){
     if(v.type==='360')return '360';
     var t=(v.title||'').toLowerCase();
     if(t.includes('single cam')||t.includes('single-cam'))return 'single';
     return 'multi';
   }
-
   function resetSortBtns(sortState){
     document.querySelectorAll(".sort-btn").forEach(function(b){
       b.classList.remove("active");
-      b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";
+      b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views")+" ↓";
     });
     var active=document.querySelector('.sort-btn[data-field="'+sortState.field+'"]');
-    if(active){active.classList.add("active");active.textContent=(sortState.field==="date"?"📅 Date":"👁 Views")+" "+(sortState.dir==="desc"?"↓":"↑");}
+    if(active){active.classList.add("active");active.textContent=(sortState.field==="date"?"📅 Date":"👁 Views")+" "+(sortState.dir==="desc"?"↓":"↑");}
   }
-
   fetch("videos.json?d="+Math.floor(Date.now()/86400000))
     .then(function(r){return r.json();})
     .then(function(data){
@@ -63,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var sortState={field:"date",dir:"desc"};
       var searchQuery="";
       var typeFilter="all";
-
       function getSorted(videos){
         return videos.slice().sort(function(a,b){
           if(sortState.field==="date"){var da=a.show_date||a.published,db=b.show_date||b.published;return sortState.dir==="desc"?(db>da?1:-1):(da>db?1:-1);}
@@ -78,11 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
       function refresh(){var filtered=getFiltered();buildGrid(getSorted(filtered));updateCount(filtered.length);}
-
       refresh();
-
-      // Attach sort + type + search listeners
-      // Called after header is injected so buttons exist in DOM
       function initButtons(){
         document.querySelectorAll(".sort-btn").forEach(function(btn){
           btn.addEventListener("click",function(){
@@ -96,8 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".type-btn").forEach(function(btn){
           btn.addEventListener("click",function(){
             typeFilter=btn.dataset.type;
-            sortState={field:"date",dir:"desc"};
-            resetSortBtns(sortState);
             document.querySelectorAll(".type-btn").forEach(function(b){b.classList.remove("active");});
             btn.classList.add("active");
             refresh();
@@ -126,8 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
           if(results){document.addEventListener("click",function(e){if(!input.contains(e.target)&&!results.contains(e.target))results.classList.remove("active");});}
         }
       }
-
-      // Header is loaded async — wait for it if not already present
       if(document.querySelector('.type-btn')){
         initButtons();
       } else {
@@ -135,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
     .catch(function(){var grid=document.getElementById("allVideosGrid");if(grid)grid.innerHTML='<p style="color:#888;padding:40px">Video archive loading...</p>';});
-
   var scrollBtn=document.getElementById("scrollTopBtn");
   if(scrollBtn){
     window.addEventListener("scroll",function(){scrollBtn.style.opacity=window.scrollY>300?1:0;scrollBtn.style.visibility=window.scrollY>300?"visible":"hidden";});
