@@ -1,4 +1,4 @@
-// v25
+// v26
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -118,10 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var hpt=parseTitle(video.title||"");
       var hoverTitle2=document.createElement("div"); hoverTitle2.className="hover-artist"; hoverTitle2.textContent=hpt.artist;
       var hoverDetail=document.createElement("div"); hoverDetail.className="hover-detail"; hoverDetail.textContent=hpt.details;
-      var hv=video.views||0;
-      var hoverViews=document.createElement("div"); hoverViews.className="hover-views";
-      hoverViews.textContent=(hv>999999?(Math.round(hv/100000)/10)+'M':hv>999?(Math.round(hv/100)/10)+'K':hv)+' views';
-      hoverInfo.appendChild(hoverTitle2); hoverInfo.appendChild(hoverDetail); hoverInfo.appendChild(hoverViews);
+      hoverInfo.appendChild(hoverTitle2); hoverInfo.appendChild(hoverDetail);
       card.appendChild(hoverInfo);
       var info=document.createElement("div"); info.className="video-info";
       var pt=parseTitle(video.title||"");
