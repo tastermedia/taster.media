@@ -204,6 +204,6 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 /* ── #2 Hover info panel ── */
 .hover-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(8,0,16,0.97) 0%,rgba(8,0,16,0.85) 70%,transparent 100%);padding:32px 12px 12px;transform:translateY(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);border-radius:0 0 10px 10px;pointer-events:none;}
 .video:hover .hover-info{transform:translateY(0);}
-.hover-title{font-family:'Josefin Sans',sans-serif;font-size:0.75rem;color:#ddd;line-height:1.4;margin-bottom:4px;}
+.hover-detail{font-family:'Josefin Sans',sans-serif;font-size:0.75rem;color:#ddd;line-height:1.4;margin-bottom:4px;}
 .hover-views{font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#8000ff;font-weight:600;letter-spacing:0.1em;}
 
