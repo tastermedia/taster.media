@@ -1,4 +1,4 @@
-// v22
+// v23
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -115,11 +115,14 @@ document.addEventListener("DOMContentLoaded", function () {
       card.addEventListener("click", function(){ openLightbox(video.id, card, video.title); });
       // Hover info overlay
       var hoverInfo=document.createElement("div"); hoverInfo.className="hover-info";
-      var hoverTitle=document.createElement("div"); hoverTitle.className="hover-title"; hoverTitle.textContent=video.title||"";
-      var hoverViews=document.createElement("div"); hoverViews.className="hover-views";
+      // Full title (format/details)
+      var pt2=parseTitle(video.title||"");
+      var hoverDetail=document.createElement("div"); hoverDetail.className="hover-detail"; hoverDetail.textContent=pt2.details;
+      // View count
       var hv=video.views||0;
+      var hoverViews=document.createElement("div"); hoverViews.className="hover-views";
       hoverViews.textContent=(hv>999999?(Math.round(hv/100000)/10)+'M':hv>999?(Math.round(hv/100)/10)+'K':hv)+' views';
-      hoverInfo.appendChild(hoverTitle); hoverInfo.appendChild(hoverViews);
+      hoverInfo.appendChild(hoverDetail); hoverInfo.appendChild(hoverViews);
       card.appendChild(hoverInfo);
       var info=document.createElement("div"); info.className="video-info";
       var pt=parseTitle(video.title||"");
@@ -140,12 +143,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var te=document.createElement("p"); te.className="video-title"; te.textContent=video.title||"";
       // View count + date badge
       var metaEl=document.createElement("div"); metaEl.className="video-meta";
-      var views=video.views||0;
-      var viewStr=views>999999?(Math.round(views/100000)/10)+'M views':views>999?(Math.round(views/100)/10)+'K views':views+' views';
       var showDate=video.show_date||video.published||'';
-      var dateStr='';
-      if(showDate){var d=new Date(showDate);dateStr=d.toLocaleDateString('en-US',{month:'short',year:'numeric'});}
-      metaEl.textContent=(dateStr?dateStr+' • ':'')+viewStr;
+      if(showDate){var sd=new Date(showDate);metaEl.textContent=sd.toLocaleDateString('en-US',{month:'short',year:'numeric'});}
       info.appendChild(ae); info.appendChild(ve); info.appendChild(metaEl); info.appendChild(te);
       card.appendChild(info); grid.appendChild(card);
     });
