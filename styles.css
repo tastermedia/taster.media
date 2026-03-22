@@ -207,3 +207,6 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
 .hover-detail{font-family:'Josefin Sans',sans-serif;font-size:0.75rem;color:#ddd;line-height:1.4;margin-bottom:4px;}
 .hover-views{font-family:'Rajdhani',sans-serif;font-size:0.8rem;color:#8000ff;font-weight:600;letter-spacing:0.1em;}
 
+
+/* ── Hover panel artist name ── */
+.hover-artist{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;color:#cc88ff;letter-spacing:0.06em;margin-bottom:3px;}
