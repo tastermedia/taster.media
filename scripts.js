@@ -1,4 +1,4 @@
-// v23
+// v24
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
@@ -115,14 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
       card.addEventListener("click", function(){ openLightbox(video.id, card, video.title); });
       // Hover info overlay
       var hoverInfo=document.createElement("div"); hoverInfo.className="hover-info";
-      // Full title (format/details)
-      var pt2=parseTitle(video.title||"");
-      var hoverDetail=document.createElement("div"); hoverDetail.className="hover-detail"; hoverDetail.textContent=pt2.details;
-      // View count
+      var hoverTitle2=document.createElement("div"); hoverTitle2.className="hover-artist"; hoverTitle2.textContent=pt.artist;
+      var hoverDetail=document.createElement("div"); hoverDetail.className="hover-detail"; hoverDetail.textContent=pt.details;
       var hv=video.views||0;
       var hoverViews=document.createElement("div"); hoverViews.className="hover-views";
       hoverViews.textContent=(hv>999999?(Math.round(hv/100000)/10)+'M':hv>999?(Math.round(hv/100)/10)+'K':hv)+' views';
-      hoverInfo.appendChild(hoverDetail); hoverInfo.appendChild(hoverViews);
+      hoverInfo.appendChild(hoverTitle2); hoverInfo.appendChild(hoverDetail); hoverInfo.appendChild(hoverViews);
       card.appendChild(hoverInfo);
       var info=document.createElement("div"); info.className="video-info";
       var pt=parseTitle(video.title||"");
@@ -139,8 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({top:0,behavior:'smooth'});
       });
       ae.appendChild(artistLink);
-      var ve=document.createElement("div"); ve.className="video-venue"; ve.textContent=(pt.venue?pt.venue+' • ':'')+pt.details;
-      var te=document.createElement("p"); te.className="video-title"; te.textContent=video.title||"";
+      var ve=document.createElement("div"); ve.className="video-venue"; ve.textContent=pt.venue||'';    var te=document.createElement("p"); te.className="video-title"; te.textContent=video.title||"";
       // View count + date badge
       var metaEl=document.createElement("div"); metaEl.className="video-meta";
       var showDate=video.show_date||video.published||'';
