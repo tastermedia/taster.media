@@ -100,7 +100,7 @@ TITLE_TEXT_OVERRIDES = {
 }
 
 # Video IDs to include even if title lacks "(live)"
-LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4', 'nioEXdSpqak', 'swscjfyTW-E'}
+LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4', 'nioEXdSpqak', 'swscjfyTW-E', 'z7YT7XCMVaI'}
 
 # Unlisted videos not returned by channel API — fetched individually every run
 STATIC_IDS = {
