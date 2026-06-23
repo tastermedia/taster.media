@@ -55,8 +55,7 @@ if(page==='contact'){
 }
 // Hide sort/filter row on non-index pages
 if(page!=='index'){
-  var sortRow=document.querySelector('.header-sort');
-  if(sortRow) sortRow.style.display='none';
+  document.querySelectorAll('.header-sort').forEach(function(sortRow){sortRow.style.display='none';});
   // Also hide the search bar — make it a "search" link back to index instead
   var searchWrap=document.querySelector('.header-search-wrap');
   if(searchWrap){
