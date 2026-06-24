@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-24T03:53:04.838086+00:00",
+  "updated": "2026-06-24T08:44:14.419857+00:00",
   "channel": "UC4jtpyiA5WIQsObGh5E2oCg",
-  "total": 89,
+  "total": 90,
   "videos": [
     {
       "id": "CF1IaiufCgs",
       "title": "Jesco (live) from Clouso in Fabulous 360!",
-      "views": 11,
+      "views": 12,
       "published": "2026-06-23T07:49:42Z",
       "show_date": "2026-06-03T00:00:00+00:00",
       "type": "360"
@@ -14,7 +14,7 @@
     {
       "id": "G8Y1rMyj5eE",
       "title": "Jesco (live) from Clouso - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 6,
+      "views": 7,
       "published": "2026-06-23T07:49:34Z",
       "show_date": "2026-06-03T00:00:00+00:00",
       "type": "4k"
@@ -22,7 +22,7 @@
     {
       "id": "bOwWMZaIYQ0",
       "title": "Mountain Grass Unit (live) from Arch Deluxe 2026 - Full Show - Single-cam - Soundboard Audio",
-      "views": 35,
+      "views": 55,
       "published": "2026-06-23T18:58:11Z",
       "show_date": "2026-05-02T00:00:00+00:00",
       "type": "4k"
@@ -32,6 +32,14 @@
       "title": "Falling Fences (live) from Arch Deluxe 2026 - Full Show - 4k Multicam - Soundboard Audio",
       "views": 14,
       "published": "2026-06-22T06:40:48Z",
+      "show_date": "2026-05-02T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "z7YT7XCMVaI",
+      "title": "Leftover Salmon (live) from Arch Deluxe 2026 - Full Set - 4k Multi-cam - Soundboard Audio",
+      "views": 18,
+      "published": "2026-05-18T19:55:25Z",
       "show_date": "2026-05-02T00:00:00+00:00",
       "type": "4k"
     },
@@ -118,7 +126,7 @@
     {
       "id": "kN539naAAtA",
       "title": "Front Porch (live) from RecordBar - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 247,
+      "views": 248,
       "published": "2025-12-23T18:55:21Z",
       "show_date": "2025-12-18T00:00:00+00:00",
       "type": "4k"
@@ -142,7 +150,7 @@
     {
       "id": "5Mj2WksIs-s",
       "title": "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 1480,
+      "views": 1485,
       "published": "2025-11-26T14:48:56Z",
       "show_date": "2025-11-19T00:00:00+00:00",
       "type": "4k"
@@ -166,7 +174,7 @@
     {
       "id": "Pc_lSdrv3H0",
       "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 3752,
+      "views": 3758,
       "published": "2026-02-10T20:45:38Z",
       "show_date": "2025-10-10T00:00:00+00:00",
       "type": "4k"
@@ -182,7 +190,7 @@
     {
       "id": "12sPE1oDkH4",
       "title": "Front Porch (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 2737,
+      "views": 2739,
       "published": "2025-11-04T16:49:04Z",
       "show_date": "2025-10-09T00:00:00+00:00",
       "type": "4k"
@@ -190,7 +198,7 @@
     {
       "id": "5BmffJ-MFsg",
       "title": "The Spooklights (live) from Knuckleheads - Full Show - 4k Multi-cam",
-      "views": 565,
+      "views": 566,
       "published": "2025-11-13T15:33:12Z",
       "show_date": "2025-10-04T00:00:00+00:00",
       "type": "4k"
@@ -342,7 +350,7 @@
     {
       "id": "P6anEkCEDDQ",
       "title": "East Nash Grass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 10170,
+      "views": 10172,
       "published": "2025-07-29T21:36:04Z",
       "show_date": "2025-07-23T00:00:00+00:00",
       "type": "4k"
