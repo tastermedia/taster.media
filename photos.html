@@ -4,29 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Photos - Taster Media</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Concert photography from Taster Media — behind-the-scenes shots and stills from the live music archive." />
+  <link rel="canonical" href="https://taster.media/photos.html" />
+  <link rel="icon" href="images/logo.webp" type="image/png" />
+  <meta property="og:title" content="Photos - Taster Media" />
+  <meta property="og:description" content="Concert photography from Taster Media — behind-the-scenes shots and stills from the live music archive." />
+  <meta property="og:image" content="https://taster.media/images/logo.webp" />
+  <meta property="og:url" content="https://taster.media/photos.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Photos - Taster Media" />
+  <meta name="twitter:description" content="Concert photography from Taster Media — behind-the-scenes shots and stills from the live music archive." />
+  <meta name="twitter:image" content="https://taster.media/images/logo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=36" />
 </head>
 <body>
-  <!-- DYNAMIC HEADER -->
   <div id="header-placeholder"></div>
-  <script>
-    fetch('header.html')
-      .then(r => r.text())
-      .then(html => { document.getElementById('header-placeholder').innerHTML = html;;var hs=document.querySelector('.header-sort');if(hs)hs.style.display='none';var sw=document.querySelector('.header-search-wrap');if(sw){var lnk=document.createElement('a');lnk.href='index.html';lnk.className='nav-back-search';lnk.textContent='🔎 Browse videos';sw.parentNode.replaceChild(lnk,sw);}var nav=document.querySelector('.nav-contact');if(nav){nav.textContent='← Videos';nav.href='index.html';} })
-      .catch(console.error);
-  </script>
+  <script src="header.js"></script>
 
-  <main>
-    <h2 class="glow-text">📸 Instagram Feed</h2>
-    <!-- Paste your IG embed code here -->
-    <div class="ig-embed">
-      <!-- e.g.: <iframe src="https://www.instagram.com/...embed" ...></iframe> -->
-    </div>
+  <main class="content-page">
+    <h2 class="glow-text">📸 Concert Photography</h2>
+    <p>Behind-the-scenes shots, festival sets, and stills from the live music archive — posted regularly on Instagram.</p>
+    <a href="https://www.instagram.com/tastermedia" target="_blank" rel="noopener" class="contact-button">View on Instagram @tastermedia</a>
   </main>
-
-  <div class="contact-container">
-    <a href="mailto:taster@taster.media" class="contact-button">📩 Email Us</a>
-  </div>
 
   <footer>
     <p>&copy; 2026 Taster Media</p>
