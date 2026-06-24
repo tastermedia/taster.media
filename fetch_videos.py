@@ -79,6 +79,7 @@ ID_DATE_OVERRIDES = {
 
 # Title text overrides — corrected display titles keyed by video ID
 TITLE_TEXT_OVERRIDES = {
+    'z7YT7XCMVaI': "Leftover Salmon (live) from Arch Deluxe 2026 - Full Set - 4k Multi-cam - Soundboard Audio",
     'c5ZjLthLEkM': "MoonShroom (live) from Fool's Yule 2025 - Full Show - 4k Multi-cam",
     'oi1ZsaFGDDc': "Front Porch (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
     '5Mj2WksIs-s': "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
@@ -104,6 +105,7 @@ LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4', 'nioEXdSpqak', '
 
 # Unlisted videos not returned by channel API — fetched individually every run
 STATIC_IDS = {
+    'z7YT7XCMVaI': ('2026-05-02T00:00:00+00:00', '4k'),  # Leftover Salmon @ Arch Deluxe (collab - on collaborator channel, not ours)
     'oi1ZsaFGDDc': ('2025-11-23T00:00:00+00:00', '4k'),  # Front Porch from Lucia Nov 2025
     '4mS8xtfxbLE': ('2025-08-30T00:00:00+00:00', '4k'),  # Front Porch from Cervantes
     '0Jprv8XmSx8': ('2025-08-27T00:00:00+00:00', '4k'),  # Front Porch from Crow Peak Brewing Co.
