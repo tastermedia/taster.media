@@ -104,6 +104,10 @@ TITLE_TEXT_OVERRIDES = {
     'RBV2Rm7RuoY': "Old Sound (live) from Lucia - Full Show - 4k Multi-cam",
     'VxYDvN5VBnw': "Falling Fences (live) from Arch Deluxe 2026 - Full Show - 4k Multi-cam - Soundboard Audio",
     'EHwZUMj4sw4': "Whiskey For The Lady (live) from Knuckleheads - Full Show - 4k Multi-cam - Soundboard Audio",
+    'rDEatJTL5WA': "The Matchsellers & Friends (live) from Tall Trellis Brewing - Full Show - 4k Multi-cam - Soundboard Audio",
+    'INKbnG-UDC8': "Cameron Keeling & The Runaway Train (live) from Knuckleheads - Full Show - 4k Multi-cam - Soundboard Audio",
+    'IRbidX7njZo': "Cameron Keeling & The Runaway Train (live) from Fool's Yule - Full Show - 4k Multi-cam - Soundboard Audio",
+    '9fr4NV-E7-w': "Walker Burroughs (live) from Knuckleheads Gospel Lounge - Full Show - 4k Multi-cam - Soundboard Audio",
 }
 
 # Video IDs to include even if title lacks "(live)"
