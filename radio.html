@@ -75,6 +75,8 @@
   </style>
 </head>
 <body>
+<div id="header-placeholder"></div>
+<script src="header.js"></script>
 <main class="radio-wrap">
 
   <!-- Mode toggle -->
@@ -124,11 +126,11 @@
     <div class="year-range">
       <div class="year-group">
         <label for="yearFrom">From</label>
-        <input type="number" id="yearFrom" class="year-input" placeholder="e.g. 1973" min="1950" max="2026" />
+        <input type="number" id="yearFrom" class="year-input" placeholder="e.g. 1973" min="1950" max="" />
       </div>
       <div class="year-group">
         <label for="yearTo">To</label>
-        <input type="number" id="yearTo" class="year-input" placeholder="e.g. 1981" min="1950" max="2026" />
+        <input type="number" id="yearTo" class="year-input" placeholder="e.g. 1981" min="1950" max="" />
       </div>
     </div>
     <div class="year-error" id="yearError"></div>
@@ -269,6 +271,14 @@ var DECADE_NAMES = {'50s':'1950s','60s':'1960s','70s':'1970s','80s':'1980s','90s
 var currentMode = 'decade';
 var currentPid = null;
 
+// Set year input max attributes dynamically to current year
+(function(){
+  var yr = new Date().getFullYear();
+  var f = document.getElementById('yearFrom'), t = document.getElementById('yearTo');
+  if (f) f.max = yr;
+  if (t) t.max = yr;
+})();
+
 function setMode(m) {
   currentMode = m;
   document.getElementById('modeDecade').classList.toggle('active', m==='decade');
@@ -326,7 +336,8 @@ function play() {
     errEl.textContent = '';
     if (!from || !to) { errEl.textContent = 'Enter both a start and end year.'; return; }
     if (from > to) { errEl.textContent = 'Start year must be before end year.'; return; }
-    if (from < 1950 || to > 2026) { errEl.textContent = 'Years must be between 1950 and 2026.'; return; }
+    var maxYear = new Date().getFullYear();
+    if (from < 1950 || to > maxYear) { errEl.textContent = 'Years must be between 1950 and ' + maxYear + '.'; return; }
     if (!genre2) { errEl.textContent = 'Pick a genre.'; return; }
     // Find the dominant decade (midpoint)
     var mid = Math.round((from + to) / 2);
