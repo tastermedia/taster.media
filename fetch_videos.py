@@ -102,6 +102,8 @@ TITLE_TEXT_OVERRIDES = {
     'Z1x2yA-bVZo': "Barnum Jack (live) from Fool's Yule - Full Show - 4k Multi-cam",
     'PmBUC2g18hw': "Kansas City Bear Fighters (live) from Stage 7 2024 in Fabulous 360!",
     'RBV2Rm7RuoY': "Old Sound (live) from Lucia - Full Show - 4k Multi-cam",
+    'VxYDvN5VBnw': "Falling Fences (live) from Arch Deluxe 2026 - Full Show - 4k Multi-cam - Soundboard Audio",
+    'EHwZUMj4sw4': "Whiskey For The Lady (live) from Knuckleheads - Full Show - 4k Multi-cam - Soundboard Audio",
 }
 
 # Video IDs to include even if title lacks "(live)"
