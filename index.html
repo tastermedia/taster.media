@@ -30,7 +30,7 @@
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <script>fetch("header.html?d="+Math.floor(Date.now()/86400000)).then(function(r){return r.text();}).then(function(h){document.getElementById("header-placeholder").outerHTML=h;document.dispatchEvent(new Event("headerReady"));}).catch(function(){document.getElementById("header-placeholder").innerHTML='<nav style="padding:1rem"><a href="/">Taster Media</a></nav>';document.dispatchEvent(new Event("headerReady"));});</script>
+  <script src="header.js"></script>
   <main>
     <section class="playlist-section">
       <div id="videoCount" class="video-count"></div>
