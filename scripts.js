@@ -167,7 +167,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var fm=raw.match(/from\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
     if(fm) venue=fm[1].trim();
     var di=raw.indexOf(' - ');
-    if(di>-1) details=raw.slice(di+3);
+    if(di>-1) {
+      details=raw.slice(di+3);
+    } else {
+      // Fallback for titles without " - ": use whatever follows "(live)",
+      // stripped of a leading "from VENUE" we already extracted.
+      var rest=raw.replace(/^.*?\(live\)\s*/i,'').replace(/^from\s+/i,'');
+      if(venue && rest.indexOf(venue)===0) rest=rest.slice(venue.length).trim();
+      details=rest||venue;
+    }
     return {artist:artist,venue:venue,details:details};
   }
 
