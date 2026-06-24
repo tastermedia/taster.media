@@ -64,7 +64,7 @@ ID_DATE_OVERRIDES = {
     '5s3TVwGdtQg': ('2025-08-08T00:00:00+00:00', '4k'),    # Front Porch @ Lovegrass Aug 8 2025 (4k not 360)
     '3N54tQj83zU': ('2024-10-11T00:00:00+00:00', '4k'),    # Front Porch @ Knuckleheads Oct 11 2024
     'EklPeX4QiMw': ('2025-05-30T00:00:00+00:00', '4k'),    # The Engine Room @ West Church Social
-    # Previously falling back to published date â corrected show dates:
+    # Previously falling back to published date â corrected show dates:
     'yeyi0680Q-o': ('2025-10-04T00:00:00+00:00', '360'),   # KC Bear Fighters @ Space Cat 2025
     'WL7Xg8--k8U': ('2025-06-25T00:00:00+00:00', '4k'),    # Crazy Folker @ George's Majestic Lounge
     'UExNYPOI0UU': ('2025-03-29T00:00:00+00:00', '4k'),    # Cameron Keeling @ Tintoretta Tattoo
@@ -74,6 +74,7 @@ ID_DATE_OVERRIDES = {
     'cmRiw0ahuuc': ('2024-10-10T00:00:00+00:00', '4k'),    # Michael Cleveland @ Hillberry 2024
     '-vJyLUWFBtM': ('2024-09-20T00:00:00+00:00', '4k'),    # Crying Uncle @ Winfield 2024 Stage 5
     'WuUsgJqPnu4': ('2022-01-22T00:00:00+00:00', '4k'),    # brown whÃ¶rnet @ Austin
+    'ta83THTWpk0': ('2022-01-21T00:00:00+00:00', '4k'),    # dim @ The Newport — normalize to midnight
 }
 
 
@@ -98,6 +99,9 @@ TITLE_TEXT_OVERRIDES = {
     '-vJyLUWFBtM': "Crying Uncle Bluegrass Band (live) from Winfield 2024 - Stage 5 - Full Set - Single-cam",
     'Z0xwpslgi60': "Front Porch (live) from Winfield 2024 - Stage 1 - Full Set - 4k Multi-cam",
     'WuUsgJqPnu4': "brown whörnet (live) somewhere in Austin",
+    'Z1x2yA-bVZo': "Barnum Jack (live) from Fool's Yule - Full Show - 4k Multi-cam",
+    'PmBUC2g18hw': "Kansas City Bear Fighters (live) from Stage 7 2024 in Fabulous 360!",
+    'RBV2Rm7RuoY': "Old Sound (live) from Lucia - Full Show - 4k Multi-cam",
 }
 
 # Video IDs to include even if title lacks "(live)"
