@@ -1,6 +1,18 @@
 // header.js — single source of truth for injecting the site header
 // and applying per-page setup. Replaces the old per-page inline injectors.
 (function () {
+  // Keep the footer copyright year current. Runs once the DOM is parsed
+  // so the .footer-year spans exist.
+  function fillYear() {
+    var yr = new Date().getFullYear();
+    document.querySelectorAll('.footer-year').forEach(function (el) { el.textContent = yr; });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fillYear);
+  } else {
+    fillYear();
+  }
+
   function setupHeader() {
     var page = (location.pathname.split('/').pop() || 'index.html').replace('.html', '') || 'index';
     if (page !== 'index') {
