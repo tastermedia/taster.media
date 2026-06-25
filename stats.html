@@ -12,16 +12,14 @@
   <link rel="stylesheet" href="styles.css?v=36" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="c69e4bd3-9a78-4f4c-a5af-211a68e70b28"></script>
   <style>
-    .stats-wrap{max-width:1180px;margin:0 auto;padding:22px 16px 48px;}
-    .stats-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:4px;}
-    .stats-head h2{margin:0;}
-    .stats-sub{opacity:.72;font-size:.9rem;margin:0 0 16px;max-width:680px;}
-    .stats-open{font-size:.85rem;text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:7px 15px;opacity:.85;white-space:nowrap;transition:opacity .15s;}
-    .stats-open:hover{opacity:1;}
-    .stats-frame-card{border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;background:#0d0d0f;box-shadow:0 10px 34px rgba(0,0,0,.4);}
-    .stats-frame-card iframe{display:block;width:100%;height:calc(100vh - 240px);min-height:720px;border:0;background:#0d0d0f;}
-    .stats-note{opacity:.5;font-size:.78rem;margin-top:12px;text-align:center;}
-    .stats-note a{color:inherit;}
+    .stats-wrap{max-width:760px;margin:0 auto;padding:34px 18px 64px;text-align:center;}
+    .stats-wrap h2{margin:0 0 10px;}
+    .stats-sub{opacity:.72;font-size:.95rem;margin:0 auto 28px;max-width:580px;}
+    .stats-card{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:36px 24px;background:rgba(255,255,255,.02);box-shadow:0 10px 34px rgba(0,0,0,.35);}
+    .stats-lead{margin:0 0 22px;opacity:.85;}
+    .stats-metrics{list-style:none;padding:0;margin:0 0 26px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;}
+    .stats-metrics li{font-size:.78rem;opacity:.6;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:4px 12px;}
+    .stats-fine{opacity:.45;font-size:.75rem;margin:20px 0 0;}
   </style>
 </head>
 <body>
@@ -29,15 +27,16 @@
   <script src="header.js"></script>
   <main>
     <div class="stats-wrap">
-      <div class="stats-head">
-        <h2 class="glow-text">Site Analytics</h2>
-        <a class="stats-open" href="https://cloud.umami.is/share/iYmxeU1mtR5I8CLP" target="_blank" rel="noopener">Open full dashboard &#8599;</a>
+      <h2 class="glow-text">Site Analytics</h2>
+      <p class="stats-sub">Live, cookieless traffic for taster.media &mdash; updated in real time.</p>
+      <div class="stats-card">
+        <p class="stats-lead">Your full dashboard is hosted on Umami.</p>
+        <ul class="stats-metrics">
+          <li>Visitors</li><li>Page views</li><li>Top pages</li><li>Referrers</li><li>Countries</li><li>Devices</li><li>Real-time</li>
+        </ul>
+        <a class="contact-button" href="https://cloud.umami.is/share/iYmxeU1mtR5I8CLP" target="_blank" rel="noopener">Open Live Dashboard &#8599;</a>
+        <p class="stats-fine">Opens in a new tab. Umami's dashboard can't be embedded inline because browsers block its session cookies inside a third-party frame.</p>
       </div>
-      <p class="stats-sub">Live traffic for taster.media &mdash; visitors, page views, referrers, countries and devices. Cookieless; no personal data collected.</p>
-      <div class="stats-frame-card">
-        <iframe src="https://cloud.umami.is/share/iYmxeU1mtR5I8CLP" title="Taster Media analytics dashboard" loading="lazy"></iframe>
-      </div>
-      <p class="stats-note">Updates in real time. If the dashboard doesn&rsquo;t appear above, use <a href="https://cloud.umami.is/share/iYmxeU1mtR5I8CLP" target="_blank" rel="noopener">Open full dashboard</a>.</p>
     </div>
   </main>
   <footer><p>&copy; <span class="footer-year">2026</span> Taster Media</p></footer>
