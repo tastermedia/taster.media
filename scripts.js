@@ -2,11 +2,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   var overlay = document.createElement("div");
   overlay.id = "lightbox";
-  overlay.innerHTML = '<div id="lightbox-inner"><button id="lightbox-close">✕</button><div id="lightbox-title"></div><button id="lightbox-prev">‹</button><button id="lightbox-next">›</button><iframe id="lightbox-iframe" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
+  overlay.innerHTML = '<div id="lightbox-inner"><button id="lightbox-close">✕</button><div id="lightbox-title"></div><button id="lightbox-prev">‹</button><button id="lightbox-next">›</button><iframe id="lightbox-iframe" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe><a id="lightbox-360" target="_blank" rel="noopener" style="position:absolute;bottom:64px;left:50%;transform:translateX(-50%);z-index:10;display:none;background:rgba(0,0,0,0.78);color:#fff;font-family:inherit;font-size:13px;font-weight:600;text-decoration:none;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.4);white-space:nowrap;cursor:pointer;">360° · look around on YouTube ↗</a></div>';
   document.body.appendChild(overlay);
   var iframe = document.getElementById("lightbox-iframe");
-  var lbTitle = null, lbPrev = null, lbNext = null;
-  var currentVideoId = null, currentSortedList = [];
+  var lbTitle = null, lbPrev = null, lbNext = null, lb360 = null;
+  var currentVideoId = null, currentSortedList = [], is360Map = {};
   var inner = document.getElementById("lightbox-inner");
   var isMob = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (lbTitle) lbTitle.textContent = title || '';
     // Update URL hash for deep linking
     if (history.replaceState) history.replaceState(null,'','#v='+id);
-    iframe.src="https://www.youtube.com/embed/"+id+"?rel=0&autoplay=1";
+    iframe.src="https://www.youtube.com/embed/"+id+"?rel=0&autoplay=1&enablejsapi=1";
+    if(!lb360) lb360=document.getElementById("lightbox-360");
+    if(lb360){ if(is360Map[id]){ lb360.href="https://www.youtube.com/watch?v="+id; lb360.style.display="inline-block"; } else { lb360.style.display="none"; } }
     overlay.classList.add("active");
     document.body.style.overflow="hidden";
     // Animate inner panel expanding from thumbnail position
@@ -78,7 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (history.replaceState) history.replaceState(null,'','#v='+next.id);
     if (lbTitle) lbTitle.textContent = next.title || '';
     currentVideoId = next.id;
-    iframe.src = "https://www.youtube.com/embed/"+next.id+"?rel=0&autoplay=1";
+    iframe.src = "https://www.youtube.com/embed/"+next.id+"?rel=0&autoplay=1&enablejsapi=1";
+    if(!lb360) lb360=document.getElementById("lightbox-360");
+    if(lb360){ if(is360Map[next.id]){ lb360.href="https://www.youtube.com/watch?v="+next.id; lb360.style.display="inline-block"; } else { lb360.style.display="none"; } }
   }
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
   overlay.addEventListener("click", function(e){ if(e.target===overlay) closeLightbox(); });
@@ -209,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(function(r){ return r.json(); })
     .then(function(data) {
       var allVideos=data.videos||[];
+      allVideos.forEach(function(v){ if(v.type==="360") is360Map[v.id]=true; });
       var sortState={field:"date",dir:"desc"};
       var searchQuery="";
       var typeFilter="all";
@@ -244,7 +249,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if(!lbNext){ lbNext=document.getElementById("lightbox-next"); lbNext.addEventListener("click", function(){ navLightbox(1); }); }
         if(lbTitle) lbTitle.textContent=list[0].title||"";
         if(history.replaceState) history.replaceState(null,"","#v="+ids[0]);
-        iframe.src="https://www.youtube.com/embed/"+ids[0]+"?rel=0&autoplay=1&playlist="+ids.slice(1).join(",");
+        iframe.src="https://www.youtube.com/embed/"+ids[0]+"?rel=0&autoplay=1&enablejsapi=1&playlist="+ids.slice(1).join(",");
+        if(!lb360) lb360=document.getElementById("lightbox-360");
+        if(lb360) lb360.style.display="none";
         overlay.classList.add("active");
         document.body.style.overflow="hidden";
         inner.style.transformOrigin="50% 50%";
