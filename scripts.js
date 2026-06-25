@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getVideoType(v) {
     if(v.type==='360') return '360';
     var t=(v.title||'').toLowerCase();
-    if(t.includes('single-cam')) return 'single';
+    if(/single[\s-]?cam/.test(t)) return 'single';
     return 'multi';
   }
   function parseTitle(raw) {
@@ -209,12 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var typeFilter="all";
       var searchTimer=null;
 
-      var shuffleOrder={};
-      function reshuffle(){ shuffleOrder={}; allVideos.forEach(function(v){ shuffleOrder[v.id]=Math.random(); }); }
       function getSorted(videos) {
-        if(sortState.field==="shuffle"){
-          return videos.slice().sort(function(a,b){ return (shuffleOrder[a.id]||0)-(shuffleOrder[b.id]||0); });
-        }
         return videos.slice().sort(function(a,b){
           if(sortState.field==="date"){ var da=a.show_date||a.published,db=b.show_date||b.published; return sortState.dir==="desc"?(db>da?1:-1):(da>db?1:-1); }
           return sortState.dir==="desc"?(b.views-a.views):(a.views-b.views);
@@ -227,6 +222,28 @@ document.addEventListener("DOMContentLoaded", function () {
           if(typeFilter!=="all"&&getVideoType(v)!==typeFilter) return false;
           return true;
         });
+      }
+      function playShuffle() {
+        var list=getFiltered().slice();
+        for(var i=list.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=list[i]; list[i]=list[j]; list[j]=tmp; }
+        list=list.slice(0,50);
+        if(!list.length) return;
+        var ids=list.map(function(v){ return v.id; });
+        if(isMob){
+          var a=document.createElement("a"); a.href="https://www.youtube.com/watch_videos?video_ids="+ids.join(","); a.target="_blank"; a.rel="noopener";
+          document.body.appendChild(a); a.click(); document.body.removeChild(a); return;
+        }
+        currentSortedList=list; currentVideoId=ids[0];
+        if(!lbTitle) lbTitle=document.getElementById("lightbox-title");
+        if(!lbPrev){ lbPrev=document.getElementById("lightbox-prev"); lbPrev.addEventListener("click", function(){ navLightbox(-1); }); }
+        if(!lbNext){ lbNext=document.getElementById("lightbox-next"); lbNext.addEventListener("click", function(){ navLightbox(1); }); }
+        if(lbTitle) lbTitle.textContent=list[0].title||"";
+        if(history.replaceState) history.replaceState(null,"","#v="+ids[0]);
+        iframe.src="https://www.youtube.com/embed/"+ids[0]+"?rel=0&autoplay=1&playlist="+ids.slice(1).join(",");
+        overlay.classList.add("active");
+        document.body.style.overflow="hidden";
+        inner.style.transformOrigin="50% 50%";
+        inner.animate([{transform:"scale(0.05)",opacity:0},{transform:"scale(1)",opacity:1}],{duration:500,easing:"cubic-bezier(0.22,1,0.36,1)",fill:"forwards"});
       }
 
       function refresh(){
@@ -272,8 +289,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".sort-btn").forEach(function(btn){
           btn.addEventListener("click", function(){
             var field=btn.dataset.field;
-            if(field==="shuffle"){ reshuffle(); sortState.field="shuffle"; }
-            else if(sortState.field===field){ sortState.dir=sortState.dir==="desc"?"asc":"desc"; }
+            if(field==="shuffle"){ playShuffle(); return; }
+            if(sortState.field===field){ sortState.dir=sortState.dir==="desc"?"asc":"desc"; }
             else{ sortState.field=field; sortState.dir="desc"; }
             resetSortBtns(sortState);
             refresh();
