@@ -73,8 +73,8 @@ ID_DATE_OVERRIDES = {
     'rbW9xQ--Y6A': ('2024-09-20T00:00:00+00:00', '4k'),    # Front Porch @ Winfield 2024 Stage 5
     'cmRiw0ahuuc': ('2024-10-10T00:00:00+00:00', '4k'),    # Michael Cleveland @ Hillberry 2024
     '-vJyLUWFBtM': ('2024-09-20T00:00:00+00:00', '4k'),    # Crying Uncle @ Winfield 2024 Stage 5
-    'WuUsgJqPnu4': ('2022-01-22T00:00:00+00:00', '4k'),    # brown whÃ¶rnet @ Austin
-    'ta83THTWpk0': ('2022-01-21T00:00:00+00:00', '4k'),    # dim @ The Newport — normalize to midnight
+    'WuUsgJqPnu4': ('2004-01-01T00:00:00+00:00', '4k'),    # brown whörnet @ Austin — corrected: 2004 (uploaded 2022)
+    'ta83THTWpk0': ('2004-01-01T00:00:00+00:00', '4k'),    # dim @ The Newport — corrected: 2004 (uploaded 2022)
 }
 
 
