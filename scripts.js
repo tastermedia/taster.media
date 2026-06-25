@@ -166,6 +166,11 @@ document.addEventListener("DOMContentLoaded", function () {
     artist=lm?lm[1].trim():raw.split(' - ')[0];
     var fm=raw.match(/from\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
     if(fm) venue=fm[1].trim();
+    // If the venue parsed as a bare stage number, use the real venue that follows it
+    if(/^stage\s*\d+$/i.test(venue)){
+      var fm2=raw.match(/from\s+Stage\s*\d+\s*-\s*(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
+      if(fm2) venue=fm2[1].trim();
+    }
     var di=raw.indexOf(' - ');
     if(di>-1) {
       details=raw.slice(di+3);
