@@ -1,12 +1,12 @@
 {
-  "updated": "2026-06-25T03:53:47.356930+00:00",
+  "updated": "2026-06-25T11:40:13.454554+00:00",
   "channel": "UC4jtpyiA5WIQsObGh5E2oCg",
   "total": 90,
   "videos": [
     {
       "id": "CF1IaiufCgs",
       "title": "Jesco (live) from Clouso in Fabulous 360!",
-      "views": 12,
+      "views": 13,
       "published": "2026-06-23T07:49:42Z",
       "show_date": "2026-06-03T00:00:00+00:00",
       "type": "360"
@@ -14,15 +14,15 @@
     {
       "id": "G8Y1rMyj5eE",
       "title": "Jesco (live) from Clouso - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 9,
+      "views": 10,
       "published": "2026-06-23T07:49:34Z",
       "show_date": "2026-06-03T00:00:00+00:00",
       "type": "4k"
     },
     {
       "id": "bOwWMZaIYQ0",
-      "title": "Mountain Grass Unit (live) from Arch Deluxe 2026 - Full Show - Single-cam - Soundboard Audio",
-      "views": 92,
+      "title": "Mountain Grass Unit (live) from Arch Deluxe 2026 - Full Show - Single Cam - Soundboard Audio",
+      "views": 101,
       "published": "2026-06-23T18:58:11Z",
       "show_date": "2026-05-02T00:00:00+00:00",
       "type": "4k"
@@ -82,6 +82,38 @@
       "published": "2026-01-22T00:47:39Z",
       "show_date": "2026-01-18T00:00:00+00:00",
       "type": "4k"
+    },
+    {
+      "id": "PmBUC2g18hw",
+      "title": "Kansas City Bear Fighters (live) from Winfield 2024 - Stage 7 in Fabulous 360!",
+      "views": 37,
+      "published": "2026-01-16T15:47:21Z",
+      "show_date": "2026-01-16T15:47:21Z",
+      "type": "360"
+    },
+    {
+      "id": "CPViC7zxsHE",
+      "title": "Front Porch (live) from Winfield 2024 - Stage 3 in Fabulous 360!",
+      "views": 62,
+      "published": "2026-01-14T16:43:00Z",
+      "show_date": "2026-01-14T16:43:00Z",
+      "type": "360"
+    },
+    {
+      "id": "EP5nyFC0lPE",
+      "title": "Front Porch (live) from Winfield 2024 - Stage 2 in Fabulous 360!",
+      "views": 45,
+      "published": "2026-01-03T15:57:01Z",
+      "show_date": "2026-01-03T15:57:01Z",
+      "type": "360"
+    },
+    {
+      "id": "1PQCOPrdm6w",
+      "title": "Crying Uncle Bluegrass Band (live) from Winfield 2024 - Stage 3 in Fabulous 360!",
+      "views": 90,
+      "published": "2026-01-02T18:27:04Z",
+      "show_date": "2026-01-02T18:27:04Z",
+      "type": "360"
     },
     {
       "id": "IRbidX7njZo",
@@ -150,7 +182,7 @@
     {
       "id": "5Mj2WksIs-s",
       "title": "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 1490,
+      "views": 1493,
       "published": "2025-11-26T14:48:56Z",
       "show_date": "2025-11-19T00:00:00+00:00",
       "type": "4k"
@@ -174,7 +206,7 @@
     {
       "id": "Pc_lSdrv3H0",
       "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 3790,
+      "views": 3795,
       "published": "2026-02-10T20:45:38Z",
       "show_date": "2025-10-10T00:00:00+00:00",
       "type": "4k"
@@ -190,7 +222,7 @@
     {
       "id": "12sPE1oDkH4",
       "title": "Front Porch (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 2750,
+      "views": 2751,
       "published": "2025-11-04T16:49:04Z",
       "show_date": "2025-10-09T00:00:00+00:00",
       "type": "4k"
@@ -318,7 +350,7 @@
     {
       "id": "z9F-1DoLDMg",
       "title": "Improvement Movement (live) from Knuckleheads - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 1962,
+      "views": 1963,
       "published": "2025-08-12T01:17:57Z",
       "show_date": "2025-08-10T00:00:00+00:00",
       "type": "4k"
@@ -326,7 +358,7 @@
     {
       "id": "yNhJ6I9akQw",
       "title": "Magoo (live) from Lovegrass 2025 - Full Show",
-      "views": 227,
+      "views": 232,
       "published": "2026-02-17T17:17:45Z",
       "show_date": "2025-08-08T00:00:00+00:00",
       "type": "4k"
@@ -350,7 +382,7 @@
     {
       "id": "P6anEkCEDDQ",
       "title": "East Nash Grass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 10177,
+      "views": 10183,
       "published": "2025-07-29T21:36:04Z",
       "show_date": "2025-07-23T00:00:00+00:00",
       "type": "4k"
@@ -580,42 +612,10 @@
       "type": "360"
     },
     {
-      "id": "PmBUC2g18hw",
-      "title": "Kansas City Bear Fighters (live) from Winfield 2024 - Stage 7 in Fabulous 360!",
-      "views": 37,
-      "published": "2026-01-16T15:47:21Z",
-      "show_date": "2024-09-20T00:00:00+00:00",
-      "type": "360"
-    },
-    {
       "id": "crdpHiTYcng",
       "title": "MoonShroom (live) from Winfield 2024 - Stage 5 in Fabulous 360!",
       "views": 30,
       "published": "2026-01-15T17:33:29Z",
-      "show_date": "2024-09-20T00:00:00+00:00",
-      "type": "360"
-    },
-    {
-      "id": "CPViC7zxsHE",
-      "title": "Front Porch (live) from Winfield 2024 - Stage 3 in Fabulous 360!",
-      "views": 62,
-      "published": "2026-01-14T16:43:00Z",
-      "show_date": "2024-09-20T00:00:00+00:00",
-      "type": "360"
-    },
-    {
-      "id": "EP5nyFC0lPE",
-      "title": "Front Porch (live) from Winfield 2024 - Stage 2 in Fabulous 360!",
-      "views": 45,
-      "published": "2026-01-03T15:57:01Z",
-      "show_date": "2024-09-20T00:00:00+00:00",
-      "type": "360"
-    },
-    {
-      "id": "1PQCOPrdm6w",
-      "title": "Crying Uncle Bluegrass Band (live) from Winfield 2024 - Stage 3 in Fabulous 360!",
-      "views": 90,
-      "published": "2026-01-02T18:27:04Z",
       "show_date": "2024-09-20T00:00:00+00:00",
       "type": "360"
     },
@@ -654,7 +654,7 @@
     {
       "id": "Kki2nnAu8gg",
       "title": "Front Porch (live) from Winfield - Lit On The Low Road 2024 - Full Set - Single-cam",
-      "views": 343,
+      "views": 344,
       "published": "2024-10-11T15:28:17Z",
       "show_date": "2024-09-20T00:00:00+00:00",
       "type": "4k"
