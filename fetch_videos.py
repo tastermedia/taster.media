@@ -161,6 +161,7 @@ def is_360(title):
     return 'fabulous 360' in t or '360!' in t or '360 video' in t
 
 videos = []
+skipped_not_live = []
 for i in range(0, len(video_ids), 50):
     batch = ",".join(video_ids[i:i+50])
     data = api(f"videos?part=snippet,statistics&id={batch}")
@@ -168,6 +169,7 @@ for i in range(0, len(video_ids), 50):
         title = TITLE_TEXT_OVERRIDES.get(item["id"], item["snippet"]["title"])
         vid_id = item["id"]
         if "(live)" not in title.lower() and vid_id not in LIVE_EXCEPTIONS:
+            skipped_not_live.append((vid_id, title))
             continue
         if vid_id in EXCLUDE_IDS:
             continue
@@ -201,4 +203,11 @@ videos.sort(key=lambda v: v["show_date"], reverse=True)
 with open("videos.json","w") as f:
     json.dump({"updated":datetime.now(timezone.utc).isoformat(),"channel":channel_id,"total":len(videos),"videos":videos},f,indent=2)
 
+if skipped_not_live:
+    print(f"Skipped {len(skipped_not_live)} channel upload(s) with no '(live)' in title "
+          f"(add '(live)' to the title or whitelist the ID if any of these are shows):")
+    for _sid, _stitle in skipped_not_live:
+        print(f"  - {_sid}  {_stitle}")
+else:
+    print("No channel uploads were skipped for missing '(live)'.")
 print(f"Done: {len(videos)} videos")
