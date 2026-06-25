@@ -180,12 +180,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function resetSortBtns(sortState) {
+    var LABELS={date:"📅 Date",views:"👁 Views",shuffle:"🔀 Shuffle"};
     document.querySelectorAll(".sort-btn").forEach(function(b){
       b.classList.remove("active");
-      b.textContent=(b.dataset.field==="date"?"📅 Date":"👁 Views");
+      b.textContent=LABELS[b.dataset.field]||b.textContent;
     });
     var active=document.querySelector('.sort-btn[data-field="'+sortState.field+'"]');
-    if(active){ active.classList.add("active"); active.textContent=(sortState.field==="date"?"📅 Date":"👁 Views")+" "+(sortState.dir==="desc"?"↓":"↑"); }
+    if(active){ active.classList.add("active"); active.textContent=(LABELS[sortState.field]||"")+(sortState.field==="shuffle"?"":" "+(sortState.dir==="desc"?"↓":"↑")); }
   }
 
   // Show shimmer skeletons while loading
@@ -208,7 +209,12 @@ document.addEventListener("DOMContentLoaded", function () {
       var typeFilter="all";
       var searchTimer=null;
 
+      var shuffleOrder={};
+      function reshuffle(){ shuffleOrder={}; allVideos.forEach(function(v){ shuffleOrder[v.id]=Math.random(); }); }
       function getSorted(videos) {
+        if(sortState.field==="shuffle"){
+          return videos.slice().sort(function(a,b){ return (shuffleOrder[a.id]||0)-(shuffleOrder[b.id]||0); });
+        }
         return videos.slice().sort(function(a,b){
           if(sortState.field==="date"){ var da=a.show_date||a.published,db=b.show_date||b.published; return sortState.dir==="desc"?(db>da?1:-1):(da>db?1:-1); }
           return sortState.dir==="desc"?(b.views-a.views):(a.views-b.views);
@@ -266,7 +272,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".sort-btn").forEach(function(btn){
           btn.addEventListener("click", function(){
             var field=btn.dataset.field;
-            if(sortState.field===field){ sortState.dir=sortState.dir==="desc"?"asc":"desc"; }
+            if(field==="shuffle"){ reshuffle(); sortState.field="shuffle"; }
+            else if(sortState.field===field){ sortState.dir=sortState.dir==="desc"?"asc":"desc"; }
             else{ sortState.field=field; sortState.dir="desc"; }
             resetSortBtns(sortState);
             refresh();
