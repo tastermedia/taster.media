@@ -333,20 +333,26 @@ document.addEventListener("DOMContentLoaded", function () {
             refresh();
           });
         });
-        // Thumbnail size selector — persisted in localStorage
-        var SIZE_MAP={small:'240px',medium:'360px',large:'480px'};
-        function applySize(sz){
-          var px=SIZE_MAP[sz]||SIZE_MAP.medium;
-          document.documentElement.style.setProperty('--card-min',px);
-          try{ localStorage.setItem('taster.size',sz); }catch(e){}
-          document.querySelectorAll('.size-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.size===sz); });
+        // Thumbnail size slider — persisted in localStorage (px, 220-540)
+        var sizeSlider=document.getElementById('thumbSizeSlider');
+        function applySizePx(px){
+          document.documentElement.style.setProperty('--card-min', px + 'px');
+          try{ localStorage.setItem('taster.size', String(px)); }catch(e){}
         }
-        var savedSize='medium';
-        try{ savedSize=localStorage.getItem('taster.size')||'medium'; }catch(e){}
-        applySize(savedSize);
-        document.querySelectorAll('.size-btn').forEach(function(btn){
-          btn.addEventListener('click', function(){ applySize(btn.dataset.size); });
-        });
+        var savedPx=360;
+        try{
+          var raw=localStorage.getItem('taster.size');
+          // Migrate any old S/M/L keys to pixel values
+          if(raw==='small') savedPx=240;
+          else if(raw==='large') savedPx=480;
+          else if(raw==='medium') savedPx=360;
+          else { var n=parseInt(raw,10); if(n>=220&&n<=540) savedPx=n; }
+        }catch(e){}
+        applySizePx(savedPx);
+        if(sizeSlider){
+          sizeSlider.value = savedPx;
+          sizeSlider.addEventListener('input', function(){ applySizePx(parseInt(sizeSlider.value,10)); });
+        }
         var input=document.getElementById("searchInput");
         if(input){
           input.addEventListener("input", function(){

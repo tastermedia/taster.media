@@ -31,13 +31,9 @@
         <button class="sort-btn" data-field="shuffle">Shuffle</button>
       </div>
     </div>
-    <div class="header-sort">
-      <span class="sort-label">Size</span>
-      <div class="sort-buttons">
-        <button class="size-btn" data-size="small">S</button>
-        <button class="size-btn active" data-size="medium">M</button>
-        <button class="size-btn" data-size="large">L</button>
-      </div>
+    <div class="header-sort header-size">
+      <label for="thumbSizeSlider" class="sort-label">Thumbnail Size</label>
+      <input type="range" id="thumbSizeSlider" class="size-slider" min="220" max="540" step="10" value="360" aria-label="Thumbnail size" />
     </div>
   </div>
 </div>
