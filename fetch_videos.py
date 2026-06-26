@@ -81,6 +81,7 @@ ID_DATE_OVERRIDES = {
     '-vJyLUWFBtM': ('2024-09-20T00:00:00+00:00', '4k'),    # Crying Uncle @ Winfield 2024 Stage 5
     'WuUsgJqPnu4': ('2004-01-01T00:00:00+00:00', '4k'),    # brown whörnet @ Austin — corrected: 2004 (uploaded 2022)
     'ta83THTWpk0': ('2004-01-01T00:00:00+00:00', '4k'),    # dim @ The Newport — corrected: 2004 (uploaded 2022)
+    'hfY3F6Fh8YU': ('2003-06-01T00:00:00+00:00', '4k'),    # free space @ Griffin's — corrected: June 2003 (uploaded 2022)
     # Winfield 2024 360 entries — show_date kept getting overwritten by published after title rename
     'PmBUC2g18hw': ('2024-09-20T00:00:00+00:00', '360'),   # Kansas City Bear Fighters @ Winfield 2024 Stage 7
     'CPViC7zxsHE': ('2024-09-20T00:00:00+00:00', '360'),   # Front Porch @ Winfield 2024 Stage 3
@@ -91,6 +92,7 @@ ID_DATE_OVERRIDES = {
 
 # Title text overrides — corrected display titles keyed by video ID
 TITLE_TEXT_OVERRIDES = {
+    'bOwWMZaIYQ0': "Mountain Grass Unit (live) from Arch Deluxe 2026 - Full Show - Single-cam - Soundboard Audio",
     'z7YT7XCMVaI': "Leftover Salmon (live) from Arch Deluxe 2026 - Full Set - 4k Multi-cam - Soundboard Audio",
     'c5ZjLthLEkM': "MoonShroom (live) from Fool's Yule 2025 - Full Show - 4k Multi-cam",
     'oi1ZsaFGDDc': "Front Porch (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
