@@ -116,6 +116,11 @@ document.addEventListener("DOMContentLoaded", function () {
       thumb.src="https://img.youtube.com/vi/"+video.id+(isMob?"/mqdefault.jpg":"/hqdefault.jpg");
       var play=document.createElement("div"); play.className="play-icon"; play.innerHTML="▶";
       card.appendChild(thumb); card.appendChild(play);
+      if(video.type==='360'){
+        is360Map[video.id]=true;
+        var badge=document.createElement("div"); badge.className="type-badge type-badge-360"; badge.textContent="360°";
+        card.appendChild(badge);
+      }
       card.addEventListener("click", function(){ openLightbox(video.id, card, video.title); });
       // Hover info overlay
       var hoverInfo=document.createElement("div"); hoverInfo.className="hover-info";
