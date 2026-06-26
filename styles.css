@@ -128,7 +128,12 @@ footer{margin-top:60px;border-top:1px solid #8000ff33;padding:40px 20px;}
   button.type-btn,button.sort-btn{width:90px!important;padding:6px 0!important;font-size:0.78rem!important;}
   .grid{padding:10px;gap:10px;grid-template-columns:1fr;}
   .video:hover{transform:none;}
-  #lightbox-inner{width:98vw;}
+  /* Mobile lightbox: full-width 16:9 player with close button below the iframe instead of above */
+  #lightbox-inner{width:100vw;max-width:100vw;aspect-ratio:16/9;}
+  #lightbox-iframe{border-radius:0;box-shadow:0 0 30px #8000ff66;}
+  #lightbox-close{top:auto;bottom:-44px;right:8px;font-size:1.3rem;padding:6px 12px;background:rgba(128,0,255,0.2);border-radius:999px;opacity:0.9;}
+  #lightbox-title{font-size:0.85rem;padding:0 8px;bottom:calc(100% + 6px);}
+  #lightbox-360{font-size:11px!important;padding:6px 12px!important;bottom:60px!important;}
   .content-page{margin:36px auto;padding:0 16px;}
   
   
