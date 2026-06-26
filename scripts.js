@@ -353,47 +353,4 @@ document.addEventListener("DOMContentLoaded", function () {
     scrollBtn.addEventListener("click", function(){ window.scrollTo({top:0,behavior:"smooth"}); });
   }
 
-  // ── Cursor trail ──
-  (function(){
-    var canvas=document.createElement('canvas');
-    canvas.id='cursor-canvas';
-    document.body.appendChild(canvas);
-    var ctx=canvas.getContext('2d');
-    var W=canvas.width=window.innerWidth, H=canvas.height=window.innerHeight;
-    window.addEventListener('resize',function(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; });
-    var particles=[];
-    var mouse={x:-999,y:-999};
-    window.addEventListener('mousemove',function(e){ mouse.x=e.clientX; mouse.y=e.clientY; });
-    function Particle(x,y){
-      this.x=x; this.y=y;
-      this.size=Math.random()*3+1;
-      this.alpha=0.7+Math.random()*0.3;
-      this.vx=(Math.random()-0.5)*1.2;
-      this.vy=(Math.random()-0.5)*1.2-0.4;
-      this.hue=Math.random()<0.5?280:320; // purple or pink
-    }
-    Particle.prototype.update=function(){
-      this.x+=this.vx; this.y+=this.vy;
-      this.alpha-=0.022; this.size*=0.97;
-    };
-    var lastX=mouse.x, lastY=mouse.y;
-    function loop(){
-      requestAnimationFrame(loop);
-      ctx.clearRect(0,0,W,H);
-      if(Math.abs(mouse.x-lastX)>1||Math.abs(mouse.y-lastY)>1){
-        for(var i=0;i<3;i++) particles.push(new Particle(mouse.x,mouse.y));
-        lastX=mouse.x; lastY=mouse.y;
-      }
-      for(var j=particles.length-1;j>=0;j--){
-        var p=particles[j];
-        p.update();
-        if(p.alpha<=0){ particles.splice(j,1); continue; }
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-        ctx.fillStyle='hsla('+p.hue+',100%,70%,'+p.alpha+')';
-        ctx.fill();
-      }
-    }
-    loop();
-  })();
 });
