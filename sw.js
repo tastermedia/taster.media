@@ -7,8 +7,8 @@ const DATA_CACHE = `taster-data-${VERSION}`;
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css?v=39',
-  '/scripts.js?v=36',
+  '/styles.css?v=40',
+  '/scripts.js?v=37',
   '/header.html',
   '/header.js',
   '/manifest.json',
