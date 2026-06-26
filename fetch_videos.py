@@ -148,6 +148,8 @@ EXCLUDE_IDS = {
     'ngljOpE-cE8',  # Front Porch - Roadside
     '7GNaUC3jD4U',  # Front Porch - Haystack
     'UGCyVg3F0UU',  # Front Porch - The Grove
+    # Temporarily hidden — delete this line to bring back into the catalog:
+    'MaP5leydx0U',  # Pete Bernhard (live) from Clouso in Fabulous 360!
 }
 
 def apply_title_overrides(title):
