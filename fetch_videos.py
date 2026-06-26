@@ -47,6 +47,12 @@ def parse_show_date(text, published_dt):
     return None
 
 TITLE_DATE_OVERRIDES = [
+    # New (post-normalization) format: "Winfield 2024 - Stage X in Fabulous 360!"
+    ('winfield 2024 - stage 2 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('winfield 2024 - stage 3 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('winfield 2024 - stage 5 in fabulous', '2024-09-20T00:00:00+00:00'),
+    ('winfield 2024 - stage 7 in fabulous', '2024-09-20T00:00:00+00:00'),
+    # Legacy patterns kept for safety in case any source title slips through unrenamed
     ('stage 2 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
     ('stage 3 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
     ('stage 5 2024 in fabulous', '2024-09-20T00:00:00+00:00'),
@@ -75,6 +81,11 @@ ID_DATE_OVERRIDES = {
     '-vJyLUWFBtM': ('2024-09-20T00:00:00+00:00', '4k'),    # Crying Uncle @ Winfield 2024 Stage 5
     'WuUsgJqPnu4': ('2004-01-01T00:00:00+00:00', '4k'),    # brown whörnet @ Austin — corrected: 2004 (uploaded 2022)
     'ta83THTWpk0': ('2004-01-01T00:00:00+00:00', '4k'),    # dim @ The Newport — corrected: 2004 (uploaded 2022)
+    # Winfield 2024 360 entries — show_date kept getting overwritten by published after title rename
+    'PmBUC2g18hw': ('2024-09-20T00:00:00+00:00', '360'),   # Kansas City Bear Fighters @ Winfield 2024 Stage 7
+    'CPViC7zxsHE': ('2024-09-20T00:00:00+00:00', '360'),   # Front Porch @ Winfield 2024 Stage 3
+    'EP5nyFC0lPE': ('2024-09-20T00:00:00+00:00', '360'),   # Front Porch @ Winfield 2024 Stage 2
+    '1PQCOPrdm6w': ('2024-09-20T00:00:00+00:00', '360'),   # Crying Uncle Bluegrass Band @ Winfield 2024 Stage 3
 }
 
 
