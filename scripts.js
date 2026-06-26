@@ -130,7 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
       var hoverInfo=document.createElement("div"); hoverInfo.className="hover-info";
       var hpt=parseTitle(video.title||"");
       var hoverTitle2=document.createElement("div"); hoverTitle2.className="hover-artist"; hoverTitle2.textContent=hpt.artist;
-      var hoverDetail=document.createElement("div"); hoverDetail.className="hover-detail"; hoverDetail.textContent=hpt.details;
+      var hoverDetail=document.createElement("div"); hoverDetail.className="hover-detail";
+      // Hover line: prepend venue when it adds context the details string lacks
+      var hpd=hpt.details;
+      if(hpt.venue && (!hpd || hpd.toLowerCase().indexOf(hpt.venue.toLowerCase())===-1)){
+        hpd = hpd ? (hpt.venue + " — " + hpd) : hpt.venue;
+      }
+      hoverDetail.textContent = hpd;
       hoverInfo.appendChild(hoverTitle2); hoverInfo.appendChild(hoverDetail);
       card.appendChild(hoverInfo);
       var info=document.createElement("div"); info.className="video-info";
@@ -177,7 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var artist='',venue='',details='';
     var lm=raw.match(/^(.+?)\s*\(live\)/i);
     artist=lm?lm[1].trim():raw.split(' - ')[0];
-    var fm=raw.match(/from\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
+    // Try several venue patterns: "from X", "@ X", "on X", "somewhere in X", "in X"
+    var fm=raw.match(/(?:from|somewhere in|@|on)\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
     if(fm) venue=fm[1].trim();
     // If the venue parsed as a bare stage number, use the real venue that follows it
     if(/^stage\s*\d+$/i.test(venue)){
@@ -325,6 +332,20 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.classList.add("active");
             refresh();
           });
+        });
+        // Thumbnail size selector — persisted in localStorage
+        var SIZE_MAP={small:'240px',medium:'360px',large:'480px'};
+        function applySize(sz){
+          var px=SIZE_MAP[sz]||SIZE_MAP.medium;
+          document.documentElement.style.setProperty('--card-min',px);
+          try{ localStorage.setItem('taster.size',sz); }catch(e){}
+          document.querySelectorAll('.size-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.size===sz); });
+        }
+        var savedSize='medium';
+        try{ savedSize=localStorage.getItem('taster.size')||'medium'; }catch(e){}
+        applySize(savedSize);
+        document.querySelectorAll('.size-btn').forEach(function(btn){
+          btn.addEventListener('click', function(){ applySize(btn.dataset.size); });
         });
         var input=document.getElementById("searchInput");
         if(input){
