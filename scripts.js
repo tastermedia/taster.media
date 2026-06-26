@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var isMob = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   function openLightbox(id, cardEl, title) {
-    if (isMob) {
+    // 360 videos: redirect to YouTube on mobile — their app has real VR/360 controls.
+    // Non-360 videos play natively in the lightbox even on mobile.
+    if (isMob && is360Map[id]) {
       var a=document.createElement('a');a.href="https://www.youtube.com/watch?v="+id;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();document.body.removeChild(a);return;
     }
     currentVideoId = id;
@@ -221,7 +223,8 @@ document.addEventListener("DOMContentLoaded", function () {
       allVideos.forEach(function(v){ if(v.type==="360") is360Map[v.id]=true; });
       var sortState={field:"date",dir:"desc"};
       var searchQuery="";
-      var typeFilter="all";
+      // /360.html defaults to the 360-only view; everywhere else shows all.
+      var typeFilter=/\/360\.html?$/.test(location.pathname)?"360":"all";
       var searchTimer=null;
 
       function getSorted(videos) {
