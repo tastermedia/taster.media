@@ -23,11 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (lbTitle) lbTitle.textContent = title || '';
     // Update URL hash for deep linking
     if (history.replaceState) history.replaceState(null,'','#v='+id);
-    iframe.src="https://www.youtube.com/embed/"+id+"?rel=0&autoplay=1&enablejsapi=1";
     if(!lb360) lb360=document.getElementById("lightbox-360");
     if(lb360){ if(is360Map[id]){ lb360.href="https://www.youtube.com/watch?v="+id; lb360.style.display="inline-block"; } else { lb360.style.display="none"; } }
+    // Show the overlay BEFORE setting iframe.src so the iframe loads while visible —
+    // browsers (Chrome/Safari) suppress autoplay when the iframe loads while still hidden.
     overlay.classList.add("active");
     document.body.style.overflow="hidden";
+    iframe.src="https://www.youtube.com/embed/"+id+"?rel=0&autoplay=1&playsinline=1&enablejsapi=1";
     // Animate inner panel expanding from thumbnail position
     var startScale = 0.05;
     if (cardEl) {
@@ -82,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (history.replaceState) history.replaceState(null,'','#v='+next.id);
     if (lbTitle) lbTitle.textContent = next.title || '';
     currentVideoId = next.id;
-    iframe.src = "https://www.youtube.com/embed/"+next.id+"?rel=0&autoplay=1&enablejsapi=1";
+    iframe.src = "https://www.youtube.com/embed/"+next.id+"?rel=0&autoplay=1&playsinline=1&enablejsapi=1";
     if(!lb360) lb360=document.getElementById("lightbox-360");
     if(lb360){ if(is360Map[next.id]){ lb360.href="https://www.youtube.com/watch?v="+next.id; lb360.style.display="inline-block"; } else { lb360.style.display="none"; } }
   }
