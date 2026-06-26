@@ -21,7 +21,7 @@
     },
     {
       "id": "bOwWMZaIYQ0",
-      "title": "Mountain Grass Unit (live) from Arch Deluxe 2026 - Full Show - Single Cam - Soundboard Audio",
+      "title": "Mountain Grass Unit (live) from Arch Deluxe 2026 - Full Show - Single-cam - Soundboard Audio",
       "views": 126,
       "published": "2026-06-23T18:58:11Z",
       "show_date": "2026-05-02T00:00:00+00:00",
@@ -708,14 +708,6 @@
       "type": "4k"
     },
     {
-      "id": "hfY3F6Fh8YU",
-      "title": "free space (live) @ Griffin's",
-      "views": 215,
-      "published": "2022-01-20T05:54:30Z",
-      "show_date": "2022-01-20T05:54:30Z",
-      "type": "4k"
-    },
-    {
       "id": "WuUsgJqPnu4",
       "title": "brown whörnet (live) somewhere in Austin",
       "views": 86,
@@ -729,6 +721,14 @@
       "views": 58,
       "published": "2022-01-21T15:39:28Z",
       "show_date": "2004-01-01T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "hfY3F6Fh8YU",
+      "title": "free space (live) @ Griffin's",
+      "views": 215,
+      "published": "2022-01-20T05:54:30Z",
+      "show_date": "2003-06-01T00:00:00+00:00",
       "type": "4k"
     }
   ]
