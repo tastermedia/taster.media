@@ -183,8 +183,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var artist='',venue='',details='';
     var lm=raw.match(/^(.+?)\s*\(live\)/i);
     artist=lm?lm[1].trim():raw.split(' - ')[0];
-    // Try several venue patterns: "from X", "@ X", "on X", "somewhere in X", "in X"
-    var fm=raw.match(/(?:from|somewhere in|@|on)\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
+    // Try several venue patterns: "from X", "@ X", "on X", "somewhere in X"
+    // Word boundaries on the wordy alternatives so we don't match "on" inside
+    // names like "Salmon" / "Cameron" / "Jason" / "Tipton" / "Dillon".
+    var fm=raw.match(/(?:\bfrom|\bsomewhere in|@|\bon)\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
     if(fm) venue=fm[1].trim();
     // If the venue parsed as a bare stage number, use the real venue that follows it
     if(/^stage\s*\d+$/i.test(venue)){
