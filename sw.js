@@ -8,7 +8,7 @@ const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/styles.css?v=41',
-  '/scripts.js?v=38',
+  '/scripts.js?v=39',
   '/header.html',
   '/header.js',
   '/manifest.json',
