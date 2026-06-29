@@ -60,7 +60,7 @@ button.type-btn.active,button.sort-btn.active{background-color:rgba(128,0,255,0.
 
 /* ------------ Video grid ------------ */
 .playlist-section{margin:0;}
-.grid{display:grid;gap:24px;padding:20px;grid-template-columns:repeat(auto-fill,minmax(var(--card-min,360px),1fr));isolation:isolate;}
+.grid{display:grid;gap:24px;padding:20px;grid-template-columns:repeat(auto-fill,minmax(var(--card-min,420px),1fr));isolation:isolate;}
 .video{position:relative;border-radius:10px;background:#111;cursor:pointer;display:flex;flex-direction:column;transition:transform 0.25s ease,box-shadow 0.25s ease;z-index:0;overflow:hidden;}
 .video:hover{transform:scale(1.04);box-shadow:0 0 20px #8000ff,0 0 40px #ff00ff44;z-index:2;}
 .video .thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px 10px 0 0;transition:transform 0.25s ease;}

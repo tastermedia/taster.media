@@ -336,19 +336,21 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         });
         // Thumbnail size slider — persisted in localStorage (px, 220-540)
+        // Key is versioned so a default change resets everyone's preference.
+        var SIZE_KEY='taster.size.v2';
+        var DEFAULT_PX=420;
         var sizeSlider=document.getElementById('thumbSizeSlider');
         function applySizePx(px){
           document.documentElement.style.setProperty('--card-min', px + 'px');
-          try{ localStorage.setItem('taster.size', String(px)); }catch(e){}
+          try{ localStorage.setItem(SIZE_KEY, String(px)); }catch(e){}
         }
-        var savedPx=360;
+        var savedPx=DEFAULT_PX;
         try{
-          var raw=localStorage.getItem('taster.size');
-          // Migrate any old S/M/L keys to pixel values
-          if(raw==='small') savedPx=240;
-          else if(raw==='large') savedPx=480;
-          else if(raw==='medium') savedPx=360;
-          else { var n=parseInt(raw,10); if(n>=220&&n<=540) savedPx=n; }
+          var raw=localStorage.getItem(SIZE_KEY);
+          var n=parseInt(raw,10);
+          if(n>=220&&n<=540) savedPx=n;
+          // Drop the old key on first load so it doesn't linger.
+          localStorage.removeItem('taster.size');
         }catch(e){}
         applySizePx(savedPx);
         if(sizeSlider){
