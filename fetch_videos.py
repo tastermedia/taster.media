@@ -120,7 +120,7 @@ TITLE_TEXT_OVERRIDES = {
     'c5ZjLthLEkM': "MoonShroom (live) from Fool's Yule 2025 - Full Show - 4k Multi-cam - Audience Mic Audio",
     'oi1ZsaFGDDc': "Front Porch (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
     '5Mj2WksIs-s': "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-    'VqFnBIL4tHw': "Whiskey Mash (live) from Hillberry 2025 - 4k - Single-cam - Audience Mic Audio",
+    'VqFnBIL4tHw': "Whiskey Mash (live) from Hillberry 2025 - 4k Single-cam - Audience Mic Audio",
     'sbS3kh2ipkQ': "John Henry And Friends (live) from Hillberry 2025 - 4k Single-cam - Audience Mic Audio",
     'r08yIarOHU4': "Alex Hawf Revue (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Audience Mic Audio",
     'yeyi0680Q-o': "Kansas City Bear Fighters (live) from Space Cat 2025 in Fabulous 360!",
@@ -184,8 +184,6 @@ EXCLUDE_IDS = {
     'ngljOpE-cE8',  # Front Porch - Roadside
     '7GNaUC3jD4U',  # Front Porch - Haystack
     'UGCyVg3F0UU',  # Front Porch - The Grove
-    # Temporarily hidden — delete this line to bring back into the catalog:
-    'MaP5leydx0U',  # Pete Bernhard (live) from Clouso in Fabulous 360!
 }
 
 def apply_title_overrides(title):
@@ -199,6 +197,16 @@ def is_360(title):
     t = title.lower()
     return 'fabulous 360' in t or '360!' in t or '360 video' in t
 
+# Normalize "Multicam" / "Multi Cam" / "Single Cam" / "Singlecam" variants to the
+# canonical "Multi-cam" / "Single-cam". Catches inconsistent YouTube titles
+# before they end up in videos.json so we don't have to keep adding overrides.
+def normalize_cam_terms(title):
+    return re.sub(
+        r'\b([Ss]ingle|[Mm]ulti)[\s_]*[Cc]am\b',
+        lambda m: m.group(1).title() + '-cam',
+        title,
+    )
+
 videos = []
 skipped_not_live = []
 for i in range(0, len(video_ids), 50):
@@ -206,6 +214,7 @@ for i in range(0, len(video_ids), 50):
     data = api(f"videos?part=snippet,statistics&id={batch}")
     for item in data["items"]:
         title = TITLE_TEXT_OVERRIDES.get(item["id"], item["snippet"]["title"])
+        title = normalize_cam_terms(title)
         vid_id = item["id"]
         if "(live)" not in title.lower() and vid_id not in LIVE_EXCEPTIONS:
             skipped_not_live.append((vid_id, title))
@@ -232,6 +241,7 @@ if static_ids_to_fetch:
         for item in static_data.get("items",[]):
             vid_id = item["id"]
             title = TITLE_TEXT_OVERRIDES.get(vid_id, item["snippet"]["title"])
+            title = normalize_cam_terms(title)
             published = item["snippet"]["publishedAt"]
             views = int(item["statistics"].get("viewCount",0))
             show_date, vid_type = STATIC_IDS[vid_id]
