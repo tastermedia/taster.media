@@ -1,14 +1,14 @@
 // Taster Media service worker — stale-while-revalidate for static assets,
 // network-first for videos.json so new uploads show up quickly.
-const VERSION = 'v3';
+const VERSION = 'v4';
 const STATIC_CACHE = `taster-static-${VERSION}`;
 const DATA_CACHE = `taster-data-${VERSION}`;
 
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css?v=42',
-  '/scripts.js?v=40',
+  '/styles.css?v=43',
+  '/scripts.js?v=41',
   '/header.html',
   '/header.js',
   '/manifest.json',
