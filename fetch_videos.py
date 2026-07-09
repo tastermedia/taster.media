@@ -161,7 +161,6 @@ LIVE_EXCEPTIONS = {'EklPeX4QiMw', 'yEp6Kjl_mX0', 'WuUsgJqPnu4', 'nioEXdSpqak', '
 # Unlisted videos not returned by channel API — fetched individually every run
 STATIC_IDS = {
     'z7YT7XCMVaI': ('2026-05-02T00:00:00+00:00', '4k'),  # Leftover Salmon @ Arch Deluxe (collab - on collaborator channel, not ours)
-    'MaP5leydx0U': ('2026-06-03T00:00:00+00:00', '360'),  # Pete Bernhard @ Clouso (unlisted)
     'oi1ZsaFGDDc': ('2025-11-23T00:00:00+00:00', '4k'),  # Front Porch from Lucia Nov 2025
     '4mS8xtfxbLE': ('2025-08-30T00:00:00+00:00', '4k'),  # Front Porch from Cervantes
     '0Jprv8XmSx8': ('2025-08-27T00:00:00+00:00', '4k'),  # Front Porch from Crow Peak Brewing Co.
@@ -184,6 +183,9 @@ EXCLUDE_IDS = {
     'ngljOpE-cE8',  # Front Porch - Roadside
     '7GNaUC3jD4U',  # Front Porch - Haystack
     'UGCyVg3F0UU',  # Front Porch - The Grove
+    # Removed from the catalog — restore by deleting this line AND re-adding
+    # the STATIC_IDS entry for MaP5leydx0U above.
+    'MaP5leydx0U',  # Pete Bernhard (live) from Clouso in Fabulous 360!
 }
 
 def apply_title_overrides(title):
