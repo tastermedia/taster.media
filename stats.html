@@ -11,51 +11,110 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=43" />
   <style>
-    .stats-wrap{max-width:1080px;margin:0 auto;padding:34px 20px 80px;}
-    .stats-title{margin:0 0 8px;text-align:center;}
-    .stats-sub{opacity:.65;font-size:.9rem;text-align:center;margin:0 auto 36px;letter-spacing:.05em;}
+    .stats-wrap{max-width:1120px;margin:0 auto;padding:34px 20px 100px;}
+    .stats-hero{text-align:center;margin-bottom:44px;}
+    .stats-title{margin:0 0 8px;}
+    .stats-sub{opacity:.65;font-size:.9rem;margin:0 auto 12px;max-width:640px;letter-spacing:.05em;line-height:1.6;}
+    .stats-updated{font-family:'Rajdhani',sans-serif;font-size:.72rem;letter-spacing:.14em;color:#666;text-transform:uppercase;}
+    .stats-updated span{color:#cc88ff;}
+
     /* Metric cards */
-    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:44px;}
-    .metric-card{background:linear-gradient(180deg,rgba(128,0,255,.08),rgba(255,0,255,.03));border:1px solid rgba(128,0,255,.28);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 4px 24px rgba(128,0,255,.08);}
-    .metric-value{font-family:'Rajdhani',sans-serif;font-size:2.4rem;font-weight:700;line-height:1;background:linear-gradient(135deg,#cc88ff,#ff66ff);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em;}
-    .metric-label{font-family:'Rajdhani',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8000ff;margin-top:8px;}
-    /* Section */
-    .stats-section{margin-bottom:44px;}
-    .stats-section h3{font-family:'Rajdhani',sans-serif;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:#8000ff;font-weight:600;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(128,0,255,.2);}
+    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:56px;}
+    .metric-card{background:linear-gradient(180deg,rgba(128,0,255,.10),rgba(255,0,255,.03));border:1px solid rgba(128,0,255,.28);border-radius:16px;padding:24px 18px;text-align:center;box-shadow:0 4px 24px rgba(128,0,255,.10);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;}
+    .metric-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(128,0,255,.25);border-color:rgba(204,136,255,.5);}
+    .metric-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(128,0,255,.15),transparent 70%);pointer-events:none;}
+    .metric-value{font-family:'Rajdhani',sans-serif;font-size:2.4rem;font-weight:700;line-height:1;background:linear-gradient(135deg,#cc88ff,#ff66ff);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em;position:relative;}
+    .metric-label{font-family:'Rajdhani',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8000ff;margin-top:8px;position:relative;}
+    .metric-hint{font-family:'Josefin Sans',sans-serif;font-size:.68rem;color:#666;margin-top:4px;letter-spacing:.03em;position:relative;}
+
+    /* Sections */
+    .stats-section{margin-bottom:52px;position:relative;}
+    .stats-section-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(128,0,255,.2);}
+    .stats-section h3{font-family:'Rajdhani',sans-serif;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:#cc88ff;font-weight:700;margin:0;}
+    .stats-section-emoji{font-size:1.2rem;filter:drop-shadow(0 0 6px rgba(128,0,255,.4));}
+    .stats-section-note{margin-left:auto;font-family:'Josefin Sans',sans-serif;font-size:.75rem;color:#555;letter-spacing:.02em;}
+
+    /* Two-column grid */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+
     /* Bar rows */
-    .bar-row{display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:14px;padding:8px 0;font-family:'Josefin Sans',sans-serif;font-size:.88rem;}
+    .bar-row{display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:14px;padding:8px 0;font-family:'Josefin Sans',sans-serif;font-size:.86rem;}
     .bar-label{color:#ccc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;}
     .bar-track{background:rgba(128,0,255,.08);border-radius:999px;height:10px;overflow:hidden;position:relative;}
-    .bar-fill{height:100%;background:linear-gradient(90deg,#8000ff,#ff00ff);border-radius:999px;transition:width .6s ease;box-shadow:0 0 8px rgba(128,0,255,.4);}
-    .bar-value{font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;color:#cc88ff;letter-spacing:.03em;min-width:60px;text-align:right;}
-    /* Top-videos list */
+    .bar-fill{height:100%;background:linear-gradient(90deg,#8000ff,#ff00ff);border-radius:999px;width:0;transition:width 1.2s cubic-bezier(0.22,1,0.36,1);box-shadow:0 0 8px rgba(128,0,255,.4);}
+    .bar-value{font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;color:#cc88ff;letter-spacing:.03em;min-width:70px;text-align:right;}
+
+    /* Column bars (for videos-per-year etc.) */
+    .col-chart{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:12px;align-items:end;padding:16px 0;min-height:180px;}
+    .col{display:flex;flex-direction:column;align-items:center;gap:6px;}
+    .col-bar{width:100%;max-width:64px;background:linear-gradient(180deg,#ff66ff,#8000ff);border-radius:8px 8px 0 0;height:0;transition:height 1s cubic-bezier(0.22,1,0.36,1);box-shadow:0 -4px 12px rgba(255,102,255,.2);position:relative;}
+    .col-bar::after{content:attr(data-count);position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.03em;white-space:nowrap;}
+    .col-label{font-family:'Rajdhani',sans-serif;font-size:.75rem;color:#888;letter-spacing:.06em;text-transform:uppercase;}
+
+    /* Top videos list */
     .top-videos{list-style:none;padding:0;margin:0;}
-    .top-videos li{display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;padding:10px 12px;border-radius:8px;transition:background .15s;border-bottom:1px solid rgba(128,0,255,.08);}
+    .top-videos li{display:grid;grid-template-columns:40px 1fr auto;gap:16px;align-items:center;padding:12px;border-radius:10px;transition:background .15s,transform .15s;border-bottom:1px solid rgba(128,0,255,.08);}
     .top-videos li:last-child{border-bottom:none;}
-    .top-videos li:hover{background:rgba(128,0,255,.05);}
-    .rank{font-family:'Rajdhani',sans-serif;font-size:1.2rem;font-weight:700;color:#8000ff;text-align:center;letter-spacing:.02em;}
-    .rank-1{color:#ffcf40;text-shadow:0 0 8px rgba(255,207,64,.4);}
-    .rank-2{color:#dcdcdc;}
-    .rank-3{color:#cd9762;}
-    .top-title{color:#ddd;text-align:left;font-size:.88rem;line-height:1.4;}
-    .top-title-artist{font-family:'Rajdhani',sans-serif;font-weight:700;color:#cc88ff;letter-spacing:.03em;}
-    .top-title-venue{color:#888;font-size:.76rem;margin-top:2px;}
-    .top-views{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;color:#fff;letter-spacing:.03em;white-space:nowrap;}
-    .top-views-label{font-size:.65rem;color:#666;letter-spacing:.1em;text-transform:uppercase;margin-top:2px;text-align:right;}
-    /* Two-column grid for artists + venues */
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
-    /* Content type breakdown */
-    .types-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;}
-    .type-card{background:rgba(128,0,255,.05);border:1px solid rgba(128,0,255,.18);border-radius:12px;padding:18px;}
-    .type-card-name{font-family:'Rajdhani',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8000ff;margin-bottom:8px;}
-    .type-count{font-family:'Rajdhani',sans-serif;font-size:1.6rem;font-weight:700;color:#fff;}
-    .type-sub{font-size:.78rem;color:#888;margin-top:4px;font-family:'Josefin Sans',sans-serif;}
+    .top-videos li:hover{background:rgba(128,0,255,.06);transform:translateX(2px);}
+    .rank{font-family:'Rajdhani',sans-serif;font-size:1.35rem;font-weight:700;color:#8000ff;text-align:center;letter-spacing:.02em;}
+    .rank-1{color:#ffcf40;text-shadow:0 0 10px rgba(255,207,64,.5);}
+    .rank-2{color:#dcdcdc;text-shadow:0 0 8px rgba(220,220,220,.3);}
+    .rank-3{color:#cd9762;text-shadow:0 0 8px rgba(205,151,98,.35);}
+    .top-title{text-align:left;font-size:.9rem;line-height:1.4;min-width:0;}
+    .top-title-artist{font-family:'Rajdhani',sans-serif;font-weight:700;color:#cc88ff;letter-spacing:.03em;font-size:1rem;}
+    .top-title-venue{color:#888;font-size:.75rem;margin-top:3px;letter-spacing:.02em;}
+    .top-title-tags{margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;}
+    .tag{display:inline-block;font-family:'Rajdhani',sans-serif;font-size:.62rem;padding:2px 8px;border-radius:999px;border:1px solid rgba(128,0,255,.35);color:#8000ff;letter-spacing:.08em;text-transform:uppercase;background:rgba(128,0,255,.05);}
+    .tag.type-360{border-color:rgba(255,0,255,.5);color:#ff66ff;background:rgba(255,0,255,.06);}
+    .top-views{font-family:'Rajdhani',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;letter-spacing:.03em;white-space:nowrap;}
+    .top-views-label{font-size:.62rem;color:#666;letter-spacing:.14em;text-transform:uppercase;margin-top:2px;text-align:right;}
+
+    /* Type cards */
+    .types-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+    .type-card{background:rgba(128,0,255,.04);border:1px solid rgba(128,0,255,.18);border-radius:14px;padding:20px;transition:border-color .15s,background .15s;}
+    .type-card:hover{border-color:rgba(204,136,255,.35);background:rgba(128,0,255,.07);}
+    .type-card-name{font-family:'Rajdhani',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8000ff;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .type-count{font-family:'Rajdhani',sans-serif;font-size:1.9rem;font-weight:700;color:#fff;line-height:1;}
+    .type-count-unit{font-size:.85rem;color:#888;font-weight:400;margin-left:6px;}
+    .type-sub{font-size:.78rem;color:#aaa;margin-top:6px;font-family:'Josefin Sans',sans-serif;letter-spacing:.02em;}
+    .type-avg{font-family:'Rajdhani',sans-serif;font-size:.72rem;color:#cc88ff;margin-top:4px;letter-spacing:.06em;}
+
+    /* Latest / Origin cards */
+    .compact-list{list-style:none;padding:0;margin:0;}
+    .compact-list li{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:10px 4px;border-bottom:1px solid rgba(128,0,255,.08);font-size:.88rem;}
+    .compact-list li:last-child{border-bottom:none;}
+    .compact-artist{font-family:'Rajdhani',sans-serif;font-weight:600;color:#cc88ff;letter-spacing:.02em;}
+    .compact-venue{color:#888;font-size:.75rem;font-family:'Josefin Sans',sans-serif;}
+    .compact-date{font-family:'Rajdhani',sans-serif;font-size:.78rem;color:#888;letter-spacing:.04em;white-space:nowrap;}
+
+    /* YouTube channel card */
+    .yt-card{background:linear-gradient(135deg,rgba(255,0,0,.08),rgba(128,0,255,.06));border:1px solid rgba(255,0,0,.25);border-radius:16px;padding:24px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;transition:border-color .2s,box-shadow .2s;text-decoration:none;color:inherit;}
+    .yt-card:hover{border-color:rgba(255,80,80,.5);box-shadow:0 8px 32px rgba(255,0,0,.15);}
+    .yt-icon{width:56px;height:56px;background:#ff0000;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;box-shadow:0 4px 12px rgba(255,0,0,.3);}
+    .yt-text{text-align:left;}
+    .yt-handle{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.05rem;color:#fff;letter-spacing:.02em;}
+    .yt-sub{color:#aaa;font-size:.82rem;margin-top:2px;font-family:'Josefin Sans',sans-serif;}
+    .yt-arrow{font-family:'Rajdhani',sans-serif;font-size:.78rem;color:#cc88ff;letter-spacing:.1em;text-transform:uppercase;font-weight:600;white-space:nowrap;}
+
+    /* Split section */
+    .split-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+
     /* Loading */
     .loading{text-align:center;padding:60px 20px;color:#666;font-family:'Rajdhani',sans-serif;letter-spacing:.1em;}
+
+    /* Fade-in on scroll */
+    .stats-section{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease;}
+    .stats-section.visible{opacity:1;transform:translateY(0);}
+    .metric-card{opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease;}
+    .metric-card.visible{opacity:1;transform:translateY(0);}
+
     @media(max-width:640px){
       .two-col{grid-template-columns:1fr;gap:32px;}
       .bar-row{grid-template-columns:130px 1fr auto;gap:10px;font-size:.82rem;}
-      .top-videos li{grid-template-columns:28px 1fr auto;gap:10px;padding:8px 6px;}
+      .top-videos li{grid-template-columns:32px 1fr auto;gap:10px;padding:10px 6px;}
+      .metric-value{font-size:2rem;}
+      .yt-card{grid-template-columns:auto 1fr;text-align:left;}
+      .yt-arrow{grid-column:1/-1;text-align:center;}
     }
   </style>
 </head>
@@ -64,14 +123,17 @@
   <script src="header.js"></script>
   <main>
     <div class="stats-wrap">
-      <h2 class="stats-title glow-text">Stats</h2>
-      <p class="stats-sub">A snapshot of the Taster Media archive — everything computed from the live catalog.</p>
+      <div class="stats-hero">
+        <h2 class="stats-title glow-text">Stats</h2>
+        <p class="stats-sub">A living snapshot of the Taster Media archive — every number computed live from the catalog. Refreshes daily with the YouTube sync.</p>
+        <div class="stats-updated" id="stats-updated"></div>
+      </div>
       <div id="stats-content" class="loading">Loading catalog…</div>
     </div>
   </main>
   <footer><div class="footer-inner"><p class="footer-copy">© <span class="footer-year">2026</span> Taster Media</p></div></footer>
   <script>
-    // Local parseTitle (mirrors scripts.js) — extracts artist + venue from titles
+    // parseTitle (mirrors scripts.js)
     function parseTitle(raw) {
       var artist='', venue='';
       var lm = raw.match(/^(.+?)\s*\(live\)/i);
@@ -84,22 +146,45 @@
       }
       return {artist: artist, venue: venue};
     }
-    function fmt(n){return n.toLocaleString('en-US');}
+    function fmt(n){return Math.round(n).toLocaleString('en-US');}
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     function getType(v){
       if(v.type==='360') return '360°';
       var t=(v.title||'').toLowerCase();
       if(/single[\s-]?cam/.test(t)) return 'Single-cam';
       return 'Multi-cam';
     }
+    function getAudio(v){
+      var t=(v.title||'').toLowerCase();
+      if(t.indexOf('soundboard')>-1) return 'Soundboard';
+      if(t.indexOf('audience mic')>-1) return 'Audience Mic';
+      return 'Unspecified';
+    }
+    function extractFestival(venue){
+      // "Hillberry 2025" -> "Hillberry", "Winfield 2024 - Stage 5" -> "Winfield"
+      var m = venue.match(/^([^-\d]+?)\s*(?:\d{4})?(?:\s+-.*)?$/);
+      if (!m) return null;
+      var name = m[1].trim();
+      // Filter obvious non-festival venue names
+      var lower = name.toLowerCase();
+      if (['knuckleheads','lucia','recordbar','rumba cafe','clouso','the newport','the brick','griffin\'s','austin','ladybird brewing','tall trellis brewing','cervantes','10 mile music hall','gold hill inn','crow peak brewing co.','blue goose stage','mercury lounge','george\'s majestic lounge','ku\'s','boulevard brewing co.','the royal frenchmen','stockyards brewing co.','knuckleheads gospel lounge','tintoretta tattoo','space cat'].indexOf(lower) !== -1) return null;
+      return name;
+    }
+
+    var updatedEl = document.getElementById('stats-updated');
 
     fetch('videos.json?d=' + Math.floor(Date.now()/86400000))
       .then(function(r){ return r.json(); })
       .then(function(data){
         var videos = data.videos || [];
         var totalViews = videos.reduce(function(s,v){ return s + (v.views||0); }, 0);
+        var updated = new Date(data.updated || Date.now());
+        updatedEl.innerHTML = 'Last sync: <span>' + updated.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}) + '</span>';
 
-        // Aggregate by artist / venue / year / type
-        var byArtist = {}, byVenue = {}, byYear = {}, byType = {};
+        // Aggregations
+        var byArtist = {}, byVenue = {}, byYear = {}, byType = {}, byAudio = {}, byFest = {}, byPubYear = {};
+        var showDates = [], pubDates = [], lags = [];
+
         videos.forEach(function(v){
           var pt = parseTitle(v.title || '');
           var vw = v.views || 0;
@@ -112,6 +197,12 @@
             byVenue[pt.venue] = byVenue[pt.venue] || {views:0, count:0};
             byVenue[pt.venue].views += vw;
             byVenue[pt.venue].count += 1;
+            var fest = extractFestival(pt.venue);
+            if (fest) {
+              byFest[fest] = byFest[fest] || {views:0, count:0};
+              byFest[fest].views += vw;
+              byFest[fest].count += 1;
+            }
           }
           var year = (v.show_date || v.published || '').slice(0,4);
           if (year) {
@@ -119,89 +210,224 @@
             byYear[year].views += vw;
             byYear[year].count += 1;
           }
+          var pubYear = (v.published || '').slice(0,4);
+          if (pubYear) byPubYear[pubYear] = (byPubYear[pubYear] || 0) + 1;
           var tp = getType(v);
           byType[tp] = byType[tp] || {views:0, count:0};
           byType[tp].views += vw;
           byType[tp].count += 1;
+          var au = getAudio(v);
+          byAudio[au] = byAudio[au] || {views:0, count:0};
+          byAudio[au].views += vw;
+          byAudio[au].count += 1;
+          if (v.show_date) showDates.push(new Date(v.show_date));
+          if (v.published) pubDates.push(new Date(v.published));
+          if (v.show_date && v.published) {
+            try {
+              var lag = Math.floor((new Date(v.published) - new Date(v.show_date)) / (1000*60*60*24));
+              if (lag >= 0 && lag < 3650) lags.push(lag); // exclude the 2003/2004 archive uploads with huge lags
+            } catch(e){}
+          }
         });
 
         function top(map, n){
           return Object.entries(map).sort(function(a,b){ return b[1].views - a[1].views; }).slice(0, n);
         }
 
+        // Time math
+        showDates.sort(function(a,b){ return a-b; });
+        pubDates.sort(function(a,b){ return a-b; });
+        var oldest = showDates[0], newest = showDates[showDates.length-1];
+        var archiveDays = Math.floor((newest - oldest) / (1000*60*60*24));
+        var latestUpload = pubDates[pubDates.length-1];
+        var daysSinceUpload = Math.floor((Date.now() - latestUpload) / (1000*60*60*24));
+        var avgViews = totalViews / videos.length;
+        var medianLag = lags.length ? lags.sort(function(a,b){return a-b;})[Math.floor(lags.length/2)] : 0;
+
         var topVideos = videos.slice().sort(function(a,b){ return (b.views||0) - (a.views||0); }).slice(0,10);
-        var topArtists = top(byArtist, 8);
-        var topVenues = top(byVenue, 8);
-        var years = Object.keys(byYear).sort().reverse();
-        var yearMax = Math.max.apply(null, years.map(function(y){ return byYear[y].views; }));
+        var topArtists = top(byArtist, 15);
+        var topVenues = top(byVenue, 15);
+        var topFestivals = top(byFest, 8);
+        var latestUploads = videos.slice().sort(function(a,b){ return new Date(b.published) - new Date(a.published); }).slice(0,5);
+        var oldestShows = videos.slice().sort(function(a,b){ return new Date(a.show_date) - new Date(b.show_date); }).slice(0,3);
+
+        var years = Object.keys(byYear).sort();
+        var yearViewMax = Math.max.apply(null, years.map(function(y){ return byYear[y].views; }));
+        var yearCountMax = Math.max.apply(null, years.map(function(y){ return byYear[y].count; }));
         var artistMax = topArtists[0] ? topArtists[0][1].views : 1;
         var venueMax = topVenues[0] ? topVenues[0][1].views : 1;
-        var updated = new Date(data.updated || Date.now());
+        var festMax = topFestivals[0] ? topFestivals[0][1].views : 1;
 
         function bar(label, cur, max, right){
           var pct = Math.max(2, (cur/max)*100);
-          var safeLabel = label.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-          return '<div class="bar-row"><div class="bar-label" title="'+safeLabel+'">'+safeLabel+'</div><div class="bar-track"><div class="bar-fill" style="width:'+pct.toFixed(1)+'%"></div></div><div class="bar-value">'+right+'</div></div>';
+          return '<div class="bar-row"><div class="bar-label" title="'+esc(label)+'">'+esc(label)+'</div><div class="bar-track"><div class="bar-fill" data-target="'+pct.toFixed(1)+'"></div></div><div class="bar-value">'+right+'</div></div>';
+        }
+        function section(title, emoji, note, body){
+          return '<section class="stats-section"><div class="stats-section-header"><span class="stats-section-emoji">'+emoji+'</span><h3>'+title+'</h3>' + (note ? '<span class="stats-section-note">'+note+'</span>' : '') + '</div>'+body+'</section>';
         }
 
         var html = '';
 
         // Metric cards
         html += '<div class="metrics-grid">';
-        html += '<div class="metric-card"><div class="metric-value">'+fmt(videos.length)+'</div><div class="metric-label">Videos</div></div>';
-        html += '<div class="metric-card"><div class="metric-value">'+fmt(totalViews)+'</div><div class="metric-label">Total Views</div></div>';
-        html += '<div class="metric-card"><div class="metric-value">'+fmt(Object.keys(byArtist).length)+'</div><div class="metric-label">Artists</div></div>';
-        html += '<div class="metric-card"><div class="metric-value">'+fmt(Object.keys(byVenue).length)+'</div><div class="metric-label">Venues</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+videos.length+'">0</div><div class="metric-label">Videos</div><div class="metric-hint">in the archive</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+totalViews+'">0</div><div class="metric-label">Total Views</div><div class="metric-hint">across all videos</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+Math.round(avgViews)+'">0</div><div class="metric-label">Avg Views</div><div class="metric-hint">per video</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+Object.keys(byArtist).length+'">0</div><div class="metric-label">Artists</div><div class="metric-hint">unique acts filmed</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+Object.keys(byVenue).length+'">0</div><div class="metric-label">Venues</div><div class="metric-hint">where shows were shot</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+Object.keys(byFest).length+'">0</div><div class="metric-label">Festivals</div><div class="metric-hint">covered end-to-end</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+archiveDays+'">0</div><div class="metric-label">Days of History</div><div class="metric-hint">oldest → newest show</div></div>';
+        html += '<div class="metric-card"><div class="metric-value" data-count="'+daysSinceUpload+'">0</div><div class="metric-label">Days Ago</div><div class="metric-hint">since last upload</div></div>';
         html += '</div>';
 
         // Content type
-        html += '<section class="stats-section"><h3>Content Type</h3><div class="types-row">';
+        var typeBody = '<div class="types-row">';
         Object.keys(byType).sort(function(a,b){ return byType[b].count - byType[a].count; }).forEach(function(t){
-          html += '<div class="type-card"><div class="type-card-name">'+t+'</div><div class="type-count">'+byType[t].count+' <span style="font-size:.85rem;color:#888;font-weight:400;"> videos</span></div><div class="type-sub">'+fmt(byType[t].views)+' views</div></div>';
+          var avg = byType[t].views / byType[t].count;
+          typeBody += '<div class="type-card"><div class="type-card-name">'+t+'</div><div class="type-count">'+byType[t].count+'<span class="type-count-unit">videos</span></div><div class="type-sub">'+fmt(byType[t].views)+' views</div><div class="type-avg">avg '+fmt(avg)+' views/video</div></div>';
         });
-        html += '</div></section>';
+        typeBody += '</div>';
+        html += section('Content Type', '🎬', videos.length + ' total', typeBody);
 
-        // Views by year
-        html += '<section class="stats-section"><h3>Views by Year</h3>';
-        years.forEach(function(y){
-          html += bar(y, byYear[y].views, yearMax, fmt(byYear[y].views)+' <span style="color:#666;font-size:.72rem;">('+byYear[y].count+' vids)</span>');
+        // Recording quality
+        var audioBody = '<div class="types-row">';
+        var audioOrder = ['Soundboard','Audience Mic','Unspecified'];
+        audioOrder.forEach(function(k){
+          if (!byAudio[k]) return;
+          var pct = (byAudio[k].count / videos.length * 100).toFixed(0);
+          audioBody += '<div class="type-card"><div class="type-card-name">'+k+'</div><div class="type-count">'+byAudio[k].count+'<span class="type-count-unit">videos</span></div><div class="type-sub">'+pct+'% of catalog</div><div class="type-avg">'+fmt(byAudio[k].views)+' total views</div></div>';
         });
-        html += '</section>';
+        audioBody += '</div>';
+        html += section('Recording Quality', '🎙️', 'source of the audio mix', audioBody);
+
+        // Videos per year (column chart)
+        var yearBody = '<div class="col-chart">';
+        years.forEach(function(y){
+          var pct = (byYear[y].count / yearCountMax * 100).toFixed(0);
+          yearBody += '<div class="col"><div class="col-bar" data-height="'+pct+'" data-count="'+byYear[y].count+'"></div><div class="col-label">'+y+'</div></div>';
+        });
+        yearBody += '</div>';
+        html += section('Shows per Year', '📅', 'by show date, not upload date', yearBody);
+
+        // Views by year (bar chart)
+        var vbyy = '';
+        years.slice().reverse().forEach(function(y){
+          vbyy += bar(y, byYear[y].views, yearViewMax, fmt(byYear[y].views)+' <span style="color:#666;font-size:.72rem;">('+byYear[y].count+' vids)</span>');
+        });
+        html += section('Views by Year', '👁', 'aggregate viewership per show year', vbyy);
 
         // Top 10 videos
-        html += '<section class="stats-section"><h3>Most-Watched Videos</h3><ol class="top-videos">';
+        var tvBody = '<ol class="top-videos">';
         topVideos.forEach(function(v, i){
           var pt = parseTitle(v.title || '');
           var rankClass = 'rank' + (i<3?' rank-'+(i+1):'');
-          html += '<li><div class="'+rankClass+'">'+(i+1)+'</div>';
-          html += '<div class="top-title"><div class="top-title-artist">'+(pt.artist||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</div>';
-          if (pt.venue) html += '<div class="top-title-venue">'+pt.venue.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</div>';
-          html += '</div>';
-          html += '<div><div class="top-views">'+fmt(v.views||0)+'</div><div class="top-views-label">views</div></div></li>';
+          var year = (v.show_date || '').slice(0,4);
+          var typ = getType(v);
+          var typClass = typ === '360°' ? 'tag type-360' : 'tag';
+          tvBody += '<li><div class="'+rankClass+'">'+(i+1)+'</div>';
+          tvBody += '<div class="top-title"><div class="top-title-artist">'+esc(pt.artist)+'</div>';
+          if (pt.venue) tvBody += '<div class="top-title-venue">'+esc(pt.venue)+'</div>';
+          tvBody += '<div class="top-title-tags"><span class="tag">'+year+'</span><span class="'+typClass+'">'+typ+'</span></div>';
+          tvBody += '</div>';
+          tvBody += '<div><div class="top-views">'+fmt(v.views||0)+'</div><div class="top-views-label">views</div></div></li>';
         });
-        html += '</ol></section>';
+        tvBody += '</ol>';
+        html += section('Most-Watched Videos', '🏆', 'the top 10 by view count', tvBody);
+
+        // Festival leaderboard
+        if (topFestivals.length) {
+          var festBody = '';
+          topFestivals.forEach(function(row){
+            festBody += bar(row[0], row[1].views, festMax, fmt(row[1].views)+' <span style="color:#666;font-size:.72rem;">('+row[1].count+' vids)</span>');
+          });
+          html += section('Festival Leaderboard', '🎪', 'multi-day events covered end-to-end', festBody);
+        }
 
         // Top artists + venues
-        html += '<div class="two-col">';
-        html += '<section class="stats-section"><h3>Top Artists</h3>';
+        var twoCol = '<div class="two-col">';
+        twoCol += '<section class="stats-section" style="opacity:1;transform:none;margin-bottom:0;"><div class="stats-section-header"><span class="stats-section-emoji">🎤</span><h3>Top Artists</h3><span class="stats-section-note">by total views</span></div>';
         topArtists.forEach(function(row){
-          html += bar(row[0], row[1].views, artistMax, fmt(row[1].views)+' <span style="color:#666;font-size:.72rem;">('+row[1].count+' vids)</span>');
+          twoCol += bar(row[0], row[1].views, artistMax, fmt(row[1].views)+' <span style="color:#666;font-size:.72rem;">('+row[1].count+' vids)</span>');
         });
-        html += '</section>';
-
-        html += '<section class="stats-section"><h3>Top Venues</h3>';
+        twoCol += '</section>';
+        twoCol += '<section class="stats-section" style="opacity:1;transform:none;margin-bottom:0;"><div class="stats-section-header"><span class="stats-section-emoji">📍</span><h3>Top Venues</h3><span class="stats-section-note">by total views</span></div>';
         topVenues.forEach(function(row){
-          html += bar(row[0], row[1].views, venueMax, fmt(row[1].views)+' <span style="color:#666;font-size:.72rem;">('+row[1].count+' vids)</span>');
+          twoCol += bar(row[0], row[1].views, venueMax, fmt(row[1].views)+' <span style="color:#666;font-size:.72rem;">('+row[1].count+' vids)</span>');
         });
-        html += '</section>';
-        html += '</div>';
+        twoCol += '</section>';
+        twoCol += '</div>';
+        html += '<section class="stats-section">' + twoCol + '</section>';
 
-        // Updated footer
-        html += '<p style="text-align:center;color:#444;font-size:.72rem;letter-spacing:.1em;margin-top:32px;">Last catalog sync: '+updated.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'})+'</p>';
+        // Latest + Origin
+        var splitBody = '<div class="two-col">';
+        splitBody += '<section class="stats-section" style="opacity:1;transform:none;margin-bottom:0;"><div class="stats-section-header"><span class="stats-section-emoji">🆕</span><h3>Latest Additions</h3><span class="stats-section-note">by upload date</span></div><ul class="compact-list">';
+        latestUploads.forEach(function(v){
+          var pt = parseTitle(v.title||'');
+          var date = new Date(v.published);
+          splitBody += '<li><div><div class="compact-artist">'+esc(pt.artist)+'</div>' + (pt.venue ? '<div class="compact-venue">'+esc(pt.venue)+'</div>' : '') + '</div><div class="compact-date">'+date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+'</div></li>';
+        });
+        splitBody += '</ul></section>';
+
+        splitBody += '<section class="stats-section" style="opacity:1;transform:none;margin-bottom:0;"><div class="stats-section-header"><span class="stats-section-emoji">🎞️</span><h3>Archive Origin</h3><span class="stats-section-note">oldest shows in the catalog</span></div><ul class="compact-list">';
+        oldestShows.forEach(function(v){
+          var pt = parseTitle(v.title||'');
+          var date = new Date(v.show_date);
+          splitBody += '<li><div><div class="compact-artist">'+esc(pt.artist)+'</div>' + (pt.venue ? '<div class="compact-venue">'+esc(pt.venue)+'</div>' : '') + '</div><div class="compact-date">'+date.toLocaleDateString('en-US',{month:'short',year:'numeric'})+'</div></li>';
+        });
+        splitBody += '</ul></section>';
+        splitBody += '</div>';
+        html += '<section class="stats-section">' + splitBody + '</section>';
+
+        // Fun facts (upload lag)
+        if (lags.length) {
+          var lagBody = '<div class="types-row">';
+          lagBody += '<div class="type-card"><div class="type-card-name">Median Upload Lag</div><div class="type-count">'+medianLag+'<span class="type-count-unit">days</span></div><div class="type-sub">between show and publish</div></div>';
+          lagBody += '<div class="type-card"><div class="type-card-name">Fastest Turnaround</div><div class="type-count">'+Math.min.apply(null,lags)+'<span class="type-count-unit">days</span></div><div class="type-sub">same-day or next-day drop</div></div>';
+          lagBody += '<div class="type-card"><div class="type-card-name">Slowest Turnaround</div><div class="type-count">'+Math.max.apply(null,lags)+'<span class="type-count-unit">days</span></div><div class="type-sub">from show to upload</div></div>';
+          lagBody += '</div>';
+          html += section('Upload Cadence', '⏱️', 'catalog turnaround times', lagBody);
+        }
+
+        // YouTube channel card
+        html += '<section class="stats-section"><div class="stats-section-header"><span class="stats-section-emoji">📺</span><h3>YouTube Channel</h3></div>';
+        html += '<a class="yt-card" href="https://www.youtube.com/@taster_media" target="_blank" rel="noopener">';
+        html += '<div class="yt-icon">▶</div>';
+        html += '<div class="yt-text"><div class="yt-handle">@taster_media</div><div class="yt-sub">Source of every video in this archive — subscribe on YouTube for uploads as they land.</div></div>';
+        html += '<div class="yt-arrow">Open on YouTube ↗</div>';
+        html += '</a></section>';
 
         var el = document.getElementById('stats-content');
         el.className = '';
         el.innerHTML = html;
+
+        // Animate count-up + bars + col-bars via IntersectionObserver
+        function animateCount(el){
+          var target = parseInt(el.getAttribute('data-count'), 10);
+          if (isNaN(target)) return;
+          var duration = 900;
+          var start = performance.now();
+          function step(now){
+            var t = Math.min(1, (now - start) / duration);
+            var eased = 1 - Math.pow(1-t, 3);
+            el.textContent = fmt(target * eased);
+            if (t < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if (!e.isIntersecting) return;
+            e.target.classList.add('visible');
+            var counters = e.target.querySelectorAll('[data-count]');
+            counters.forEach(animateCount);
+            var bars = e.target.querySelectorAll('.bar-fill');
+            bars.forEach(function(b){ b.style.width = b.getAttribute('data-target') + '%'; });
+            var cols = e.target.querySelectorAll('.col-bar');
+            cols.forEach(function(c){ c.style.height = c.getAttribute('data-height') + '%'; });
+            io.unobserve(e.target);
+          });
+        }, {threshold: 0.15});
+        document.querySelectorAll('.stats-section, .metric-card').forEach(function(el){ io.observe(el); });
       })
       .catch(function(err){
         var el = document.getElementById('stats-content');
