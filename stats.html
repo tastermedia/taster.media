@@ -8,18 +8,55 @@
   <link rel="icon" href="images/logo.webp" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=39" />
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="c69e4bd3-9a78-4f4c-a5af-211a68e70b28"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=43" />
   <style>
-    .stats-wrap{max-width:760px;margin:0 auto;padding:34px 18px 64px;text-align:center;}
-    .stats-wrap h2{margin:0 0 10px;}
-    .stats-sub{opacity:.72;font-size:.95rem;margin:0 auto 28px;max-width:580px;}
-    .stats-card{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:36px 24px;background:rgba(255,255,255,.02);box-shadow:0 10px 34px rgba(0,0,0,.35);}
-    .stats-lead{margin:0 0 22px;opacity:.85;}
-    .stats-metrics{list-style:none;padding:0;margin:0 0 26px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;}
-    .stats-metrics li{font-size:.78rem;opacity:.6;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:4px 12px;}
-    .stats-fine{opacity:.45;font-size:.75rem;margin:20px 0 0;}
+    .stats-wrap{max-width:1080px;margin:0 auto;padding:34px 20px 80px;}
+    .stats-title{margin:0 0 8px;text-align:center;}
+    .stats-sub{opacity:.65;font-size:.9rem;text-align:center;margin:0 auto 36px;letter-spacing:.05em;}
+    /* Metric cards */
+    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:44px;}
+    .metric-card{background:linear-gradient(180deg,rgba(128,0,255,.08),rgba(255,0,255,.03));border:1px solid rgba(128,0,255,.28);border-radius:14px;padding:22px 18px;text-align:center;box-shadow:0 4px 24px rgba(128,0,255,.08);}
+    .metric-value{font-family:'Rajdhani',sans-serif;font-size:2.4rem;font-weight:700;line-height:1;background:linear-gradient(135deg,#cc88ff,#ff66ff);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em;}
+    .metric-label{font-family:'Rajdhani',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8000ff;margin-top:8px;}
+    /* Section */
+    .stats-section{margin-bottom:44px;}
+    .stats-section h3{font-family:'Rajdhani',sans-serif;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:#8000ff;font-weight:600;margin:0 0 16px;padding-bottom:8px;border-bottom:1px solid rgba(128,0,255,.2);}
+    /* Bar rows */
+    .bar-row{display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:14px;padding:8px 0;font-family:'Josefin Sans',sans-serif;font-size:.88rem;}
+    .bar-label{color:#ccc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;}
+    .bar-track{background:rgba(128,0,255,.08);border-radius:999px;height:10px;overflow:hidden;position:relative;}
+    .bar-fill{height:100%;background:linear-gradient(90deg,#8000ff,#ff00ff);border-radius:999px;transition:width .6s ease;box-shadow:0 0 8px rgba(128,0,255,.4);}
+    .bar-value{font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;color:#cc88ff;letter-spacing:.03em;min-width:60px;text-align:right;}
+    /* Top-videos list */
+    .top-videos{list-style:none;padding:0;margin:0;}
+    .top-videos li{display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;padding:10px 12px;border-radius:8px;transition:background .15s;border-bottom:1px solid rgba(128,0,255,.08);}
+    .top-videos li:last-child{border-bottom:none;}
+    .top-videos li:hover{background:rgba(128,0,255,.05);}
+    .rank{font-family:'Rajdhani',sans-serif;font-size:1.2rem;font-weight:700;color:#8000ff;text-align:center;letter-spacing:.02em;}
+    .rank-1{color:#ffcf40;text-shadow:0 0 8px rgba(255,207,64,.4);}
+    .rank-2{color:#dcdcdc;}
+    .rank-3{color:#cd9762;}
+    .top-title{color:#ddd;text-align:left;font-size:.88rem;line-height:1.4;}
+    .top-title-artist{font-family:'Rajdhani',sans-serif;font-weight:700;color:#cc88ff;letter-spacing:.03em;}
+    .top-title-venue{color:#888;font-size:.76rem;margin-top:2px;}
+    .top-views{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;color:#fff;letter-spacing:.03em;white-space:nowrap;}
+    .top-views-label{font-size:.65rem;color:#666;letter-spacing:.1em;text-transform:uppercase;margin-top:2px;text-align:right;}
+    /* Two-column grid for artists + venues */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+    /* Content type breakdown */
+    .types-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;}
+    .type-card{background:rgba(128,0,255,.05);border:1px solid rgba(128,0,255,.18);border-radius:12px;padding:18px;}
+    .type-card-name{font-family:'Rajdhani',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8000ff;margin-bottom:8px;}
+    .type-count{font-family:'Rajdhani',sans-serif;font-size:1.6rem;font-weight:700;color:#fff;}
+    .type-sub{font-size:.78rem;color:#888;margin-top:4px;font-family:'Josefin Sans',sans-serif;}
+    /* Loading */
+    .loading{text-align:center;padding:60px 20px;color:#666;font-family:'Rajdhani',sans-serif;letter-spacing:.1em;}
+    @media(max-width:640px){
+      .two-col{grid-template-columns:1fr;gap:32px;}
+      .bar-row{grid-template-columns:130px 1fr auto;gap:10px;font-size:.82rem;}
+      .top-videos li{grid-template-columns:28px 1fr auto;gap:10px;padding:8px 6px;}
+    }
   </style>
 </head>
 <body>
@@ -27,19 +64,151 @@
   <script src="header.js"></script>
   <main>
     <div class="stats-wrap">
-      <h2 class="glow-text">Site Analytics</h2>
-      <p class="stats-sub">Live, cookieless traffic for taster.media &mdash; updated in real time.</p>
-      <div class="stats-card">
-        <p class="stats-lead">Your full dashboard is hosted on Umami.</p>
-        <ul class="stats-metrics">
-          <li>Visitors</li><li>Page views</li><li>Top pages</li><li>Referrers</li><li>Countries</li><li>Devices</li><li>Real-time</li>
-        </ul>
-        <a class="contact-button" href="https://cloud.umami.is/share/iYmxeU1mtR5I8CLP" target="_blank" rel="noopener">Open Live Dashboard &#8599;</a>
-        <p class="stats-fine">Opens in a new tab. Umami's dashboard can't be embedded inline because browsers block its session cookies inside a third-party frame.</p>
-      </div>
+      <h2 class="stats-title glow-text">Stats</h2>
+      <p class="stats-sub">A snapshot of the Taster Media archive — everything computed from the live catalog.</p>
+      <div id="stats-content" class="loading">Loading catalog…</div>
     </div>
   </main>
-  <footer><p>&copy; <span class="footer-year">2026</span> Taster Media</p></footer>
+  <footer><div class="footer-inner"><p class="footer-copy">© <span class="footer-year">2026</span> Taster Media</p></div></footer>
+  <script>
+    // Local parseTitle (mirrors scripts.js) — extracts artist + venue from titles
+    function parseTitle(raw) {
+      var artist='', venue='';
+      var lm = raw.match(/^(.+?)\s*\(live\)/i);
+      artist = lm ? lm[1].trim() : raw.split(' - ')[0];
+      var fm = raw.match(/(?:\bfrom|\bsomewhere in|@|\bon)\s+(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
+      if (fm) venue = fm[1].trim();
+      if (/^stage\s*\d+$/i.test(venue)) {
+        var fm2 = raw.match(/from\s+Stage\s*\d+\s*-\s*(.+?)(?:\s+-\s+|\s+in\s+|$)/i);
+        if (fm2) venue = fm2[1].trim();
+      }
+      return {artist: artist, venue: venue};
+    }
+    function fmt(n){return n.toLocaleString('en-US');}
+    function getType(v){
+      if(v.type==='360') return '360°';
+      var t=(v.title||'').toLowerCase();
+      if(/single[\s-]?cam/.test(t)) return 'Single-cam';
+      return 'Multi-cam';
+    }
+
+    fetch('videos.json?d=' + Math.floor(Date.now()/86400000))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var videos = data.videos || [];
+        var totalViews = videos.reduce(function(s,v){ return s + (v.views||0); }, 0);
+
+        // Aggregate by artist / venue / year / type
+        var byArtist = {}, byVenue = {}, byYear = {}, byType = {};
+        videos.forEach(function(v){
+          var pt = parseTitle(v.title || '');
+          var vw = v.views || 0;
+          if (pt.artist) {
+            byArtist[pt.artist] = byArtist[pt.artist] || {views:0, count:0};
+            byArtist[pt.artist].views += vw;
+            byArtist[pt.artist].count += 1;
+          }
+          if (pt.venue) {
+            byVenue[pt.venue] = byVenue[pt.venue] || {views:0, count:0};
+            byVenue[pt.venue].views += vw;
+            byVenue[pt.venue].count += 1;
+          }
+          var year = (v.show_date || v.published || '').slice(0,4);
+          if (year) {
+            byYear[year] = byYear[year] || {views:0, count:0};
+            byYear[year].views += vw;
+            byYear[year].count += 1;
+          }
+          var tp = getType(v);
+          byType[tp] = byType[tp] || {views:0, count:0};
+          byType[tp].views += vw;
+          byType[tp].count += 1;
+        });
+
+        function top(map, n){
+          return Object.entries(map).sort(function(a,b){ return b[1].views - a[1].views; }).slice(0, n);
+        }
+
+        var topVideos = videos.slice().sort(function(a,b){ return (b.views||0) - (a.views||0); }).slice(0,10);
+        var topArtists = top(byArtist, 8);
+        var topVenues = top(byVenue, 8);
+        var years = Object.keys(byYear).sort().reverse();
+        var yearMax = Math.max.apply(null, years.map(function(y){ return byYear[y].views; }));
+        var artistMax = topArtists[0] ? topArtists[0][1].views : 1;
+        var venueMax = topVenues[0] ? topVenues[0][1].views : 1;
+        var updated = new Date(data.updated || Date.now());
+
+        function bar(label, cur, max, right){
+          var pct = Math.max(2, (cur/max)*100);
+          var safeLabel = label.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+          return '<div class="bar-row"><div class="bar-label" title="'+safeLabel+'">'+safeLabel+'</div><div class="bar-track"><div class="bar-fill" style="width:'+pct.toFixed(1)+'%"></div></div><div class="bar-value">'+right+'</div></div>';
+        }
+
+        var html = '';
+
+        // Metric cards
+        html += '<div class="metrics-grid">';
+        html += '<div class="metric-card"><div class="metric-value">'+fmt(videos.length)+'</div><div class="metric-label">Videos</div></div>';
+        html += '<div class="metric-card"><div class="metric-value">'+fmt(totalViews)+'</div><div class="metric-label">Total Views</div></div>';
+        html += '<div class="metric-card"><div class="metric-value">'+fmt(Object.keys(byArtist).length)+'</div><div class="metric-label">Artists</div></div>';
+        html += '<div class="metric-card"><div class="metric-value">'+fmt(Object.keys(byVenue).length)+'</div><div class="metric-label">Venues</div></div>';
+        html += '</div>';
+
+        // Content type
+        html += '<section class="stats-section"><h3>Content Type</h3><div class="types-row">';
+        Object.keys(byType).sort(function(a,b){ return byType[b].count - byType[a].count; }).forEach(function(t){
+          html += '<div class="type-card"><div class="type-card-name">'+t+'</div><div class="type-count">'+byType[t].count+' <span style="font-size:.85rem;color:#888;font-weight:400;"> videos</span></div><div class="type-sub">'+fmt(byType[t].views)+' views</div></div>';
+        });
+        html += '</div></section>';
+
+        // Views by year
+        html += '<section class="stats-section"><h3>Views by Year</h3>';
+        years.forEach(function(y){
+          html += bar(y, byYear[y].views, yearMax, fmt(byYear[y].views)+' <span style="color:#666;font-size:.72rem;">('+byYear[y].count+' vids)</span>');
+        });
+        html += '</section>';
+
+        // Top 10 videos
+        html += '<section class="stats-section"><h3>Most-Watched Videos</h3><ol class="top-videos">';
+        topVideos.forEach(function(v, i){
+          var pt = parseTitle(v.title || '');
+          var rankClass = 'rank' + (i<3?' rank-'+(i+1):'');
+          html += '<li><div class="'+rankClass+'">'+(i+1)+'</div>';
+          html += '<div class="top-title"><div class="top-title-artist">'+(pt.artist||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</div>';
+          if (pt.venue) html += '<div class="top-title-venue">'+pt.venue.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</div>';
+          html += '</div>';
+          html += '<div><div class="top-views">'+fmt(v.views||0)+'</div><div class="top-views-label">views</div></div></li>';
+        });
+        html += '</ol></section>';
+
+        // Top artists + venues
+        html += '<div class="two-col">';
+        html += '<section class="stats-section"><h3>Top Artists</h3>';
+        topArtists.forEach(function(row){
+          html += bar(row[0], row[1].views, artistMax, fmt(row[1].views)+' <span style="color:#666;font-size:.72rem;">('+row[1].count+' vids)</span>');
+        });
+        html += '</section>';
+
+        html += '<section class="stats-section"><h3>Top Venues</h3>';
+        topVenues.forEach(function(row){
+          html += bar(row[0], row[1].views, venueMax, fmt(row[1].views)+' <span style="color:#666;font-size:.72rem;">('+row[1].count+' vids)</span>');
+        });
+        html += '</section>';
+        html += '</div>';
+
+        // Updated footer
+        html += '<p style="text-align:center;color:#444;font-size:.72rem;letter-spacing:.1em;margin-top:32px;">Last catalog sync: '+updated.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'})+'</p>';
+
+        var el = document.getElementById('stats-content');
+        el.className = '';
+        el.innerHTML = html;
+      })
+      .catch(function(err){
+        var el = document.getElementById('stats-content');
+        el.className = 'loading';
+        el.textContent = 'Could not load catalog: ' + err.message;
+      });
+  </script>
   <script>(function(){var y=document.querySelector('.footer-year');if(y)y.textContent=new Date().getFullYear();})();</script>
 </body>
 </html>
