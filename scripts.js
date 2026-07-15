@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // browsers (Chrome/Safari) suppress autoplay when the iframe loads while still hidden.
     overlay.classList.add("active");
     document.body.style.overflow="hidden";
-    iframe.src="https://www.youtube.com/embed/"+id+"?rel=0&autoplay=1&playsinline=1&enablejsapi=1";
+    iframe.src="https://www.youtube-nocookie.com/embed/"+id+"?rel=0&autoplay=1&playsinline=1&enablejsapi=1";
     // Animate inner panel expanding from thumbnail position
     var startScale = 0.05;
     if (cardEl) {
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (history.replaceState) history.replaceState(null,'','#v='+next.id);
     if (lbTitle) lbTitle.textContent = next.title || '';
     currentVideoId = next.id;
-    iframe.src = "https://www.youtube.com/embed/"+next.id+"?rel=0&autoplay=1&playsinline=1&enablejsapi=1";
+    iframe.src = "https://www.youtube-nocookie.com/embed/"+next.id+"?rel=0&autoplay=1&playsinline=1&enablejsapi=1";
     if(!lb360) lb360=document.getElementById("lightbox-360");
     if(lb360){ if(is360Map[next.id]){ lb360.href="https://www.youtube.com/watch?v="+next.id; lb360.style.display="inline-block"; } else { lb360.style.display="none"; } }
   }
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if(!lbNext){ lbNext=document.getElementById("lightbox-next"); lbNext.addEventListener("click", function(){ navLightbox(1); }); }
         if(lbTitle) lbTitle.textContent=list[0].title||"";
         if(history.replaceState) history.replaceState(null,"","#v="+ids[0]);
-        iframe.src="https://www.youtube.com/embed/"+ids[0]+"?rel=0&autoplay=1&enablejsapi=1&playlist="+ids.slice(1).join(",");
+        iframe.src="https://www.youtube-nocookie.com/embed/"+ids[0]+"?rel=0&autoplay=1&enablejsapi=1&playlist="+ids.slice(1).join(",");
         if(!lb360) lb360=document.getElementById("lightbox-360");
         if(lb360) lb360.style.display="none";
         overlay.classList.add("active");
