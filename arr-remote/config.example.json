@@ -1,0 +1,12 @@
+{
+  "radarr": {
+    "url": "http://localhost:7878",
+    "apiKey": "PASTE_YOUR_RADARR_API_KEY_HERE"
+  },
+  "sonarr": {
+    "url": "http://localhost:8989",
+    "apiKey": "PASTE_YOUR_SONARR_API_KEY_HERE"
+  },
+  "host": "0.0.0.0",
+  "port": 8585
+}

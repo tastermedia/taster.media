@@ -12,3 +12,10 @@ _pgbackup/
 *.swp
 *.swo
 .vscode/
+
+# arr-remote — never commit API keys
+arr-remote/config.json
+
+# Python
+__pycache__/
+*.pyc

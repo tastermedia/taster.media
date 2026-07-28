@@ -1,0 +1,17 @@
+[Unit]
+Description=arr-remote — add movies/shows to Radarr/Sonarr from your phone
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# --- edit these three lines for your setup ---
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/arr-remote
+ExecStart=/usr/bin/python3 /home/YOUR_USER/arr-remote/app.py
+# ---------------------------------------------
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
