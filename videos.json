@@ -1,30 +1,30 @@
 {
-  "updated": "2026-08-04T02:46:33.288139+00:00",
+  "updated": "2026-08-04T14:05:57.352693+00:00",
   "channel": "UC4jtpyiA5WIQsObGh5E2oCg",
-  "total": 95,
+  "total": 96,
   "videos": [
+    {
+      "id": "kpeDMkBvCRw",
+      "title": "Front Porch (live) from Helmond Castle",
+      "views": 170,
+      "published": "2026-07-24T19:28:48Z",
+      "show_date": "2026-07-24T19:28:48Z",
+      "type": "4k"
+    },
     {
       "id": "wtF3olAx_5U",
       "title": "Henhouse Prowlers w/Kin'Congolo Kiniata (live) from Rotterdam Bluegrass Festival 2026 - 4k Multi-cam",
-      "views": 53,
+      "views": 54,
       "published": "2026-07-28T15:11:43Z",
-      "show_date": "2026-07-28T15:11:43Z",
+      "show_date": "2026-07-04T00:00:00+00:00",
       "type": "4k"
     },
     {
       "id": "HNs1kkOguzA",
       "title": "Henhouse Prowlers w/de Niemanders (live) from The MS Silja Europa - 4k Multi-cam - Soundboard Audio",
-      "views": 50,
+      "views": 51,
       "published": "2026-07-28T11:54:18Z",
-      "show_date": "2026-07-28T11:54:18Z",
-      "type": "4k"
-    },
-    {
-      "id": "kpeDMkBvCRw",
-      "title": "Front Porch (live) from Helmond Castle",
-      "views": 169,
-      "published": "2026-07-24T19:28:48Z",
-      "show_date": "2026-07-24T19:28:48Z",
+      "show_date": "2026-07-02T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -46,7 +46,7 @@
     {
       "id": "bOwWMZaIYQ0",
       "title": "Mountain Grass Unit (live) from Arch Deluxe 2026 - Full Show - Single-cam - Soundboard Audio",
-      "views": 668,
+      "views": 674,
       "published": "2026-06-23T18:58:11Z",
       "show_date": "2026-05-02T00:00:00+00:00",
       "type": "4k"
@@ -65,6 +65,14 @@
       "views": 21,
       "published": "2026-05-18T19:55:25Z",
       "show_date": "2026-05-02T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "nqYtgDs2Xko",
+      "title": "Silas Herman and The Tone Unit (live) from Arch Deluxe 2026",
+      "views": 4,
+      "published": "2026-08-04T04:55:57Z",
+      "show_date": "2026-05-01T00:00:00+00:00",
       "type": "4k"
     },
     {
@@ -110,7 +118,7 @@
     {
       "id": "3BvZP4Znq94",
       "title": "The HooDoo Soul Band (live) from Rumba Cafe - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 460,
+      "views": 461,
       "published": "2026-01-22T00:47:39Z",
       "show_date": "2026-01-18T00:00:00+00:00",
       "type": "4k"
@@ -158,7 +166,7 @@
     {
       "id": "kN539naAAtA",
       "title": "Front Porch (live) from RecordBar - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 324,
+      "views": 325,
       "published": "2025-12-23T18:55:21Z",
       "show_date": "2025-12-18T00:00:00+00:00",
       "type": "4k"
@@ -182,7 +190,7 @@
     {
       "id": "5Mj2WksIs-s",
       "title": "Shadowgrass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 1824,
+      "views": 1828,
       "published": "2025-11-26T14:48:56Z",
       "show_date": "2025-11-19T00:00:00+00:00",
       "type": "4k"
@@ -206,7 +214,7 @@
     {
       "id": "Pc_lSdrv3H0",
       "title": "Mountain Grass Unit (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 4658,
+      "views": 4666,
       "published": "2026-02-10T20:45:38Z",
       "show_date": "2025-10-10T00:00:00+00:00",
       "type": "4k"
@@ -222,7 +230,7 @@
     {
       "id": "12sPE1oDkH4",
       "title": "Front Porch (live) from Hillberry 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 3771,
+      "views": 3774,
       "published": "2025-11-04T16:49:04Z",
       "show_date": "2025-10-09T00:00:00+00:00",
       "type": "4k"
@@ -230,7 +238,7 @@
     {
       "id": "5BmffJ-MFsg",
       "title": "The Spooklights (live) from Knuckleheads - Full Show - 4k Multi-cam - Audience Mic Audio",
-      "views": 672,
+      "views": 673,
       "published": "2025-11-13T15:33:12Z",
       "show_date": "2025-10-04T00:00:00+00:00",
       "type": "4k"
@@ -350,7 +358,7 @@
     {
       "id": "z9F-1DoLDMg",
       "title": "Improvement Movement (live) from Knuckleheads - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 2139,
+      "views": 2140,
       "published": "2025-08-12T01:17:57Z",
       "show_date": "2025-08-10T00:00:00+00:00",
       "type": "4k"
@@ -382,7 +390,7 @@
     {
       "id": "P6anEkCEDDQ",
       "title": "East Nash Grass (live) from Lucia - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 10788,
+      "views": 10796,
       "published": "2025-07-29T21:36:04Z",
       "show_date": "2025-07-23T00:00:00+00:00",
       "type": "4k"
@@ -494,7 +502,7 @@
     {
       "id": "awePJCjoNes",
       "title": "Tall Tall Trees (live) from Knuckleheads Gospel Lounge - Full Show - 4k Multi-cam - Soundboard Audio",
-      "views": 216,
+      "views": 218,
       "published": "2025-04-30T21:43:18Z",
       "show_date": "2025-04-23T00:00:00+00:00",
       "type": "4k"
@@ -550,7 +558,7 @@
     {
       "id": "gCblBvhoF_M",
       "title": "Mike Dillon & Punkadelick (live) from The Brick - (almost) Full Show - 4k Multi-cam - Audience Mic Audio",
-      "views": 204,
+      "views": 205,
       "published": "2025-12-27T22:09:53Z",
       "show_date": "2024-11-27T00:00:00+00:00",
       "type": "4k"
