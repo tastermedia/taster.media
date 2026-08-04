@@ -24,6 +24,21 @@ while True:
     if not next_page:
         break
 
+# The uploads playlist can lag hours-to-days behind what shows on the
+# channel's Videos tab. Supplement with the search endpoint (which reflects
+# the Videos tab in near real time) so brand-new uploads still get picked up
+# on the next sync instead of waiting for playlist replication.
+seen = set(video_ids)
+search_data = api(f"search?part=id&channelId={channel_id}&order=date&type=video&maxResults=25")
+for item in search_data.get("items", []):
+    vid = item.get("id", {}).get("videoId")
+    if vid and vid not in seen:
+        video_ids.append(vid)
+        seen.add(vid)
+
+MONTHS = {'january':1,'february':2,'march':3,'april':4,'may':5,'june':6,
+          'july':7,'august':8,'september':9,'october':10,'november':11,'december':12}
+
 def parse_show_date(text, published_dt):
     candidates = []
     for m in re.finditer(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}', text, re.IGNORECASE):
@@ -40,6 +55,24 @@ def parse_show_date(text, published_dt):
         try:
             dt = datetime(int(m.group(1)),int(m.group(2)),int(m.group(3)),tzinfo=timezone.utc)
             candidates.append(dt)
+        except: pass
+    # Year-less formats: "20-July", "20 July", "July 20", "July 20th" — infer the
+    # year from the publish date, then roll back a year if that lands in the future.
+    for m in re.finditer(r'\b(\d{1,2})[-\s]+(January|February|March|April|May|June|July|August|September|October|November|December)\b', text, re.IGNORECASE):
+        try:
+            day = int(m.group(1)); month = MONTHS[m.group(2).lower()]
+            for y in (published_dt.year, published_dt.year - 1):
+                dt = datetime(y, month, day, tzinfo=timezone.utc)
+                if dt <= published_dt + timedelta(days=7):
+                    candidates.append(dt); break
+        except: pass
+    for m in re.finditer(r'\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:st|nd|rd|th)?\b(?!\s*,?\s*\d{4})', text, re.IGNORECASE):
+        try:
+            month = MONTHS[m.group(1).lower()]; day = int(m.group(2))
+            for y in (published_dt.year, published_dt.year - 1):
+                dt = datetime(y, month, day, tzinfo=timezone.utc)
+                if dt <= published_dt + timedelta(days=7):
+                    candidates.append(dt); break
         except: pass
     valid = [dt for dt in candidates if dt <= published_dt + timedelta(days=7)]
     if valid:
