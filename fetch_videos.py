@@ -58,7 +58,7 @@ def parse_show_date(text, published_dt):
         except: pass
     # Year-less formats: "20-July", "20 July", "July 20", "July 20th" — infer the
     # year from the publish date, then roll back a year if that lands in the future.
-    for m in re.finditer(r'\b(\d{1,2})[-\s]+(January|February|March|April|May|June|July|August|September|October|November|December)\b', text, re.IGNORECASE):
+    for m in re.finditer(r'\b(\d{1,2})[\-–—\s]+(January|February|March|April|May|June|July|August|September|October|November|December)\b', text, re.IGNORECASE):
         try:
             day = int(m.group(1)); month = MONTHS[m.group(2).lower()]
             for y in (published_dt.year, published_dt.year - 1):
@@ -120,6 +120,7 @@ ID_DATE_OVERRIDES = {
     'CPViC7zxsHE': ('2024-09-20T00:00:00+00:00', '360'),   # Front Porch @ Winfield 2024 Stage 3
     'EP5nyFC0lPE': ('2024-09-20T00:00:00+00:00', '360'),   # Front Porch @ Winfield 2024 Stage 2
     '1PQCOPrdm6w': ('2024-09-20T00:00:00+00:00', '360'),   # Crying Uncle Bluegrass Band @ Winfield 2024 Stage 3
+    'kpeDMkBvCRw': ('2026-07-20T00:00:00+00:00', '4k'),    # Front Porch @ Helmond Castle
 }
 
 
