@@ -162,7 +162,6 @@ TITLE_TEXT_OVERRIDES = {
     'zGZLec4CRfw': "MoonShroom (live) from Pickin' On Picknic 2025 - Full Show - 4k Multi-cam - Soundboard Audio",
     'EklPeX4QiMw': "The Engine Room (live) from West Church Social - Full Show - 4k Multi-cam - Soundboard Audio",
     'lUA7Fd4chF8': "Mike Tipton & The Scoundrels (live) from Boulevard Brewing Co. - 4k Multi-cam - Soundboard Audio",
-    'RaUkKfppTIs': "Paul Cauthen (live) from Hillberry 2024 - Full Show - Single-cam - Audience Mic Audio",
     'Cwi9jKTVhU8': "MoonShroom (live) from Winfield 2024 - Stage 5 - Single-cam - Audience Mic Audio",
     '-vJyLUWFBtM': "Crying Uncle Bluegrass Band (live) from Winfield 2024 - Stage 5 - Full Set - Single-cam - Audience Mic Audio",
     'Z0xwpslgi60': "Front Porch (live) from Winfield 2024 - Stage 1 - Full Set - 4k Multi-cam - Audience Mic Audio",
@@ -217,6 +216,7 @@ EXCLUDE_IDS = {
     'ngljOpE-cE8',  # Front Porch - Roadside
     '7GNaUC3jD4U',  # Front Porch - Haystack
     'UGCyVg3F0UU',  # Front Porch - The Grove
+    'RaUkKfppTIs',  # Paul Cauthen (live) from Hillberry 2024
     # Removed from the catalog — restore by deleting this line AND re-adding
     # the STATIC_IDS entry for MaP5leydx0U above.
     'MaP5leydx0U',  # Pete Bernhard (live) from Clouso in Fabulous 360!

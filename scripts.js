@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(function(data) {
       var allVideos=data.videos||[];
       allVideos.forEach(function(v){ if(v.type==="360") is360Map[v.id]=true; });
-      var sortState={field:"date",dir:"desc"};
+      var sortState={field:"views",dir:"desc"};
       var searchQuery="";
       // /360.html defaults to the 360-only view; everywhere else shows all.
       var typeFilter=/\/360\.html?$/.test(location.pathname)?"360":"all";
