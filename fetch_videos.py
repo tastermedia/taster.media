@@ -121,6 +121,7 @@ ID_DATE_OVERRIDES = {
     'EP5nyFC0lPE': ('2024-09-20T00:00:00+00:00', '360'),   # Front Porch @ Winfield 2024 Stage 2
     '1PQCOPrdm6w': ('2024-09-20T00:00:00+00:00', '360'),   # Crying Uncle Bluegrass Band @ Winfield 2024 Stage 3
     'kpeDMkBvCRw': ('2026-07-20T00:00:00+00:00', '4k'),    # Front Porch @ Helmond Castle
+    'bsQkyVYA8I8': ('2025-11-23T00:00:00+00:00', '4k'),    # Front Porch @ Stockyards Brewing Co.
 }
 
 
