@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   })();
 
-  fetch("videos.json?d="+Math.floor(Date.now()/86400000))
+  fetch("videos.json?d="+Math.floor(Date.now()/3600000))
     .then(function(r){ return r.json(); })
     .then(function(data) {
       var allVideos=data.videos||[];
