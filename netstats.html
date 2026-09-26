@@ -207,7 +207,12 @@
           showLogin('Wrong password. Try again.');
           return;
         }
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        if (!resp.ok) {
+          let detail = '';
+          try { detail = JSON.stringify(await resp.json(), null, 2); }
+          catch { detail = await resp.text().catch(()=>''); }
+          throw new Error(`HTTP ${resp.status}\n\n${detail}`);
+        }
         const data = await resp.json();
         render(data);
       } catch (e) {
