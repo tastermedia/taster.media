@@ -180,7 +180,7 @@
         var videos = data.videos || [];
         var totalViews = videos.reduce(function(s,v){ return s + (v.views||0); }, 0);
         var updated = new Date(data.updated || Date.now());
-        updatedEl.innerHTML = 'Last sync: <span>' + updated.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}) + '</span>';
+        updatedEl.innerHTML = 'Last sync: <span>' + updated.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'}) + '</span>';
 
         // Aggregations
         var byArtist = {}, byVenue = {}, byYear = {}, byType = {}, byAudio = {}, byFest = {}, byPubYear = {};
@@ -365,7 +365,7 @@
         latestUploads.forEach(function(v){
           var pt = parseTitle(v.title||'');
           var date = new Date(v.published);
-          splitBody += '<li><div><div class="compact-artist">'+esc(pt.artist)+'</div>' + (pt.venue ? '<div class="compact-venue">'+esc(pt.venue)+'</div>' : '') + '</div><div class="compact-date">'+date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+'</div></li>';
+          splitBody += '<li><div><div class="compact-artist">'+esc(pt.artist)+'</div>' + (pt.venue ? '<div class="compact-venue">'+esc(pt.venue)+'</div>' : '') + '</div><div class="compact-date">'+date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})+'</div></li>';
         });
         splitBody += '</ul></section>';
 
@@ -373,7 +373,7 @@
         oldestShows.forEach(function(v){
           var pt = parseTitle(v.title||'');
           var date = new Date(v.show_date);
-          splitBody += '<li><div><div class="compact-artist">'+esc(pt.artist)+'</div>' + (pt.venue ? '<div class="compact-venue">'+esc(pt.venue)+'</div>' : '') + '</div><div class="compact-date">'+date.toLocaleDateString('en-US',{month:'short',year:'numeric'})+'</div></li>';
+          splitBody += '<li><div><div class="compact-artist">'+esc(pt.artist)+'</div>' + (pt.venue ? '<div class="compact-venue">'+esc(pt.venue)+'</div>' : '') + '</div><div class="compact-date">'+date.toLocaleDateString('en-US',{month:'short',year:'numeric',timeZone:'UTC'})+'</div></li>';
         });
         splitBody += '</ul></section>';
         splitBody += '</div>';
