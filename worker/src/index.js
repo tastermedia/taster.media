@@ -104,12 +104,13 @@ function buildQuery(accountTag, siteTag, since, until) {
   };
 }
 
-function unauthorized() {
+function unauthorized(cors) {
   return new Response('Authentication required.', {
     status: 401,
     headers: {
       'WWW-Authenticate': 'Basic realm="taster.media netstats", charset="UTF-8"',
       'Content-Type': 'text/plain',
+      ...(cors || {}),
     },
   });
 }
@@ -176,7 +177,7 @@ export default {
       return new Response('Not found', { status: 404, headers: cors });
     }
 
-    if (!checkAuth(request, env.NETSTATS_PASSWORD)) return unauthorized();
+    if (!checkAuth(request, env.NETSTATS_PASSWORD)) return unauthorized(cors);
 
     const range = url.searchParams.get('range') || 'week';
     if (!RANGES[range]) {
