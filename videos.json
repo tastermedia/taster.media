@@ -788,22 +788,6 @@
       "type": "4k"
     },
     {
-      "id": "nea9eAZVHdw",
-      "title": "free space (live) from Luther\u2019s Blues",
-      "views": 11,
-      "published": "2022-01-24T17:47:46Z",
-      "show_date": "2022-01-24T17:47:46Z",
-      "type": "4k"
-    },
-    {
-      "id": "IUkZdhqDu7g",
-      "title": "free space (live) from House of Blues",
-      "views": 23,
-      "published": "2022-01-24T17:39:12Z",
-      "show_date": "2022-01-24T17:39:12Z",
-      "type": "4k"
-    },
-    {
       "id": "WuUsgJqPnu4",
       "title": "brown wh\u00f6rnet (live) somewhere in Austin - Audience Mic Audio",
       "views": 88,
@@ -825,6 +809,22 @@
       "views": 222,
       "published": "2022-01-20T05:54:30Z",
       "show_date": "2003-06-01T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "nea9eAZVHdw",
+      "title": "free space (live) from Luther\u2019s Blues",
+      "views": 11,
+      "published": "2022-01-24T17:47:46Z",
+      "show_date": "2002-01-01T00:00:00+00:00",
+      "type": "4k"
+    },
+    {
+      "id": "IUkZdhqDu7g",
+      "title": "free space (live) from House of Blues",
+      "views": 23,
+      "published": "2022-01-24T17:39:12Z",
+      "show_date": "2002-01-01T00:00:00+00:00",
       "type": "4k"
     }
   ]
