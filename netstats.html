@@ -38,6 +38,14 @@
     .ns-error{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.4);color:#ffaaaa;padding:20px;border-radius:12px;font-family:monospace;font-size:.85rem;white-space:pre-wrap;}
     .ns-loading{text-align:center;padding:60px 20px;opacity:.6;font-family:'Rajdhani',sans-serif;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;}
     .ns-note{opacity:.5;font-size:.75rem;margin-top:24px;text-align:center;font-style:italic;}
+    /* Login form */
+    .ns-login{max-width:340px;margin:80px auto;background:rgba(128,0,255,.06);border:1px solid rgba(128,0,255,.28);border-radius:14px;padding:32px 28px;text-align:center;}
+    .ns-login h3{font-family:'Rajdhani',sans-serif;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:#8000ff;font-weight:600;margin:0 0 18px;}
+    .ns-login input{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(128,0,255,.35);color:#fff;font-family:'Josefin Sans',sans-serif;font-size:.95rem;padding:10px 14px;border-radius:8px;outline:none;box-sizing:border-box;margin-bottom:12px;}
+    .ns-login input:focus{border-color:#ff00ff;box-shadow:0 0 0 3px rgba(255,0,255,.15);}
+    .ns-login button{width:100%;background:linear-gradient(135deg,#8000ff,#ff00ff);color:#fff;border:0;font-family:'Rajdhani',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:11px;border-radius:8px;cursor:pointer;margin-top:4px;}
+    .ns-login button:hover{opacity:.9;}
+    .ns-login .err{color:#ffaaaa;font-size:.8rem;margin-bottom:12px;font-family:monospace;}
   </style>
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ef2f5e083de545cfacd74a6c761ea8fe"}'></script>
 </head>
@@ -188,12 +196,15 @@
         contentEl.innerHTML = '<div class="ns-error">Set-up not complete.\n\nAfter running `wrangler deploy` in the /worker directory, paste the printed workers.dev URL into netstats.html\'s API_BASE constant.</div>';
         return;
       }
+      const creds = sessionStorage.getItem('netstats.creds');
+      if (!creds) { showLogin(); return; }
       try {
         const resp = await fetch(`${API_BASE}/query?range=${encodeURIComponent(range)}`, {
-          credentials: 'include', // triggers the browser Basic-Auth prompt on 401
+          headers: { 'Authorization': 'Basic ' + creds },
         });
         if (resp.status === 401) {
-          contentEl.innerHTML = '<div class="ns-error">Not authorized.\n\nRefresh and enter the netstats password when your browser prompts.</div>';
+          sessionStorage.removeItem('netstats.creds');
+          showLogin('Wrong password. Try again.');
           return;
         }
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
@@ -202,6 +213,27 @@
       } catch (e) {
         contentEl.innerHTML = `<div class="ns-error">Failed to load stats.\n\n${esc(e.message)}</div>`;
       }
+    }
+
+    function showLogin(err){
+      contentEl.innerHTML = `
+        <div class="ns-login">
+          <h3>Sign in</h3>
+          ${err ? `<div class="err">${esc(err)}</div>` : ''}
+          <input type="password" id="pw" placeholder="Password" autocomplete="current-password" autofocus />
+          <button id="loginBtn">Enter</button>
+        </div>`;
+      const pw = document.getElementById('pw');
+      const btn = document.getElementById('loginBtn');
+      const submit = ()=>{
+        const val = pw.value || '';
+        if (!val) return;
+        // Basic Auth: base64("username:password"). Username can be anything.
+        sessionStorage.setItem('netstats.creds', btoa('admin:' + val));
+        load(rangeSel.value);
+      };
+      btn.addEventListener('click', submit);
+      pw.addEventListener('keydown', (e)=>{ if (e.key === 'Enter') submit(); });
     }
 
     rangeSel.addEventListener('change', ()=> load(rangeSel.value));
