@@ -122,6 +122,8 @@ ID_DATE_OVERRIDES = {
     '1PQCOPrdm6w': ('2024-09-20T00:00:00+00:00', '360'),   # Crying Uncle Bluegrass Band @ Winfield 2024 Stage 3
     'kpeDMkBvCRw': ('2026-07-20T00:00:00+00:00', '4k'),    # Front Porch @ Helmond Castle
     'bsQkyVYA8I8': ('2025-11-23T00:00:00+00:00', '4k'),    # Front Porch @ Stockyards Brewing Co.
+    'nea9eAZVHdw': ('2002-01-01T00:00:00+00:00', '4k'),    # free space @ Luther's Blues (uploaded 2022, actual show ~2002)
+    'IUkZdhqDu7g': ('2002-01-01T00:00:00+00:00', '4k'),    # free space @ House of Blues (uploaded 2022, actual show ~2002)
 }
 
 
