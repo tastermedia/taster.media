@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // View count + date badge
       var metaEl=document.createElement("div"); metaEl.className="video-meta";
       var showDate=video.show_date||video.published||'';
-      if(showDate){var sd=new Date(showDate);metaEl.textContent=sd.toLocaleDateString('en-US',{month:'short',year:'numeric'});}
+      if(showDate){var sd=new Date(showDate);metaEl.textContent=sd.toLocaleDateString('en-US',{month:'short',year:'numeric',timeZone:'UTC'});}
       info.appendChild(ae); info.appendChild(ve); info.appendChild(metaEl); info.appendChild(te);
       card.appendChild(info); grid.appendChild(card);
     });
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   })();
 
-  fetch("videos.json?d="+Math.floor(Date.now()/86400000))
+  fetch("videos.json?d="+Math.floor(Date.now()/3600000))
     .then(function(r){ return r.json(); })
     .then(function(data) {
       var allVideos=data.videos||[];
