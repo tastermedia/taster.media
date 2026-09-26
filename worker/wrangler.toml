@@ -2,15 +2,6 @@ name = "taster-netstats-api"
 main = "src/index.js"
 compatibility_date = "2026-09-01"
 
-# Pin the assets scan to an empty local folder so wrangler v4 doesn't
-# auto-detect the parent site's HTML/JS as static assets (a Worker
-# without static assets doesn't need this at all, but leaving it
-# implicit tripped wrangler into scanning /Users/<you>/taster.media
-# and trying to upload node_modules/.bin/workerd, an 82 MiB binary).
-[assets]
-directory = "./public"
-binding = "ASSETS"
-
 # Non-secret vars. CF_SITE_TAG is the Web Analytics site token that
 # already lives in your <script data-cf-beacon='{"token":"..."}'> tag.
 [vars]
@@ -21,5 +12,4 @@ CF_SITE_TAG = "ef2f5e083de545cfacd74a6c761ea8fe"
 #   NETSTATS_PASSWORD   ← your chosen /netstats password
 #
 # CF_ACCOUNT_ID is optional — if not set, the Worker auto-discovers it
-# from the token on first request. Set it explicitly only if the token
-# has access to multiple accounts and you need to pin a specific one.
+# from the token on first request.
