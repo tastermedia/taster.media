@@ -35,6 +35,9 @@ function rangeToWindow(range) {
 
 // One big GraphQL query batches every dimension we want.
 // rumPageloadEventsAdaptiveGroups is Cloudflare's Web Analytics dataset.
+// Note: this schema exposes `count` (pageviews) and `sum { visits }`
+// (session count). Unique visitors isn't a first-class metric here;
+// approximate by using `sum.visits` in the totals card.
 function buildQuery(accountTag, siteTag, since, until) {
   return {
     query: `query Stats($accountTag: String!, $filter: RumPageloadEventsAdaptiveGroupsFilter_InputObject!) {
@@ -44,20 +47,17 @@ function buildQuery(accountTag, siteTag, since, until) {
           totals: rumPageloadEventsAdaptiveGroups(limit: 1, filter: $filter) {
             count
             sum { visits }
-            uniq { uniques }
           }
           # timeseries — buckets over the window
           series: rumPageloadEventsAdaptiveGroups(limit: 500, filter: $filter, orderBy: [datetimeHour_ASC]) {
             count
             sum { visits }
-            uniq { uniques }
             dimensions { ts: datetimeHour }
           }
           # top pages
           pages: rumPageloadEventsAdaptiveGroups(limit: 25, filter: $filter, orderBy: [sum_visits_DESC]) {
             count
             sum { visits }
-            uniq { uniques }
             dimensions { path: requestPath }
           }
           # top referrers (where they came from)
@@ -223,19 +223,19 @@ export default {
       totals: {
         pageviews: totalsRow.count || 0,
         visits: totalsRow.sum?.visits || 0,
-        uniques: totalsRow.uniq?.uniques || 0,
+        uniques: totalsRow.sum?.visits || 0, // Web Analytics doesn't expose uniques; visits is the closest proxy
       },
       series: (acct.series || []).map(r => ({
         ts: r.dimensions?.ts,
         pageviews: r.count,
         visits: r.sum?.visits || 0,
-        uniques: r.uniq?.uniques || 0,
+        uniques: r.sum?.visits || 0,
       })),
       pages: (acct.pages || []).map(r => ({
         path: r.dimensions?.path || '(unknown)',
         pageviews: r.count,
         visits: r.sum?.visits || 0,
-        uniques: r.uniq?.uniques || 0,
+        uniques: r.sum?.visits || 0,
       })),
       referrers: (acct.referrers || []).map(r => ({
         referrer: r.dimensions?.referer || '(direct)',
